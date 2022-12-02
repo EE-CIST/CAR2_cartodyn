@@ -49,4 +49,3 @@ layers:[
   {type:"shadow", geojson:africa}
 ]})
 ```
-

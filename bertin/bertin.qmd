@@ -1,0 +1,80 @@
+---
+title: "bertin"
+format: html
+editor: visual
+---
+
+Bertin est une librairie js de carto thématique.
+
+# Importer la librarie
+
+Importer une version de la librairie en ligne.
+
+Cf sur npm
+
+```{r}
+getwd()
+```
+
+```{ojs}
+bertin = require("bertin@1.5.9")
+```
+
+Ou en local
+
+```{ojs}
+bertin_local = require("../lib/bertin.min.js")
+```
+
+# Principes.
+
+Des couches et des types. Avec des parametres.
+
+# Syntaxe.
+
+Params Layers Struture du json.
+
+![Elephant](img/bertincode.svg "Title: An elephant"){fig-alt="A drawing of an elephant."}
+
+# Afficher rapidement un fond de carte avec quickdraw
+
+```{ojs}
+africa = FileAttachment("../data/africa.json").json()
+```
+
+```{ojs}
+bertin.quickdraw(africa)
+```
+
+# Afficher des géometries avec draw
+
+```{ojs}
+bertin.draw({layers:[{geojson:africa}]})
+```
+
+
+
+
+Parametres qu'on va trouver à chaque fois. Ce sont les parametres des figures svg.
+
+-   stroke
+-   fill
+-   stroke-width =\> strokeWidth
+-   fill-opacity =\> fillOpacity
+-   ...
+
+```{ojs}
+bertin.draw({
+  layers: [
+    { geojson: africa, fill: "red", stroke: "blue", strokeWidth: 2, fillOpacity: 0.5 },
+    {type: "shadow", geojson: africa}
+  ]
+})
+```
+
+
+# Types de cartes.
+
+# Couches d'habillage.
+
+# Nb bertin existe aussi dans R. En cours.

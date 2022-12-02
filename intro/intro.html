@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Intruduction</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="intro_files/libs/clipboard/clipboard.min.js"></script>
+<script src="intro_files/libs/quarto-html/quarto.js"></script>
+<script src="intro_files/libs/quarto-html/popper.min.js"></script>
+<script src="intro_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="intro_files/libs/quarto-html/anchor.min.js"></script>
+<link href="intro_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="intro_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="intro_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="intro_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="intro_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Intruduction</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<p>Ce qu’on va faire. Apprendre à faire des cartes animés et interactives avec Observable javascript et bertin.js dans Quarto. Ce qu’on ne va pas faire : apprendre à programmer en javascript</p>
+</section>
+<section id="javascript" class="level1">
+<h1>Javascript</h1>
+<p>Historique du web Avant le web était statique Creation de js Pas créé au départ pour la visu de données. Avantages. Inconvénients. Les déboires du début. Langage qui peut être étendu. Wasm. D3.</p>
+</section>
+<section id="observable-javascript" class="level1">
+<h1>Observable javascript</h1>
+<p>C’est une société. C’est une plate-forme. Dans quarto</p>
+</section>
+<section id="principes" class="level1">
+<h1>Principes</h1>
+<p>Les cellules. Relation topologique entre les lignes.</p>
+<p>Attention, pas 2 fois le même nom de variable en début de ligne. On peut ecrire le code dans n”importe quel ordre, ce qui peut être déroutant.</p>
+<p>On peut écrire du js avec des acolades Variables. Calculer. Fonction.</p>
+<p>Oj n’est pas que javascript. C’est du js mais dans lequel on a ajouté des librairies. Présenter de, plot,…</p>
+<p>C’est aussi des choses spécifiques.</p>
+</section>
+<section id="import-de-données." class="level1">
+<h1>Import de données.</h1>
+<p>…</p>
+</section>
+<section id="le-format-json" class="level1">
+<h1>Le format json</h1>
+</section>
+<section id="les-inputs." class="level1">
+<h1>Les inputs.</h1>
+<p>…</p>
+</section>
+<section id="cest-réactif." class="level1">
+<h1>C’est réactif.</h1>
+<p>Un exemple avec un cercle ou un rectangle.</p>
+<p>Donc certes, le js n’est pas pensé à la base pour la dataviz, mais qui a été étendu pour cela et qui le sera encore.</p>
+<p>Quarto est un environnement multi langage. Combiner R et ojs. Passer des données. Dans la pratique, on pour très bien utiliser R pour l’analyse de donnés et ojs pour la visualisation.</p>
+</section>
+<section id="biblio-sur-la-dataviz" class="level1">
+<h1>Biblio sur la dataviz</h1>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
