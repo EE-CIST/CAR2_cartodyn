@@ -4,56 +4,54 @@ format: html
 editor: visual
 ---
 
+
 # Intro
 
-Ce qu'on va faire. 
-Apprendre à faire des cartes animés et interactives avec Observable javascript et bertin.js dans Quarto. Ce qu'on ne va pas faire : apprendre à programmer en javascript
+Histoire de la datviz. La carto + la data viz => la geoviz.
+Apparition des ordi.
+Du web, .
+...
+
+# Intro
+
+Ce qu'on va faire. Apprendre à faire des cartes animés et interactives avec Observable javascript et bertin.js dans Quarto. Ce qu'on ne va pas faire : apprendre à programmer en javascript
 
 # Javascript
 
-Historique du web
-Avant le web était statique
-Creation de js
-Pas créé au départ pour la visu de données. Avantages. Inconvénients. 
-Les déboires du début. 
-Langage qui peut être étendu. Wasm. D3. 
+Historique du web Avant le web était statique Creation de js Pas créé au départ pour la visu de données. Avantages. Inconvénients. Les déboires du début. Langage qui peut être étendu. Wasm. D3.
 
 # Observable javascript
 
-C'est une société. 
-C'est une plate-forme. 
-Dans quarto
+C'est une société. C'est une plate-forme. Dans quarto
 
-# Principes 
+# Principes
 
-Les cellules. Relation topologique entre les lignes. 
+Les cellules. Relation topologique entre les lignes.
 
-Attention, pas 2 fois le même nom de variable en début de ligne.
-On peut ecrire le code dans n"importe quel ordre, ce qui peut être déroutant.
+Attention, pas 2 fois le même nom de variable en début de ligne. On peut ecrire le code dans n"importe quel ordre, ce qui peut être déroutant.
 
-On peut écrire du js avec des acolades
-Variables. Calculer. Fonction. 
+On peut écrire du js avec des acolades Variables. Calculer. Fonction.
 
-Oj n'est pas que javascript. C'est du js mais dans lequel on a ajouté des librairies. Présenter de, plot,... 
+Oj n'est pas que javascript. C'est du js mais dans lequel on a ajouté des librairies. Présenter de, plot,...
 
-C'est aussi des choses spécifiques. 
+C'est aussi des choses spécifiques.
 
-# Import de données. 
+# Import de données.
 
 ...
 
 # Le format json
 
-# Les inputs. 
+# Les inputs.
 
 ...
 
-# C'est réactif. 
+# C'est réactif.
 
-Un exemple avec un cercle ou un rectangle. 
+Un exemple avec un cercle ou un rectangle.
 
-Donc certes, le js n'est pas pensé à la base pour la dataviz, mais qui a été étendu pour cela et qui le sera encore. 
+Donc certes, le js n'est pas pensé à la base pour la dataviz, mais qui a été étendu pour cela et qui le sera encore.
 
-Quarto est un environnement multi langage. Combiner R et ojs. Passer des données. Dans la pratique, on pour très bien utiliser R pour l'analyse de donnés et ojs pour la visualisation. 
+Quarto est un environnement multi langage. Combiner R et ojs. Passer des données. Dans la pratique, on pour très bien utiliser R pour l'analyse de donnés et ojs pour la visualisation.
 
-#  Biblio sur la dataviz
+# Biblio sur la dataviz
