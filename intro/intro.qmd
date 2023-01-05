@@ -26,7 +26,67 @@ C'est une société. C'est une plate-forme. Dans quarto
 
 # Principes
 
-Les cellules. Relation topologique entre les lignes.
+## Les chunk ojs
+
+## Les cellules et les variables
+
+On définit les variables avec =
+
+```{ojs}
+//| echo: true
+a = 10
+b = 20
+```
+
+Ensuite, on peut utiliser ces variables pour faires des calculs
+
+```{ojs}
+//| echo: true
+a + b
+```
+
+
+En Observable javascript, On peut ecrire le code dans n”importe quel ordre. On peut par exemple faire un calcul et définir les variables ensuite. 
+
+```{ojs}
+//| echo: true
+c * d
+c = 2
+d = 17
+```
+
+C'est très déroutant mais extremement pratique. Car cela permet par exemple de positionner les figures au milieu d'un texte, et releguer tous les calculs dans une annexe technique à la fin du document. 
+
+Cela à une implication. Chaque début de ligne doit définit une variable qui doit être unique. Si je crée 2 variables avec le même nom, le runtime d'Observable renvoit une erreur. 
+
+
+```{ojs}
+//| echo: true
+e = "coucou"
+e = "bonjour"
+```
+
+Mais on peut résoudre cela en utilisant des accolades. On retrouve alors le fonctionnement d'un code javascript normal.
+
+```{ojs}
+//| echo: true
+{
+let e = "coucou"
+e = "bonjour"
+return e
+}
+```
+
+
+
+
+
+
+Ensuite, on peut utiliser ces variables pour faires des calculs
+
+
+
+Chaque début de ligne définit une céllule qui doit être unique.
 
 Attention, pas 2 fois le même nom de variable en début de ligne. On peut ecrire le code dans n"importe quel ordre, ce qui peut être déroutant.
 
