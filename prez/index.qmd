@@ -1,0 +1,661 @@
+---
+title: "Cartographie thématique avec ojs"
+subtitle: "bla bla bla"
+author: "Nicolas Lambert"
+date: 03/08/2023
+lang: fr
+date-format: "DD MMM YYYY"
+title-slide-attributes:
+  data-background-color: black
+  data-background-image: img/nice.jpg
+  data-background-size: cover
+  data-background-opacity: "0.5"
+format:
+  revealjs:
+    smaller: true
+    scrollable: true
+    theme: [simple, custom.scss]
+editor: visual
+execute:
+  echo: true
+---
+
+# Intro
+
+Ce qu'on va faire. Apprendre à faire des cartes animés et interactives avec Observable javascript et bertin.js dans Quarto. Ce qu'on ne va pas faire : apprendre à programmer en javascript
+
+## sss
+
+# Javascript
+
+Historique du web Avant le web était statique Creation de js Pas créé au départ pour la visu de données. Avantages. Inconvénients. Les déboires du début. Langage qui peut être étendu. Wasm. D3.
+
+## sss
+
+# Observable Javascript
+
+xxxxx
+
+## Observable, kezako ?
+
+![](img/observable.png){height="200"}
+
+Observable javascript (ojs) est un extension du langage javascript développé par la société Observable.
+
+## Les cellules / chunk {ojs}
+
+Dans Quarto, on peut ecrire/executer du code Observable en utilisant des chuncks **{ojs}**.
+
+Chaque ligne définit une variable et une cellule qui doit être unique.
+
+cellule 1 :
+
+```{ojs}
+a = 5 
+```
+
+cellule 2 :
+
+```{ojs}
+b = 7 
+```
+
+cellule 3 :
+
+```{ojs}
+a + b
+```
+
+Avec ojs, l'ordre d'écriture n'a pas d'importance 🤔 On peut donc écrire :
+
+Ceci :
+
+```{ojs}
+c * d 
+```
+
+Avant ça
+
+```{ojs}
+c = 3
+```
+
+et ça
+
+```{ojs}
+d = 8
+```
+
+La raison est que la relation entgre les cellules s'effectue de manière topologique.
+
+![](img/topo.png){height="400"}
+
+Chaque cellule doit impérativement être unique. En conséquance, je n'ai pas le droit de redéfinir une de ces variables.
+
+```{ojs}
+e = 10
+e = 5
+```
+
+Il est donc souvent utile de créer des blocs de code avec des {...} quand le traitement devient plus complexe.
+
+```{ojs}
+{
+  let val1 = 8;
+  let val2 = 7;
+  val1 = 5;
+  return val1 * val2;
+}
+
+```
+
+Mais la plupart du temps, pour faire ce genre de calcul, on écrira plutôt des fonctions. Comme ceci :
+
+```{ojs}
+function sum(a, b) {
+  return a + b;
+}
+// Appel de la fonction
+sum(10, 30)
+```
+
+Ou comme cela :
+
+```{ojs}
+multi = (a, b) => a * b
+// Appel de la fonction
+multi(3, 8)
+```
+
+Ce parti pris fort, peut être déroutant. Mais il a un gros avantage. Il permet d'organiser un document indépendemment de la façon dont on code. Cela petrmet par exemple de mettre une carte en haut de la page et en annexe technique tout en bas le code qui la génère.
+
+## D3.js
+
+![](img/logo-D3.png){height="200"}
+
+D3.js est une bibliothèque graphique JavaScript développée par Mike Bostock qui permet l'affichage de données numériques sous une forme graphique et dynamique. **d3.js** est une grosse librairie qui fait beaucoup de choses. Depuis 2015, elle est composée de différents modules spécialisés.
+
+![](img/d3github.png)
+
+D3 est directement intégrée dans Observable javascript. On peut faire par exemple :
+
+```{ojs}
+{ 
+let values = [0, 10, 30];
+return d3.quantile(values, 0.25);
+}
+```
+
+Et 1000 autres choses qu'on ne détaillera pas ici.
+
+## Dessiner avec D3.js
+
+Avec D3, il est possible de dessiner des images vectorielles au format SVG.
+
+DOM
+
+Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d'examiner et de modifier le contenu du navigateur web. Par le DOM, la composition d'une page web est représentée sous forme d'un arbre avec des objets dedans.
+
+Créer un document svg
+
+```{ojs}
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 500, 60])
+    .style("background-color", "#CCC");
+    
+  return svg.node();
+}    
+```
+
+Dessiner un cercle
+
+```{ojs}
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 500, 60])
+    .style("background-color", "#CCC");
+    
+  svg
+    .append("circle")
+    .attr("cx", 50)
+    .attr("cy", 30)
+    .attr("r", 25)
+    .style("fill", "#e04a28");
+    
+  return svg.node();
+}    
+```
+
+Dessiner un carré
+
+```{ojs}
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 500, 60])
+    .style("background-color", "#CCC");
+    
+  svg
+    .append("rect")
+    .attr("x", 100)
+    .attr("y", 5)
+    .attr("height", 50)
+    .attr("width", 50)
+    .style("fill", "#5277bf");
+    
+  return svg.node();
+}    
+```
+
+Tracer une ligne
+
+```{ojs}
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 500, 60])
+    .style("background-color", "#CCC");
+
+    
+  return svg.node();
+}    
+```
+
+Ecrire un texte
+
+```{ojs}
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 500, 60])
+    .style("background-color", "#CCC");
+    
+
+  return svg.node();
+}    
+```
+
+## Dessiner des données avec D3.js et svg
+
+On crée des données fictives
+
+```{ojs}
+myData = [10, 30, 2, 20, 10]
+```
+
+On veut créer des cercles. crée une fonction pour calculer le rayon.
+
+```{ojs}
+valmax = d3.max(myData)
+radius = d3.scaleSqrt([0, valmax], [0, 35]);
+```
+
+Puis, on dessine un SVG.
+
+```{ojs}
+{
+  const width = 500;
+  const height = 75;
+  
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, width, height])
+
+  svg
+    .append("g")
+    .attr("fill", "#e04a28")
+    .selectAll("circle")
+    .data(myData)
+    .join("circle")
+    .attr("cx", (d, i) => 50 + i * 100)
+    .attr("cy", height / 2)
+    .attr("r", (d) => radius(d));
+
+  return svg.node();
+}
+```
+
+## Les Inputs
+
+Dans Observable, on a à disposition des *Inputs* directement prêts à l'emploi.
+
+### 👉 button
+
+```{ojs}
+viewof clicks = Inputs.button("Click")
+clicks
+```
+
+### 👉 toogle
+
+```{ojs}
+viewof mute = Inputs.toggle({label: "Mute", value: true})
+mute
+```
+
+### 👉 range
+
+```{ojs}
+viewof gain = Inputs.range([0, 11], {value: 5, step: 0.1, label: "Gain"})
+gain
+```
+
+### 👉 checkbox
+
+```{ojs}
+viewof colors = Inputs.checkbox(["red", "green", "blue"], {label: "color"})
+colors
+```
+
+### 👉 radio
+
+```{ojs}
+viewof color = Inputs.radio(["red", "green", "blue"], {label: "color"})
+color
+```
+
+### 👉 select
+
+```{ojs}
+villes = ["Cotonou", "Porto-Novo", "Ouidah"]
+viewof maville = Inputs.select(villes, {value: "steelblue", label: "Favorite color"})
+maville
+```
+
+### 👉 text
+
+```{ojs}
+viewof text = Inputs.text()
+text
+```
+
+### 👉 textarea
+
+```{ojs}
+viewof textarea = Inputs.textarea()
+textarea
+```
+
+### 👉 data
+
+```{ojs}
+viewof date = Inputs.date()
+date
+```
+
+### 👉 color
+
+```{ojs}
+viewof pickcolor = Inputs.color({label: "couleur préférée", value: "#4682b4"})
+pickcolor
+```
+
+### 👉 file
+
+```{ojs}
+viewof file = Inputs.file()
+file
+```
+
+### 👉 formulaire
+
+```{ojs}
+//| panel: sidebar
+//| echo: false
+viewof range1 = Inputs.range([0, 11], {value: 5, step: 0.1, label: "range1"})
+viewof range2 = Inputs.range([0, 11], {value: 5, step: 0.1, label: "range2"})
+viewof range3 = Inputs.range([0, 11], {value: 5, step: 0.1, label: "range3"})
+```
+
+```{ojs}
+//| panel: fill
+range1
+range2
+range3
+
+```
+
+## Tout est réactif 🔥
+
+Dans Observable, grace à la relation topologique entre les cellules, tout est réactif. Chaque fois qu'on bouge quelque chose, ce qui en dépend est rééxécuté.
+
+```{ojs}
+viewof age = Inputs.range([15, 70], {label: "age", value: 30, step: 1,})
+viewof nom = Inputs.text({label: "nom", value: "Nicolas"})
+```
+
+Par exemple :
+
+```{ojs}
+md`Je m'appelle **${nom}** et j'ai **${age}** ans :-)`
+```
+
+Reprenons notre SVG de tout à l'heure
+
+```{ojs}
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 500, 60])
+    .style("background-color", "#CCC");
+    
+  svg
+    .append("circle")
+    .attr("cx", 50)
+    .attr("cy", 30)
+    .attr("r", 25)
+    .style("fill", "#e04a28");
+    
+  return svg.node();
+}
+```
+
+On peut facilement proposer à l'utilisateur de moidifier ce dessin en remplaçant des valeurs par des variables pilotées par des inputs.
+
+```{ojs}
+//| echo: true
+//| eval: false
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 500, 60])
+    .style("background-color", "#CCC");
+    
+  svg
+    .append("circle")
+    .attr("cx", cx)
+    .attr("cy", 30)
+    .attr("r", r)
+    .style("fill", col);
+    
+  return svg.node();
+}
+```
+
+Par exemple :
+
+```{ojs}
+//| panel: input
+//| echo: false
+viewof cx = Inputs.range([30, 470], {value: 50, step: 1, label: "position"})
+viewof col = Inputs.color({ value: "#e04a28", label: "couleur"})
+viewof r = Inputs.range([5, 30], {value: 25, step: 0.1, label: "rayon"})
+
+```
+
+```{ojs}
+//| echo: false
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 500, 60])
+    .style("background-color", "#CCC");
+    
+  svg
+    .append("circle")
+    .attr("cx", cx)
+    .attr("cy", 30)
+    .attr("r", r)
+    .style("fill", col);
+    
+  return svg.node();
+}
+```
+
+## Ajouter des données
+
+L'ajout de données s'effectue avec l'instruction `FileAttachment()`
+
+### 👉 fichier csv
+
+```{ojs}
+data1 = FileAttachment("data/afrika_data.csv").csv()
+```
+
+Les données sont importées et converties automatiquement au format json
+
+```{ojs}
+//| echo: false
+data1
+```
+
+Pour les visualiser, on utilise `Inputs.table()`
+
+```{ojs}
+Inputs.table(data1)
+```
+
+### 👉 fichier xlsx
+
+On peut également importer des fichiers excel
+
+```{ojs}
+classeur = FileAttachment("data/afrika.xlsx").xlsx()
+```
+
+On obtient la liste des feuilles comme cela :
+
+```{ojs}
+classeur.sheetNames
+```
+
+Puis, on peut choisir la feuille à ouvrir
+
+```{ojs}
+data2 = classeur.sheet("data", {
+  headers: true
+})
+```
+
+```{ojs}
+//| echo: false
+data2
+```
+
+### 👉 fichier geoJSON
+
+Pour utiliser des géométries, on utilisera prioritairement le format geoJSON.
+
+```{ojs}
+basemap = FileAttachment("data/africa.json").json()
+```
+
+Voilà la structure d'un geoJSON
+
+```{ojs}
+//| echo: false
+basemap
+```
+
+## Librairies externes
+
+Observable javascript n'est pas un écosystème fermé. Des millions de librairies javascript existent sur NPM (équivalent du CRAN pour R). Il est possible de les utiliser.
+
+*https://www.npmjs.com/* ![](img/npm.png)
+
+Ici, nous pouvons les importer directement avec l'instruction `require()`
+
+```{ojs}
+geo = require("geoverview@1.2.1")
+```
+
+Version locale
+
+```{ojs}
+geo2 = require("lib/geoverview_1.2.1.js")
+```
+
+Je peux maintenant utiliser la fonction view du package `geoverview` (qui est reniommé ici, geo).
+
+```{ojs}
+geo.view(basemap)
+```
+
+## Imports
+
+On l'a dit tout à l'heure, Observable c'est aussi une plateforme web hebergeant des notebooks.
+
+![](img/trendings.png)
+
+Si on a une connexion internet, il ets possible d'importer n'importe quelle cellule de n'importe quel notebook avec la fonction `import`.
+
+```{ojs}
+import { SummaryTable } from "@observablehq/summary-table"
+```
+
+Puis, on peut utiliser cette fonction sur nos données.
+
+```{ojs}
+SummaryTable(data1)
+```
+
+## Interopérabilité R et OJS
+
+Dans `Quarto`, il ets possible de combiner du code en R et du code en OJS.
+
+# La libraririe bertin
+
+Une librairie javascript pour la cartographie thématique
+
+## Principes
+
+![](img/logobertin.svg)
+
+```{ojs}
+bertin = require("bertin@latest")
+```
+
+![](img/level.png)
+
+## Préparation des données
+
+Import des données sur les pays du monde
+
+Les géométries
+
+```{ojs}
+world = FileAttachment("data/world.json").json()
+```
+
+```{ojs}
+//| echo: false
+world
+```
+
+Les données attributaires
+
+```{ojs}
+stats = FileAttachment("data/worldbank_data.csv").csv()
+```
+
+On ne garde que l'années 2019
+
+```{ojs}
+stats2019 = stats.filter(d => d.date == 2019)
+```
+
+```{ojs}
+//| echo: false
+stats2019
+```
+
+On réalise une jointure grace aux fonctionnalités `match` et `merge` disponibles dans `bertin`.
+
+```{ojs}
+bertin.match(world, "id", stats2019, "iso3c")
+```
+
+Le niveau de compatibilioté est bon. On réalise la jointure et on crée le nouveau jeu de données `world2019`
+
+```{ojs}
+world2019 = bertin.merge(world, "id", stats2019, "iso3c")
+```
+
+Voilà le résultat
+
+```{ojs}
+geo.view(world2019)
+```
+
+## Syntaxe
+
+![](img/bertin_code.png)
+
+## Types
+
+![](img/types.jpeg){width:100%}
+
+## Carte simple
+
+La fonction `draw` permet de dessiner n'importe quel type de carte.
+
+```{ojs}
+bertin.draw({ layers: [ {geojson: world} ] })
+```
+
+## Symboles proportionnels
+
+## 

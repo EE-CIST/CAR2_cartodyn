@@ -1,0 +1,70 @@
+/*-- scss:defaults --*/
+
+$presentation-h1-font-size: 3em;
+$footer-bg: #75AADB;
+$modal-footer-bg: red;
+
+
+.title {
+  font-size: 120px !important;
+  color: white !important;
+}
+
+.author {
+  font-size: 100px;
+}
+
+.date {
+  font-size: 30px;
+}
+
+/*-- scss:rules --*/
+
+
+.reveal .part {
+background-color: black;
+
+}
+
+/*.reveal h2 {
+   // text-align:center;
+    float: left;
+    padding: 25px;
+    //background-color: #4390ba;
+    border: solid;
+    opacity: 0.9;
+    color:black;
+    font-size:1.7em;
+
+}*/
+
+.reveal .footer {
+background-color: black;
+color: white;
+padding:0px;
+opacity: 1;
+}
+
+.reveal .header {
+  text-align: center;
+background-color: white;
+color: black;
+padding:0px;
+opacity: 1;
+}
+
+.reveal .hide h2 {
+    padding: 0px;
+    opacity: 0;
+}
+
+.observablehq {
+  font-size:12px;
+  text-align:center;
+  width: 67%;
+}
+
+
+
+
+

@@ -1,11 +1,88 @@
 ---
-title: "Intruduction"
-format: html
-editor: visual
+title: "Intro"
+subtitle: "CIST"
+author: "Nicolas Lambert ....."
+date: 02/02/23
+title-slide-attributes:
+  data-background-color: black
+  data-background-image: img/nice.jpg
+  data-background-size: cover
+  data-background-opacity: "0.5"
+date-format: "DD MMM YYYY"
+engine: knitr
+execute:
+  echo: true
+  eval: true
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    incremental: false
+    eval: true
+    presentation-slide-text-align: center
+    background-transition: fade
+    controls: true
+    auto-stretch: true
+    code-overflow: wrap
+    code-tools: true
 ---
 
+# Test
+
+## Les inputs
+
+
+```{ojs}
+data = FileAttachment("seattle-weather.csv")
+  .csv({typed: true})
+  
+Plot.plot({
+  width: 800, height: 500, padding: 0,
+  color: { scheme: "blues", type: "sqrt"},
+  y: { tickFormat: i => "JFMAMJJASOND"[i] },
+  marks: [
+    Plot.cell(data, Plot.group({fill: "mean"}, {
+      x: d => d.date.getUTCDate(),
+      y: d => d.date.getUTCMonth(),
+      fill: "precipitation", 
+      inset: 0.5
+    }))
+  ]
+})
+```
+
+
+
+```{ojs}
+//| echo: true
+viewof intensity = Inputs.range([0, 100], {step: 1, label: "Intensity"})
+```
+
+
+```{ojs}
+//| echo: true
+a = 10
+b = 20
+```
+
+## sssss
 
 # Intro
+
+https://observablehq.com/@tophtucker/classic-research-in-data-visualization
+
+Cartes
+Charts 
+Cartes thématiques
+Révolution quantitative en geo
+Web
+Exemples de geoviz
+(shiny, webgl, d3, leaflet,...) 
+Derrizr tout ces exemples, il y a un langage : le javascript 
+Histoire du js. 
+De js à ojs 
+Principes 
+
+Passe de R à ojs 
 
 Histoire de la datviz. La carto + la data viz => la geoviz.
 Apparition des ordi.
@@ -26,7 +103,30 @@ C'est une société. C'est une plate-forme. Dans quarto
 
 # Principes
 
+
+::: {.panel-tabset}
+
+## toto
+
+sss
+
+## titi
+
+dddd
+
+## slksmlksml
+
+
+sss
+
+
+:::
+
 ## Les chunk ojs
+
+```{{ojs}}
+// Ecrire des trucs ici
+```
 
 ## Les cellules et les variables
 
@@ -77,20 +177,39 @@ return e
 }
 ```
 
+# Les inputs
 
+https://github.com/observablehq/inputs
 
+# xxx
 
+```{ojs}
+viewof bio = Inputs.textarea({label: "Biography", placeholder: "Tell us a little about yourself…"})
+md`${bio}`
+```
 
+mettre sur une ligne
+
+```{ojs}
+//| panel: input
+//| layout-ncol: 1
+Inputs.toggle({label: "Mute"})
+Inputs.radio(["red", "green", "blue"], {label: "Color"})
+viewof intensity = Inputs.range([0, 100], {step: 1, label: "Intensity"})
+```
+
+```{ojs}
+//| echo: false
+intensity
+```
+
+# Import de données
+
+voir aussi Inputs.table
 
 Ensuite, on peut utiliser ces variables pour faires des calculs
 
 
-
-Chaque début de ligne définit une céllule qui doit être unique.
-
-Attention, pas 2 fois le même nom de variable en début de ligne. On peut ecrire le code dans n"importe quel ordre, ce qui peut être déroutant.
-
-On peut écrire du js avec des acolades Variables. Calculer. Fonction.
 
 Oj n'est pas que javascript. C'est du js mais dans lequel on a ajouté des librairies. Présenter de, plot,...
 
