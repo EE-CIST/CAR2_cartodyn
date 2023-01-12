@@ -25,7 +25,7 @@ viewof color = Inputs.color({label: "couleur", value: "#ee3a3a"})
 ```
 
 
-::: {#penguins-tabset .panel-tabset .ojs-track-layout}
+::: {.panel-tabset .ojs-track-layout}
 ## Plot
 
 ```{ojs}
@@ -42,7 +42,12 @@ layers:[
 ## Data
 
 ```{ojs}
-Inputs.table(statsyear)
+Inputs.table(statsyear, {  columns: [
+    "country",
+    "capital_city",
+    "region",
+    "POP"
+  ]})
 ```
 :::
 
