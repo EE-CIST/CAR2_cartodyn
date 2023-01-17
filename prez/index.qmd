@@ -32,68 +32,51 @@ Da la préhistoire à nos jours
 Lambert, N., Zanin C. (2019). Mad Maps - L'Atlas qui va changer votre vision du monde (p. 144p). Armand Colin.
 :::
 
-
 ## Les débuts de la dataviz
 
 Les pionnier.e.s de la visualisation de données
 
-<div align = "center">
-
-:::: {.columns}
-
+::: {align="center"}
+::: columns
 ::: {.column width="49%"}
-<img src="img/Playfair1.png" style="border:none"/></img>
-Commercial and Political Atlas. <b>William Playfair</b> (1786)
+<img src="img/Playfair1.png" style="border:none"/></img> Commercial and Political Atlas. <b>William Playfair</b> (1786)
 :::
 
 ::: {.column width="49%"}
-<img src="img/Nightingale.png" style="border:none"/></img>
-Notes on Matters Affecting the Health, Efficiency and Hospital Administration of the British Army. <b>Florence Nightingale</b> (1857)
+<img src="img/Nightingale.png" style="border:none"/></img> Notes on Matters Affecting the Health, Efficiency and Hospital Administration of the British Army. <b>Florence Nightingale</b> (1857)
 :::
-
-::::
-
-</div>
-
+:::
+:::
 
 ## La rencontre de 2 mondes
 
 Quand la cartographie rencontre la visualisation de données statistiques
 
-<div align = "center">
-
-:::: {.columns}
-
+::: {align="center"}
+::: columns
 ::: {.column width="49%"}
-Carte figurative de l'instruction populaire en France (<b>Charles Dupin</b>, 1826)
-<img src="img/Dupin.png" style="border:none"/></img><br/>
+Carte figurative de l'instruction populaire en France (<b>Charles Dupin</b>, 1826) <img src="img/Dupin.png" style="border:none"/></img><br/>
 :::
 
 ::: {.column width="49%"}
-<b>Frère de Montizon</b> (1830)<br/>
-<img src="img/Montizon.png" style="border:none"/></img>
-<b>Emile Cheysson</b> (1886)
-<img src="img/Cheysson.png" style="border:none"/></img><br/>
-
+<b>Frère de Montizon</b> (1830)<br/> <img src="img/Montizon.png" style="border:none"/></img> <b>Emile Cheysson</b> (1886) <img src="img/Cheysson.png" style="border:none"/></img><br/>
 :::
-
-::::
+:::
 
 ### Le <i>GOLD STANDARD</i> de la dataviz
 
 <img src="img/Minard.png" style="border:none"/></img>
 
-Carte Figurative des pertes successives en hommes de l'armée française dans la campagne de Russie 1812--1813.<br/>Charles Joseph Minard (1869). <b>Minard</b> représente en 1869 les pertes colossales de l'armée française dans la campagne de Russie au début du XIXe siècle. Cette fameuse « carte figurative » raconte l'histoire de cette armée, qui arrive à Moscou avec moins d'un quart de son effectif de départ, avant de se faire à nouveau décimer sur le voyage du retour. 
-
-</div>
+Carte Figurative des pertes successives en hommes de l'armée française dans la campagne de Russie 1812--1813.<br/>Charles Joseph Minard (1869). <b>Minard</b> représente en 1869 les pertes colossales de l'armée française dans la campagne de Russie au début du XIXe siècle. Cette fameuse « carte figurative » raconte l'histoire de cette armée, qui arrive à Moscou avec moins d'un quart de son effectif de départ, avant de se faire à nouveau décimer sur le voyage du retour.
+:::
 
 ## Bertin, 1977 (et 1973)
 
-- Enorme travail de synthèse. 
-- Approche plutôt pragmatique.
-- Pour le papier. 
-- En noir et blanc.
-- Mais un travail qui reste central pour toutes celles et ceux qui travaillent sur la visualisation de données aujourd'hui.
+-   Enorme travail de synthèse.
+-   Approche plutôt pragmatique.
+-   Pour le papier.
+-   En noir et blanc.
+-   Mais un travail qui reste central pour toutes celles et ceux qui travaillent sur la visualisation de données aujourd'hui.
 
 <img src="img/semio.png" style="border:none"/></img>
 
@@ -101,46 +84,37 @@ Carte Figurative des pertes successives en hommes de l'armée française dans la
 
 <div align = "center">
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="49%"}
-Les ordinateurs
-<img src="img/ordinateur.png" style="border:none"/></img>
+Les ordinateurs <img src="img/ordinateur.png" style="border:none"/></img>
 :::
 
 ::: {.column width="49%"}
-Internet
-<img src="img/internet.png" style="border:none"/></img>
-
+Internet <img src="img/internet.png" style="border:none"/></img>
+:::
 :::
 
-::::
-
-:::footer
+::: footer
 https://observablehq.com/@tophtucker/classic-research-in-data-visualization
 :::
 
-## {background-image="img/leaflet.jpg" background-size="contain"}
+##  {background-image="img/leaflet.jpg" background-size="contain"}
 
-:::footer
-<b>Vladimir Agafonkin, 2010</b><br/>
-https://leafletjs.com/
+::: footer
+<b>Vladimir Agafonkin, 2010</b><br/> https://leafletjs.com/
 :::
 
-## {background-image="img/ggplo2.jpg" background-size="contain"}
+##  {background-image="img/ggplo2.jpg" background-size="contain"}
 
-:::footer
-<b>Vladimir Agafonkin, 2010</b><br/>
-https://leafletjs.com/
+::: footer
+<b>Vladimir Agafonkin, 2010</b><br/> https://leafletjs.com/
 :::
 
-## {background-image="img/bostock2011.png" background-size="contain"}
+##  {background-image="img/bostock2011.png" background-size="contain"}
 
-:::footer
-<b>Mike Bostock, 2012</b><br/>
-https://archive.nytimes.com/www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html
+::: footer
+<b>Mike Bostock, 2012</b><br/> https://archive.nytimes.com/www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html
 :::
-
 
 # Javascript
 
@@ -154,34 +128,29 @@ Un langage dédié à la visualisation de données pour le web
 
 ## Observable, kezako ?
 
-
 L'<b>Observable javascript (ojs)</b> est un ensemble d'améliorations apportées à vanilla JavaScript créé par Mike Bostock (également auteur de D3). Observable JS se distingue par son exécution réactive, qui convient particulièrement bien à l'exploration et à l'analyse interactives des données. Objectif : faire collaborer une communauté autour de la visualisation de données.
 
 ![](img/chronologie.png)
 
-
-<b>Observable</b> est aussi une startup fondée par Mike Bostock et Melody Meckfessel, qui propose une plateforme 100% en ligne pour concevoir, partager et diffuser des visualisations de données. 
+<b>Observable</b> est aussi une startup fondée par Mike Bostock et Melody Meckfessel, qui propose une plateforme 100% en ligne pour concevoir, partager et diffuser des visualisations de données.
 
 ![](img/observable.png){height="200"}
 
-
-
-C'est aussi une <b>plateforme web qui héberge des *notebooks*</b> sur la visualisation de données. Les notebooks sont comme des billets de blog. Ils contiennent du texte, des images et du contenu multimédia. Ils peuvent être rangés dans des collections. Ils sont disponibles en ligne via une url. Comme on peut s'y attendre, ils contiennent aussi des lignes de code. L'objectif : faire de la Programmation lettrée (<b>literate programming</b>). 
+C'est aussi une <b>plateforme web qui héberge des *notebooks*</b> sur la visualisation de données. Les notebooks sont comme des billets de blog. Ils contiennent du texte, des images et du contenu multimédia. Ils peuvent être rangés dans des collections. Ils sont disponibles en ligne via une url. Comme on peut s'y attendre, ils contiennent aussi des lignes de code. L'objectif : faire de la Programmation lettrée (<b>literate programming</b>).
 
 ![](img/obs.png)
 
 <b>Références</b>
 
-Reactive, reproducible, collaborative: computational notebooks evolve, par Jeffrey M. Perkel. [https://www.nature.com/articles/d41586-021-01174-w](https://www.nature.com/articles/d41586-021-01174-w)
+Reactive, reproducible, collaborative: computational notebooks evolve, par Jeffrey M. Perkel. <https://www.nature.com/articles/d41586-021-01174-w>
 
-Javascript for data Analysis, par Mike Bostock [https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7](https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7)
+Javascript for data Analysis, par Mike Bostock <https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7>
 
 ## Observable dans Quarto
 
 Quarto® est un système de publication scientifique et technique à code source ouvert basé sur Pandoc.
 
 ![](img/quarto.png){height="50"}
-
 
 ## Les cellules / chunk {ojs}
 
@@ -671,7 +640,6 @@ Voilà la structure d'un geoJSON
 basemap
 ```
 
-
 ## Interopérabilité R et OJS
 
 Dans `Quarto`, il est possible de combiner du code en R et du code en OJS.
@@ -680,7 +648,7 @@ Pour cela, on utilise la fonction `ojs_define()`
 
 ### Une simple variable
 
-- **chunks {r}**
+-   **chunks {r}**
 
 On définit la variable `myvar`
 
@@ -694,7 +662,7 @@ Puis, avec l'instruction ojs_define, on rend cette variable accessible en javasc
 ojs_define(myvar)
 ```
 
-- **chunks {ojs}**
+-   **chunks {ojs}**
 
 Et maintenant, `myvar` existe dans ojs.
 
@@ -704,9 +672,9 @@ myvar
 
 ### Un dataframe
 
-- **chunks {r}**
+-   **chunks {r}**
 
-Dans R, On charge un dataframe avec `read.csv()``
+Dans R, On charge un dataframe avec \`read.csv()\`\`
 
 ```{r}
 data <- read.csv("data/afrika_data.csv")
@@ -718,7 +686,7 @@ Comme précédemment, nous utilisons `ojs_define` pour rendre cette variable acc
 ojs_define(newdata = data)
 ```
 
-- **chunks {ojs}**
+-   **chunks {ojs}**
 
 Côté ojs, les données sont disponibles. Elles ont été converties au format json. Mais elles ne sont pas tout à fait au format attendu.
 
@@ -734,7 +702,7 @@ Inputs.table(transpose(newdata))
 
 ### Un Spatial dataframe
 
-- **chunks {r}**
+-   **chunks {r}**
 
 Ici, on ouvre un fichier au format gpkg.
 
@@ -750,7 +718,7 @@ library("geojsonsf")
 ojs_define(countries = sf_geojson(countries))
 ```
 
-- **chunks {ojs}**
+-   **chunks {ojs}**
 
 Notez qu'avec ojs_define, nous avons passé la variable geo comme une chaîne et non comme un objet.
 
@@ -763,7 +731,6 @@ Nous utilisons l'instruction javascript `JSON.parse` pour refabriquer un geojson
 ```{ojs}
 JSON.parse(countries) 
 ```
-
 
 ## Librairies externes
 
@@ -891,15 +858,12 @@ bertin.draw({ layers: [ {geojson: world} ] })
 
 ## Symboles proportionnels
 
-
-
 ## Documentation
 
-- Le code source et la documentation complete de la librairie `bertin` est disponible ici : [https://github.com/neocarto/bertin](https://github.com/neocarto/bertin)
+-   Le code source et la documentation complete de la librairie `bertin` est disponible ici : <https://github.com/neocarto/bertin>
 
-- Toutes les verions de la librairies sont accesibles sur npm : [https://www.npmjs.com/package/bertin](https://www.npmjs.com/package/bertin)
+-   Toutes les verions de la librairies sont accesibles sur npm : <https://www.npmjs.com/package/bertin>
 
-- De nombreux exemples sont accessibles sur la plateforme Observable : [https://observablehq.com/collection/@neocartocnrs/bertin](https://observablehq.com/collection/@neocartocnrs/bertin)
+-   De nombreux exemples sont accessibles sur la plateforme Observable : [https://observablehq.com/collection/\@neocartocnrs/bertin](https://observablehq.com/collection/@neocartocnrs/bertin)
 
 ![](img/doc_observable.png){width:100%}
-

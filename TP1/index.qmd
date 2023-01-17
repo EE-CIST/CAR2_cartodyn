@@ -1,0 +1,121 @@
+---
+title: "TP1 - Faire une carte interactive avec Quarto et `bertin`"
+format: 
+  html:
+    code-tools: true
+    toc: false
+    code-fold: false
+    code-summary: "Show the code"
+editor: visual
+execute:
+  echo: true
+---
+
+**Responsables**
+
+Ouédraogo, Nicolas.
+
+**Participant.e.s**
+
+Claude, Solo, Malika, Sébastien, Bamba, Hugues, Moutouré, Bénédicte, Charles, Pauline.
+
+## Objectifs
+
+L'objectif est de créer une carte interactive avec quarto et la bibliothèque JavaScript `bertin`. 
+
+## Environnement logiciel.
+
+Ce TP s'effectue dans le logiciel RStudio. Pour l'installer, vous pouvez vous rendre sur [cette page](https://posit.co/download/rstudio-desktop). Puis, vous devez installer [Quarto](https://quarto.org/docs/get-started/). 
+
+![](img/quartoinstall.png)
+
+## Créer un document Quarto
+
+- Ouvrir le logiciel RStudio
+- créer un document Quarto (file > New File > Quarto Document)
+
+
+![](img/create.png)
+
+
+- cliquer sur "Create Empty Document". 
+- Mettez votre nom
+- Sauvegardez le fichier dans le dossier de votre choix.
+
+# Rappel des principes
+
+Les chunks ojs....
+
+- l'ordre des cellules n'a pas d'importance
+
+
+Toutes les instructions à suivre s'écrivent dans des chunks ojs
+
+```{{ojs}}
+
+```
+
+# 1. Les données
+
+Présentation des données....
+
+On importe les données avec l'instruction `FileAttachment()`
+
+```{ojs}
+classeur = FileAttachment("data/afrika.xlsx").xlsx()
+```
+
+`classeur.sheetNames` permet de voir la liste des feuilles contenues dans le classeur excel
+
+```{ojs}
+classeur.sheetNames
+```
+
+Visualisons les metadonnées
+
+```{ojs}
+Inputs.table(classeur.sheet("meta", {headers:true}))
+```
+
+Et créons une variable `data` contenant les données de feuille data
+
+```{ojs}
+data = classeur.sheet("data", {headers:true})
+```
+
+Visualisons-la.
+
+```{ojs}
+Inputs.table(data)
+```
+
+Import du fond de carte
+
+```{ojs}
+countries = FileAttachment("data/africa.json").json()
+```
+
+Le fond de carte est au format geoJSON
+
+```{ojs}
+countries
+```
+
+Pour la visualiser, on a besoin d'importer une bibliothèque de cartographie. Ici, on choisit la bibliothèque `bertin`. On l'importe grace à l'instruction `require()`
+
+```{ojs}
+bertin = require("bertin@latest")
+```
+
+La fonction `quickdraw()` permet de visualiser rapidement n'importe que fond de carte.
+
+```{ojs}
+bertin.quickdraw(countries)
+```
+
+# 2. Création de carte
+
+
+
+
+
