@@ -1,5 +1,5 @@
 ---
-title: "TP1 - Faire une carte interactive avec Quarto et `bertin`"
+title: "TP1 - Savoir faire des cartes interactives avec Quarto et `bertin`"
 format: 
   html:
     code-tools: true
@@ -11,38 +11,38 @@ execute:
   echo: true
 ---
 
-**Responsables**
+**L'objectif de ce TP est d'apprendre à créer des cartes interactives avec Quarto et la bibliothèque JavaScript `bertin`.**
 
-Ouédraogo, Nicolas.
+![](img/banner.png)
 
-**Participant.e.s**
+**Responsables pédagogiques**
 
-Claude, Solo, Malika, Sébastien, Bamba, Hugues, Moutouré, Bénédicte, Charles, Pauline.
+Manhamady OUEDRAOGO (Burkina Faso) & Nicolas LAMBERT (France)
 
-## Objectifs
+**Ont participé à l'élaboration de ce module**
 
-L'objectif est de créer une carte interactive avec quarto et la bibliothèque JavaScript `bertin`. 
+Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France), Sébastien REY-COYREHOURCQ (France), Vakaramoko BAMBA (Côte d’Ivoire), Hugues PECOUT (France), Yentougle MOUTORE (Togo), Bénédicte GARNIER (France), Côomlan Charles HOUNTON (Bénin), Pauline GLUSKI (France).
 
-## Environnement logiciel.
+# 1. Démarrer avec Quarto
+
+## 1.1 Environnement logiciel.
 
 Ce TP s'effectue dans le logiciel RStudio. Pour l'installer, vous pouvez vous rendre sur [cette page](https://posit.co/download/rstudio-desktop). Puis, vous devez installer [Quarto](https://quarto.org/docs/get-started/). 
 
 ![](img/quartoinstall.png)
 
-## Créer un document Quarto
+## 1.2 Créer un document Quarto
 
 - Ouvrir le logiciel RStudio
 - créer un document Quarto (file > New File > Quarto Document)
 
-
 ![](img/create.png)
-
 
 - cliquer sur "Create Empty Document". 
 - Mettez votre nom
 - Sauvegardez le fichier dans le dossier de votre choix.
 
-# Rappel des principes
+## 1.3 Rappel des principes
 
 Les chunks ojs....
 
@@ -55,11 +55,27 @@ Toutes les instructions à suivre s'écrivent dans des chunks ojs
 
 ```
 
-# 1. Les données
+Pour générer le document, il faut clicher sur le bouton `render` (Ctrl+Shift+K)
+
+## 1.4 Documentation et exemples
+
+Au fil de ce notebook, vous pourrez vous référez à des éléments de documentation en cliquant sur cet icône.
+
+![](img/logo_doc.png)
+
+Vous pourrez également accéder à des exemples pédagogiques et des demos en ligne en cliquant sur celui-là.
+
+![](img/logo_exemple.png)
+
+# 2. Les données
 
 Présentation des données....
 
-On importe les données avec l'instruction `FileAttachment()`
+## 2.1 Import des données attributaires
+
+Dans {ojs}, on importe les données avec l'instruction `FileAttachment()` <a href="https://github.com/observablehq/stdlib#file-attachments"><img src="img/logo_doc.png"></a>
+
+La fonction `.xlsx()` <a href="https://observablehq.com/@observablehq/xlsx"><img src="img/logo_exemple.png"></a> permet d'importer des tableurs excel.
 
 ```{ojs}
 classeur = FileAttachment("data/afrika.xlsx").xlsx()
@@ -71,7 +87,7 @@ classeur = FileAttachment("data/afrika.xlsx").xlsx()
 classeur.sheetNames
 ```
 
-Visualisons les metadonnées
+Visualisons les metadonnées avec `Inputs.table()` <a href="https://github.com/observablehq/inputs#inputstabledata-options"><img src="img/logo_doc.png"></a>
 
 ```{ojs}
 Inputs.table(classeur.sheet("meta", {headers:true}))
@@ -89,6 +105,8 @@ Visualisons-la.
 Inputs.table(data)
 ```
 
+## 2.2 Import des données géométriques
+
 Import du fond de carte
 
 ```{ojs}
@@ -101,21 +119,145 @@ Le fond de carte est au format geoJSON
 countries
 ```
 
-Pour la visualiser, on a besoin d'importer une bibliothèque de cartographie. Ici, on choisit la bibliothèque `bertin`. On l'importe grace à l'instruction `require()`
+Pour la visualiser, on a besoin d'importer une bibliothèque de cartographie. Ici, on choisit la bibliothèque `bertin` <a href="https://github.com/neocarto/bertin"><img src="img/logo_doc.png"></a> On l'importe grace à l'instruction `require()`. 
 
 ```{ojs}
-bertin = require("bertin@latest")
+bertin = require("bertin@1.5.10")
 ```
 
-La fonction `quickdraw()` permet de visualiser rapidement n'importe que fond de carte.
+La fonction `quickdraw()` <a href="https://observablehq.com/@neocartocnrs/bertin-js-quickdraw-table2geo"><img src="img/logo_exemple.png"></a> permet de visualiser rapidement n'importe quel fond de carte.
 
 ```{ojs}
-bertin.quickdraw(countries)
+bertin.quickdraw(countries, 500)
 ```
 
-# 2. Création de carte
+Pour récupérer la table attributaire, on utilise l'instruction `bertin.properties.table()` <a href="https://github.com/neocarto/bertin#propertiestable"><img src="img/logo_doc.png"></a>. Puis, on peut la visualiser sous forme de tableau avec `Inputs.table()`.
+
+```{ojs}
+Inputs.table(bertin.properties.table(countries))
+```
 
 
+# 2. Création de carte statiques
+
+## 2.1 Jointure
+
+La première chose à faire est de réaliser une jointure entre les données et le fond de carte. Pour cea on va procéder en 2 étapes. `bertin.match` <a href="https://github.com/neocarto/bertin#match"><img src="img/logo_doc.png"></a> permet de tester et visaliser le compatibilité entre le fond de carte et le tableau de données. `bertin.merge` <a href="https://github.com/neocarto/bertin#merge"><img src="img/logo_doc.png"></a> permet d'effectuer réellement cette jointure. <a href="https://observablehq.com/@neocartocnrs/bertin-js-match-and-merge?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"></a>
+
+```{ojs}
+test = bertin.match(countries, "id", data, "iso3")
+```
+
+On constate que le jeu de données et le fond de carte sont compatibles à 98%. Toutes les données disponibles dans le jeu de données peuvent être jointe avec le fond de carte (49/49). Seule une unité géographique dans le fond de carte n'a pas d'&quivalent dans le tableau de données (49/50). Pour savoir de quelle unité il s'agit, on peut taper `test.unmatched_geom`
+
+```{ojs}
+test.unmatched_geom
+```
+
+Il s'agit du Sahara Occidental. Il n'y a en effet pas de données pour cette unité géographique. On peut donc décider d'effecter la jointure pour de bon et de créer un nouvel objet `africa`. Cet objet contient à la fois les données et les géométries. 
+
+```{ojs}
+africa = bertin.merge(countries, "id", data, "iso3")
+```
+
+## 2.2 Réaliser des cartes avec `bertin`
+
+Pour réaliser une carte avec la bibliothèque `bertin`, on utilise la fonction `draw()` <a href="https://github.com/neocarto/bertin#drawing-a-map"><img src="img/logo_doc.png"></a>.
+
+La fonction prend en entrée un objet avec la structure suivante <a href="https://observablehq.com/@neocartocnrs/hello-bertin-js?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"></a> :
+
+![](img/bertin_code.png)
+
+Ainsi, on peut écrire : 
+
+```{ojs}
+bertin.draw({
+  params : {width : 500, background: "#CCC", margin: 20}, 
+  layers :
+    [
+      {geojson: africa, fill: "#e07edd"},
+      {type: "header", text: "Le continent africain"},
+      {type: "scalebar"}
+    ]
+  })
+```
+
+Le type de carte thématique qu'on va réaliser dépend du type de données à représenter.
+
+## 2.3. Cartographier des données quantitatives aboslues (stock)
+
+En cartographie, on représente des données quantitatives absolues avec la variable visuelle TAILLE. Pour avoir des cercles proportionnels, dans `bertin`, on utilisera le type `bubble` <a href="https://github.com/neocarto/bertin#bubble"><img src="img/logo_doc.png"></a><a href="https://observablehq.com/@neocartocnrs/bertin-js-prop-symbols?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"></a>
+
+```{ojs}
+bertin.draw({
+  params : {width : 500, background: "#CCC", margin: 20}, 
+  layers :
+    [
+      {
+        type : "bubble", 
+        geojson: africa,
+        values: "POP",
+        fill: "red",
+        leg_x: 30,
+        leg_y: 300,
+        leg_round: 0,
+        leg_title: "Nombre d'habitants"
+      },
+      {geojson: africa, fill: "#DDD"},
+      {type: "header", text: "Le continent africain"},
+      {type: "scalebar"}
+    ]
+  })
+```
+
+D'autres modes de représentation auraient bien sûr été possibles. On aurait également pu faire des carrés <a href="https://observablehq.com/@neocartocnrs/bertin-js-prop-squares?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"></a> ou des *spikes* <a href="https://observablehq.com/@neocartocnrs/bertin-js-spikes?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"></a> 
+
+## 2.4 Cartographier des données qualitatives nominales
+
+Il y a plusieurs façons de cartographier des données qualitatives nominales. Sur écran, en cartographie numérique, on choisra la plupart du temps la variable visuelle COULEUR (teinte).  
+
+Dans `bertin`, il s'agit donc de faire varier la propriété `fill` et de la faire varier en fonction d'une donnée qualitative. Pour cela, on utilise le type `typo` <a href="https://github.com/neocarto/bertin#typology"><img src="img/logo_doc.png"></a><a href="https://observablehq.com/@neocartocnrs/bertin-js-typo?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"></a>.
+
+
+```{ojs}
+bertin.draw({
+  params : {width : 500, background: "#CCC", margin: 20}, 
+  layers :
+    [
+      {
+        geojson: africa, 
+        fill: {
+                type : "typo",
+                values: "SUBREG",
+                leg_x: 30,
+                leg_y: 330,
+                leg_title: "Sub regions",
+                txt_missing: "Pas de données",
+                pal: "Tableau10",
+              }
+      },
+      {type: "header", text: "Le continent africain"},
+    ]
+  })
+```
+
+La palette de couleurs oar défaut est `Tableau10`. Mais il est possible d'en choisir une autre : `Category10`, `Accent`, `Dark2`, `Paired`, `Pastel1`, `Pastel2`, `Set1`, `Set2` ou `Set3` <a href="https://observablehq.com/@d3/color-schemes"><img src="img/logo_exemple.png"></a>.
+
+Il est aussi possible de définir vos propres couleurs en replaçant `pal: "Tableau10"` par `colors: ["#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3"]`.
+
+## 2.5 Cartographier des données quantitatives relatives (ratio, indice)
+
+
+REPRENDRE ICI !!!!!!
+
+Cf plot pour les discretisations.
+
+Voir aussi Statsbreaks ?
+
+
+
+
+# 3. Création de cartes interactives
 
 
 
