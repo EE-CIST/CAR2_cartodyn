@@ -197,6 +197,7 @@ bertin.draw({
         type : "bubble", 
         geojson: africa,
         values: "POP",
+        k: 50, // rayon du plus grand cercle
         fill: "red",
         leg_x: 30,
         leg_y: 300,
@@ -247,17 +248,100 @@ Il est aussi possible de définir vos propres couleurs en replaçant `pal: "Tabl
 
 ## 2.5 Cartographier des données quantitatives relatives (ratio, indice)
 
+Il y a plusieurs façons de cartographier des données quantitatives relatives. Sur écran, en cartographie numérique, on choisra la plupart du temps de réaliser une carte choroplèthe avec des couleurs ordonnées. Un étape de discrétisation préalable est nécéssaire. Elle nécessite d'étudier la forme de la distribution statistique. Pour celà, on utilisera la librairie `Plot` <a href="https://github.com/observablehq/plot"><img src="img/logo_doc.png"></a> <a href="https://observablehq.com/collection/@observablehq/plot"><img src="img/logo_exemple.png"></a> disponible nativement dans les celles `{ojs}`.
 
-REPRENDRE ICI !!!!!!
+Il y a plusieurs façons de visualister la forme d'une distribution <a href="https://observablehq.com/@cartographie/les-discretisations?collection=@cartographie/cours"><img src="img/logo_exemple.png"></a> Ici, on choisira un graphique avec des points et une transformation de type dodge.
 
-Cf plot pour les discretisations.
+```{ojs}
+Plot.plot({
+  height: 60,
+  marks: [
+    Plot.dotX(
+      data,
+      Plot.dodgeY({ x: "IDH", fill: "red" })
+    )
+  ]
+})
+```
 
-Voir aussi Statsbreaks ?
+
+Dans `bertin`, il s'agit donc de faire varier comme précédemment la propriété `fill`. Pour cela, on utilise le type `choro` <a href="https://github.com/neocarto/bertin#choropleth"><img src="img/logo_doc.png"></a> <a href="https://observablehq.com/@neocartocnrs/bertin-js-chropoleth?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"></a>
+
+Les méthodes de discrétisation disponibles son celles contenues dans la libraire `statsbreaks`  <a href="https://observablehq.com/@neocartocnrs/hello-statsbreaks"><img src="img/logo_exemple.png"></a> : `quantile`, `q6`, `jenks`, `msd` (moyenne écart-type) et `equal`. Pour les couleurs, de nombreuses palettes sont disponibles : `Blues`, `Greens`, `Greys`, `Oranges`, `Purples`, `Reds`, `BrBG`, `PRGn`, `PiYG`, `PuOr`, `RdBu`, `RdYlBu`, `RdYlGn`, `Spectral`,`Turbo`,`Viridis`,`Inferno`, `Magma`, `Plasma`, `Cividis`, `Warm`, `Cool`, `CubehelixDefault`, `BuGn`, `BuPu`, `GnBu`, `OrRd`, `PuBuGn`, `PuBu`, `PuRd`, `RdPu`, `YlGnBu`, `YlGn`, `YlOrBr`, `YlOrRd`, `Rainbow`, `Sinebow` <a href="https://observablehq.com/@d3/color-schemes"><img src="img/logo_exemple.png"></a>
+
+Par défaut, la méthode choisie est le  `quantile`, la palettes est `Blues` et le nombre de classes est égal à 5.
 
 
 
+
+
+
+```{ojs}
+bertin.draw({
+  params : {width : 500, background: "#CCC", margin: 20}, 
+  layers :
+    [
+      {
+        geojson: africa, 
+        fill: {
+                type : "choro",
+                values: "IDH",
+                leg_x: 30, // position de la légende en x
+                leg_y: 330, // position de la légende en y
+                leg_round: 2, // 2 chiffres après la virgule
+                leg_title: "IDH",
+                txt_missing: "Pas de données",
+                method: "quantile",
+                nbreaks: 4,
+                colors: "OrRd"
+              }
+      },
+      {type: "header", text: "Indicateur de développement humain"},
+    ]
+  })
+```
 
 # 3. Création de cartes interactives
+
+Avec Observable JavaScript, nous sommes dans un écosystème pleinement réactif 🔥 Cela signifie qu'il est possible de proposer à l'utilisateur des possibilités d'interaction avec la carte. Reprenons le cade de la carte par symboles proportionnels... et personnalisons le un peu en remplaçant les valeurs écrites *en dur* par des valeurs issues des `Inputs` <a href="https://github.com/observablehq/inputs"><img src="img/logo_doc.png"></a> <a href="https://observablehq.com/@observablehq/inputs"><img src="img/logo_exemple.png"></a>
+
+Il est également possible d'ajouter des infobulles <a href="https://observablehq.com/@neocartocnrs/bertin-js-tooltips?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"></a>
+
+
+```{ojs}
+viewof k = Inputs.range([10, 75], { label: "Taille", step: 1, value: 40 })
+viewof symbol = Inputs.radio(["bubble", "square", "spikes"], { label: "Symbole", value: "bubble" })
+viewof color = Inputs.color({label: "Couleur", value: "#CC0000"})
+viewof toggle = Inputs.toggle({label: "Ecarter les symboles", value: false})
+
+bertin.draw({
+  params : {width : 500, background: "#CCC", margin: 20}, 
+  layers :
+    [
+      {
+        type : symbol, 
+        geojson: africa,
+        values: "POP",
+        k: k, // rayon du plus grand cercle
+        fill: color,
+        dorling: toggle,
+        leg_x: 30,
+        leg_y: 300,
+        leg_round: 0,
+        leg_title: "Nombre d'habitants",
+        //tooltip: ["$name", "$POP"]
+        tooltip: ["$name", d => Math.round(d.properties.POP) + " millions d'habitants"]        
+      },
+      {geojson: africa, fill: "#DDD"},
+      {type: "header", text: "Le continent africain"},
+      {type: "scalebar"}
+    ]
+  })
+```
+
+Aller plus loin...
+
+A vous de jouer.....
 
 
 
