@@ -5,7 +5,6 @@ format:
     echo: false
     code-tools: true
     page-layout: full
-    toc: false
 ---
 
 ```{ojs}

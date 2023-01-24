@@ -1,0 +1,108 @@
+---
+title: "TP2 - Réaliser une application de cartographie interactive avec Quarto et `bertin`"
+format: 
+  html:
+    theme: custom.scss
+    code-tools: true
+    toc: false
+    code-fold: false
+    code-summary: "Show the code"
+editor: visual
+execute:
+  echo: true
+---
+
+**L'objectif de ce TP est d'apprendre à créer des cartes interactives avec Quarto et la bibliothèque JavaScript `bertin`.**
+
+![](img/banner.png)
+
+**Responsables pédagogiques**
+
+Manhamady OUEDRAOGO (Burkina Faso) & Nicolas LAMBERT (France)
+
+**Ont participé à l'élaboration de ce module**
+
+Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France), Sébastien REY-COYREHOURCQ (France), Vakaramoko BAMBA (Côte d'Ivoire), Hugues PECOUT (France), Yentougle MOUTORE (Togo), Bénédicte GARNIER (France), Côomlan Charles HOUNTON (Bénin), Pauline GLUSKI (France).
+
+# 1. Créer un document Quarto
+
+Créez un document Quarto avec l'entête suivante :
+
+::: copy
+    ---
+    title: "Titre"
+    format:
+      html:
+        echo: false
+        code-tools: true
+        page-layout: full
+    ---
+:::
+
+Copiez et collez en dessous le code suivant :
+
+::: copy
+``` {{ojs}}
+//| panel: sidebar
+"Le menu"
+```
+
+    ::: {.panel-tabset .ojs-track-layout}
+
+    ## Carte
+
+``` {{ojs}}
+"La carte"
+```
+
+    ## Données
+
+``` {{ojs}}
+"Les données"
+```
+
+    :::
+
+``` {{ojs}}
+"Annexe technique"
+```
+:::
+
+Si vous cliquez sur `Render` (ou *Ctrl+Shift+K*), vous aurez le rendu suivant :
+
+![](img/pannels.png)
+
+Il s'agit de la structure de votre application finale. Elle est composée de 5 parties :
+
+-   Le <ins>titre</ins> (défini dans l'entête de votre document `title: "Titre"` ). À vous de remplacer le titre par la chaine de caractère de votre choix.
+-   Le <ins>menu</ins> (sur la gauche). C'est dans ce *chunk* que nous allons placer des `Inputs` permettant à l'utilisateur d'interagir avec la carte.
+-   La <ins>carte</ins> (sur la droite). C'est dans ce *chunk* que nous allons dessiner une carte avec la bibliothèque `bertin`.
+-   Les <ins>données</ins> (sur la droite). C'est dans ce *chunk* que nous allons afficher le tableau de données derrière la carte.
+-   Les <ins>annexes techniques</ins> (en bas). Dans ce chunk, on écrira tout ce qui est nécéssaire à l'élaboration de l'appli (import des données, etc, mais qu'on ne souhaite pas afficher). Rappelez-vous qu'avec Observable JavaScript, l'ordre d'écriture n'a pas d'importance. On peut donc écrire du code à la fin du document, comme une annexe technique.
+
+*NB: La carte et les données sont dans 2 onglets grace aux classes {.panel-tabset .ojs-track-layout}*
+
+# 2. Import des données
+
+Téléchargez les données et placez-les dans un repértoire data <a href=""><img src="img/download.png"/ width="30px"></a>
+
+Bla bla prez des données.
+
+Dans le chunck de l'<ins>**annexe technique**</ins>, importez les données géométriques et attributaires qui se trouvent dans le répertoire data.
+
+<div class = "copy">
+
+```{ojs}
+world = FileAttachment("data/world.json").json()
+stats = FileAttachment("data/worldbank_data.csv").csv()
+```
+
+</div>
+
+```{ojs}
+Inputs.table(stats)
+```
+
+# Résultat final
+
+Le résultat final est disponible ici

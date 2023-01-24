@@ -2,6 +2,7 @@
 title: "TP1 - Savoir faire des cartes interactives avec Quarto et `bertin`"
 format: 
   html:
+    theme: custom.scss
     code-tools: true
     toc: false
     code-fold: false
@@ -44,18 +45,30 @@ Ce TP s'effectue dans le logiciel RStudio. Pour l'installer, vous pouvez vous re
 
 ## 1.3 Rappel des principes
 
-Les chunks ojs....
+Dans ce TP, nous allons réaliser des cartes avec **Observable JavaScript**  (ou **ojs**). Rappelons que l'ojs est un ensemble d’améliorations apportées à JavaScript avec l'objectif d'en faire un langage dédié à la visualisation de données pour le web. Ce langage est complètement intégré dans Quarto.
 
-- l'ordre des cellules n'a pas d'importance
+Les caractéristiques de l'ojs sont les suivantes : 
+
+- Il s'agit de JavaScript + des bibliothèques préchargées comme `Plot` & `d3js` 📊
+- Tout est réactif 🔥 et rejoué en temps réel
+- l'ordre des cellules n'a pas d'importance 🤯
 
 
-Toutes les instructions à suivre s'écrivent dans des chunks ojs
+Dans Quarto, toutes les instructions à suivre s'écrivent dans des chunks ojs
 
 ```{{ojs}}
 
 ```
 
-Pour générer le document, il faut clicher sur le bouton `render` (Ctrl+Shift+K)
+Pour chaque *chunck*, vous pouvez définir avec `echo` si vous souhaitez que le code s'affiche ou non dans votre notebook final. Avec `eval`, vous choisissez si le code doit s'executer ou non.
+
+```{{ojs}}
+//| echo: false
+//| eval: true
+
+```
+
+Pour générer le document, il faut clicher sur le bouton `Render` ou tiliser le racourci clavier *Ctrl+Shift+K*.
 
 ## 1.4 Documentation et exemples
 
@@ -69,7 +82,7 @@ Vous pourrez également accéder à des exemples pédagogiques et des demos en l
 
 # 2. Les données
 
-Présentation des données....
+Le jeu de données utilisé concerne les pays africains. Nous avons un fond de carte contenant la géométrie des pays. Et un tableau de données issu du *Human Development Report 2020* et du *CEPII*, contenant différentes données statistiques, qualitatives ou quantitatives. 
 
 ## 2.1 Import des données attributaires
 
@@ -301,7 +314,7 @@ bertin.draw({
   })
 ```
 
-# 3. Création de cartes interactives
+# 3. Faire une carte interactive
 
 Avec Observable JavaScript, nous sommes dans un écosystème pleinement réactif 🔥 Cela signifie qu'il est possible de proposer à l'utilisateur des possibilités d'interaction avec la carte. Reprenons le cade de la carte par symboles proportionnels... et personnalisons le un peu en remplaçant les valeurs écrites *en dur* par des valeurs issues des `Inputs` <a href="https://github.com/observablehq/inputs"><img src="img/logo_doc.png"></a> <a href="https://observablehq.com/@observablehq/inputs"><img src="img/logo_exemple.png"></a>
 
@@ -324,6 +337,7 @@ bertin.draw({
         values: "POP",
         k: k, // rayon du plus grand cercle
         fill: color,
+        stroke: "white",
         dorling: toggle,
         leg_x: 30,
         leg_y: 300,
@@ -339,9 +353,33 @@ bertin.draw({
   })
 ```
 
-Aller plus loin...
 
-A vous de jouer.....
+# À vous de jouer
+
+<br/><div class = "up2u">Choisissez une donnée quantitative relative à cartographier dans la liste suivante : 
+
+
+```{ojs}
+//| echo: false
+//| eval: true
+Inputs.table(classeur.sheet("meta", {headers:true, columns : ["Code", "Définition"]}))
+```
+
+Réalisez une carte choropèthe avec `bertin` en faisant varier : 
+
+- la palette de couleurs via une liste déroulante <a href="https://observablehq.com/@observablehq/input-select?collection=@observablehq/inputs"><img src="img/logo_exemple.png"></a>
+- le nombre de classes via un slider <a href="https://observablehq.com/@observablehq/input-range?collection=@observablehq/inputs"><img src="img/logo_exemple.png"></a>
+
+</div><br/>
+
+
+
+
+
+*NB : N'oubliez pas d'analyser la distribution statistique pour choisir la bonne méthode de discrétisation.*
+
+
+
 
 
 
