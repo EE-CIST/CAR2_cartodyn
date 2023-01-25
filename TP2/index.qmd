@@ -22,7 +22,27 @@ Manhamady OUEDRAOGO (Burkina Faso) & Nicolas LAMBERT (France)
 
 **Ont participé à l'élaboration de ce module**
 
-Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France), Sébastien REY-COYREHOURCQ (France), Vakaramoko BAMBA (Côte d'Ivoire), Hugues PECOUT (France), Yentougle MOUTORE (Togo), Bénédicte GARNIER (France), Côomlan Charles HOUNTON (Bénin), Pauline GLUSKI (France).
+Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France), Sébastien REY-COYREHOURCQ (France), Vakaramoko BAMBA (Côte d'Ivoire), Hugues PECOUT (France), Yentougle MOUTORE (Togo), Bénédicte GARNIER (France), Côomlan Charles HOUNTON (Bénin), Pauline GLUSKI (France)
+
+**Objectifs**
+
+Le but de ce TP est de réaliser une application de cartographie sur le monde sur une page web. Pour cela, nous nous basons sur un tableau de données contenant 6 variables issues de la banque mondiale, disponibles de 1990 à 2021. Elles ont été harmonisées par Claude Grasland.
+
+```{ojs}
+//| echo: false
+//| eval: true
+prez = FileAttachment("data/worldbank_meta.csv").csv()
+Inputs.table(prez, {  columns: [
+    "shortcode",
+    "indicator",
+    "indicator_desc",
+  ],
+  header: {
+    shortcode: "id",
+    indicator: "indicateur",
+    indicator_desc: "description",
+  }})
+```
 
 # 1. Créer un document Quarto
 
@@ -30,7 +50,7 @@ Créez un document Quarto avec l'entête suivante :
 
 ::: copy
     ---
-    title: "Titre"
+    title: "World Explorer"
     format:
       html:
         echo: false
@@ -42,6 +62,9 @@ Créez un document Quarto avec l'entête suivante :
 Copiez et collez en dessous le code suivant :
 
 ::: copy
+
+
+
 ``` {{ojs}}
 //| panel: sidebar
 "Le menu"
@@ -74,7 +97,7 @@ Si vous cliquez sur `Render` (ou *Ctrl+Shift+K*), vous aurez le rendu suivant :
 
 Il s'agit de la structure de votre application finale. Elle est composée de 5 parties :
 
--   Le <ins>titre</ins> (défini dans l'entête de votre document `title: "Titre"` ). À vous de remplacer le titre par la chaine de caractère de votre choix.
+-   Le <ins>titre</ins> (défini dans l'entête de votre document `title: "World Explorer"` ). À vous de remplacer le titre par la chaine de caractère de votre choix.
 -   Le <ins>menu</ins> (sur la gauche). C'est dans ce *chunk* que nous allons placer des `Inputs` permettant à l'utilisateur d'interagir avec la carte.
 -   La <ins>carte</ins> (sur la droite). C'est dans ce *chunk* que nous allons dessiner une carte avec la bibliothèque `bertin`.
 -   Les <ins>données</ins> (sur la droite). C'est dans ce *chunk* que nous allons afficher le tableau de données derrière la carte.
@@ -82,27 +105,185 @@ Il s'agit de la structure de votre application finale. Elle est composée de 5 p
 
 *NB: La carte et les données sont dans 2 onglets grace aux classes {.panel-tabset .ojs-track-layout}*
 
-# 2. Import des données
+- Sauvegardez.
 
-Téléchargez les données et placez-les dans un repértoire data <a href=""><img src="img/download.png"/ width="30px"></a>
+# 2. Les données
 
-Bla bla prez des données.
+Téléchargez les données <a href=""><img src="img/download.png" width="30px"/></a> et placez-les dans un repértoire data.
 
 Dans le chunck de l'<ins>**annexe technique**</ins>, importez les données géométriques et attributaires qui se trouvent dans le répertoire data.
 
-<div class = "copy">
-
+::: copy
 ```{ojs}
 world = FileAttachment("data/world.json").json()
 stats = FileAttachment("data/worldbank_data.csv").csv()
 ```
+:::
 
-</div>
+Comme dit précédement, les données contiennent des indacteurs à plusieurs dates. 
 
 ```{ojs}
+//| echo: false
+//| eval: true
 Inputs.table(stats)
 ```
 
-# Résultat final
+# 3. Le menu
 
-Le résultat final est disponible ici
+Ici, on définit quelles interactions ont souhaite proposer à l'utilisateur.
+
+Copiez et collez les lignes de code suivantes dans votre chunck **<ins>menu</ins>**.
+
+- Un slider pour choisir l'année
+
+::: copy
+
+```{ojs}
+//| echo: true
+//| eval: false
+viewof year =  Inputs.range(
+  [1990, 2019], 
+  {value: 2019, step: 1, label: "Année"}
+)
+```
+
+:::
+
+- Un slider pour configurer la taille des cercles
+
+::: copy
+
+```{ojs}
+//| echo: true
+//| eval: false
+viewof k =  Inputs.range(
+  [20, 100], 
+  {value: 50, step: 1, label: "Rayon max"}
+)
+```
+
+:::
+
+- Une liste déroulante pour choisir l'indicateur
+
+
+::: copy
+
+```{ojs}
+//| echo: true
+//| eval: false
+meta = FileAttachment("data/worldbank_meta.csv").csv()
+viewof indicator = Inputs.select(
+  new Map(meta.map((d) => [d.indicator, d.shortcode])),
+  { label: "Indicateur" }
+)
+```
+
+:::
+
+- Une liste déroulate pour choisir la projection cartographique
+
+::: copy
+
+```{ojs}
+//| echo: true
+//| eval: false
+projections = ["Polar", "InterruptedSinusoidal", "Armadillo", "Baker", "Gingery", "Berghaus", "Loximuthal", "Healpix", "InterruptedMollweideHemispheres", "Miller", "Aitoff", "Spilhaus"]
+viewof proj = Inputs.select(projections, {label: "Projection"})
+```
+
+:::
+
+On obtient le menu suivant où `year` correspond à l'année, `k` correspond à la taille des cercles, `indicator` correspond au nom de la variable et `proj` correspond à la projection cartographique. 
+
+::: copy
+
+```{ojs}
+//| echo: false
+//| eval: true
+viewof year =  Inputs.range(
+  [1990, 2019], 
+  {value: 2019, step: 1, label: "Année"}
+)
+viewof k =  Inputs.range(
+  [20, 100], 
+  {value: 50, step: 1, label: "Rayon max"}
+)
+meta = FileAttachment("data/worldbank_meta.csv").csv()
+viewof indicator = Inputs.select(
+  new Map(meta.map((d) => [d.indicator, d.shortcode])),
+  { label: "Indicateur" }
+)
+projections = ["Polar", "InterruptedSinusoidal", "Armadillo", "Baker", "Gingery", "Berghaus", "Loximuthal", "Healpix", "InterruptedMollweideHemispheres", "Miller", "Aitoff", "Spilhaus"]
+viewof proj = Inputs.select(projections, {label: "Projection"})
+```
+
+:::
+
+
+# 4. Mise en forme des données
+
+Avant de construire la carte, nous avons besoin de manipuler un peu les données en créant un tableau contenant uniquement l'année séléctionnée et en effectuant une jointure entre les données et le fond de carte. On effectue ces opérations dans la partie **<ins>annexe technique</ins>**. On a besoin de charger la bibliothèque `bertin`.
+
+::: copy
+```{ojs}
+bertin = require("bertin@1.5.9")
+statsyear = stats.filter(d => d.date == year)
+data = bertin.merge(world, "id", statsyear, "iso3c")
+```
+:::
+
+::: copy
+```{ojs}
+varmax = d3.max(stats.filter(d => d.date == 2019), d => +d[indicator])
+```
+:::
+
+
+Après ces opérations, l'objet `data` contient les géométries et les données pour l'année séléctionnée. 
+
+# 5. Réalisation de la carte
+
+Ici, on réalise la carte dans la chuck <ins>**carte**</ins> avec la bibliothèque bertin. 
+
+::: copy
+```{ojs}
+//| echo: true
+//| eval: false
+bertin.draw({
+params: {projection: proj, clip: true }, 
+layers:[
+  {type: "bubble", geojson: data, values: "POP", 
+  fill: "red", dorling: true, fixmax: varmax, k, 
+  tooltip: ["$name", "$region", d => Math.round(d.properties.POP / 1000000) + " millions d'hab."]},
+  {geojson: world, fill: "#CCC"},
+  {type: "graticule"},  
+  {type: "outline"}
+]})
+```
+:::
+
+# 6. Affichage des données
+
+Ici, on ajoute un tableau de données dans la chuck **<ins>données</ins>**.
+
+::: copy
+```{ojs}
+//| echo: true
+//| eval: false
+Inputs.table(statsyear, {  columns: [
+    "country",
+    "capital_city",
+    "region",
+    indicator
+  ]})
+```
+
+:::
+
+
+# 7. C'est fini ! 
+
+Appuyez sur `Render` pour voir le résultat. La solution est disponible [ici]().
+
+
