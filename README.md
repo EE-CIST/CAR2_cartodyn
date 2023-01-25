@@ -12,11 +12,16 @@ Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France)
 
 Cours général introductif présentant le fonctionnement des cellules Observable JavasCript dans Quarto.
 
+👉 https://ee-cist.github.io/CART3_cartodyn/intro/docs/index.html
+
 **2. Mise en pratique (1/2)**
 
-Exercice pour apprendre à réaliser des cartes interactives avec Quarto et la bibliothèque JavaScript `bertin`.
+Exercice pour apprendre à réaliser des cartes interactives avec Quarto et la bibliothèque JavaScript `bertin`. 
+
+👉 https://ee-cist.github.io/CART3_cartodyn/TP1/docs/index.html
 
 **3. Mise en pratique (2/2)**
 
 Exercice pour apprendre à realiser une *single page application* avec `bertin` et Quarto.
 
+👉 https://ee-cist.github.io/CART3_cartodyn/TP2/docs/index.html
