@@ -1,17 +1,22 @@
 # CART3 - Cartographie dynamique
 
-**Responsables**
+**Responsables pédagogiques**
 
-Ouédraogo, Nicolas.
+Manhamady OUEDRAOGO (Burkina Faso) & Nicolas LAMBERT (France)
 
-**Participant.e.s**
+**Ont participé à l'élaboration de ce module**
 
-Claude, Solo, Malika, Sébastien, Bamba, Hugues, Moutouré, Bénédicte, Charles, Pauline.
+Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France), Sébastien REY-COYREHOURCQ (France), Vakaramoko BAMBA (Côte d'Ivoire), Hugues PECOUT (France), Yentougle MOUTORE (Togo), Bénédicte GARNIER (France), Côomlan Charles HOUNTON (Bénin), Pauline GLUSKI (France)
 
-## Todo
+**1. Cartographie thématique avec Quarto et {ojs}**
 
-- prez générale
-- TP1 ; faire un notebook avec de l'ojs jusqy'à une carte interactive
-- TP2 : faire une "single page application"
+Cours général introductif présentant le fonctionnement des cellules Observable JavasCript dans Quarto.
 
-Faire aussi plusieurs exemples de SPA et dashboards avec ldes données. 
+**2. Mise en pratique (1/2)**
+
+Exercice pour apprendre à réaliser des cartes interactives avec Quarto et la bibliothèque JavaScript `bertin`.
+
+**3. Mise en pratique (2/2)**
+
+Exercice pour apprendre à realiser une *single page application* avec `bertin` et Quarto.
+
