@@ -1,5 +1,9 @@
 # CART3 - Cartographie dynamique
 
+(WORK IN PROGRESS)
+
+Supports de cours réalisés pour l'école thématique 
+
 **Responsables pédagogiques**
 
 Manhamady OUEDRAOGO (Burkina Faso) & Nicolas LAMBERT (France)

@@ -1,7 +1,7 @@
 ---
 title: "Cartographie thématique avec ojs"
-subtitle: "bla bla bla"
-author: "Nicolas Lambert"
+subtitle: "École d'été internationale, Ouidah, 2023"
+author: "Nicolas Lambert, Manhamady Ouedraogo"
 date: 03/08/2023
 lang: fr
 date-format: "DD MMM YYYY"
@@ -20,9 +20,17 @@ execute:
   echo: true
 ---
 
-# Intro
+# 
 
-Contexte, Objectifs
+**Responsables pédagogiques**
+
+Manhamady OUEDRAOGO (Burkina Faso) & Nicolas LAMBERT (France)
+
+**Ont participé à l'élaboration de ce module**
+
+Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France), Sébastien REY-COYREHOURCQ (France), Vakaramoko BAMBA (Côte d'Ivoire), Hugues PECOUT (France), Yentougle MOUTORE (Togo), Bénédicte GARNIER (France), Côomlan Charles HOUNTON (Bénin), Pauline GLUSKI (France)
+
+# Introduction
 
 ## Petite histoire de la cartographie {background-image="img/I.01.histoire.png" background-size="contain"}
 
@@ -101,26 +109,158 @@ https://observablehq.com/@tophtucker/classic-research-in-data-visualization
 ##  {background-image="img/leaflet.jpg" background-size="contain"}
 
 ::: footer
-<b>Vladimir Agafonkin, 2010</b><br/> https://leafletjs.com/
+<b>Leaflet, 2010</b><br/> https://leafletjs.com/
 :::
 
-##  {background-image="img/ggplo2.jpg" background-size="contain"}
+##  {background-image="img/deckgl.png" background-size="contain"}
 
 ::: footer
-<b>Vladimir Agafonkin, 2010</b><br/> https://leafletjs.com/
+<b>Deck.gl, 2015</b><br/> https://deck.gl/
+:::
+
+##  {background-image="img/keplergl.png" background-size="contain"}
+
+::: footer
+<b>KeplerGL, 2018</b><br/> https://kepler.gl/
 :::
 
 ##  {background-image="img/bostock2011.png" background-size="contain"}
 
 ::: footer
-<b>Mike Bostock, 2012</b><br/> https://archive.nytimes.com/www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html
+<b>D3.js - Mike Bostock, 2012</b><br/> https://archive.nytimes.com/www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html
 :::
 
-# Javascript
+##  {background-image="img/vegalite.png" background-size="contain"}
 
-Historique du web Avant le web était statique Creation de js Pas créé au départ pour la visu de données. Avantages. Inconvénients. Les déboires du début. Langage qui peut être étendu. Wasm. D3.
+::: footer
+<b>Vega-lite, 2013</b><br/> https://vega.github.io/
+:::
 
-## sss
+##  {background-image="img/plot.png" background-size="contain"}
+
+::: footer
+<b>Observable Plot, 2022</b><br/> https://github.com/observablehq/plot
+:::
+
+##  {background-image="img/bertin.png" background-size="contain"}
+
+::: footer
+<b>Bertin, 2022</b><br/> https://github.com/neocarto/bertin
+:::
+
+# JavaScript
+
+## Historique
+
+Le JavaScript est un langage de programmation qui a presque 30 ans.
+
+### 1995
+
+![](img/javascript.png){height="100"}
+
+Le langage Javascript a été créé en dix jours en mai 1995 pour la Netscape Communications Corporation par **Brendan Eich**. Au départ, l'idée était de construire un petit langage pour faire des interactions sur les pages web. Attention, Javascript n'est pas JAVA !
+
+### 1997
+
+![](img/ecma.png){height="65"}
+
+Le langage Javascript est normalisé depuis 1997 par l'organisation ECMA International.
+
+### 2008
+
+Les navigateurs web ont travaillé à de nouveaux moteurs pour améliorer les performances. **V8** est un moteur JavaScript open-source développé par le projet Chromium pour les navigateurs Web Google Chrome et Chromium (dernière version 31 janvier 2022). (**SpiderMonkey** est l'équivalent pour Firefox.
+
+### 2009
+
+![](img/node.png){height="100"}
+
+Création de Node.js par **Ryan Dahl**, qui permet d'utiliser le JavaScript comme langage de programmation côté serveur (back-End). 
+
+### 2015
+
+Depuis 2015 (ES6 ou ES2015), le langage JavaScript est mature. Il est implémenté de manière harmonisée dans tous les navigateurs.
+
+### demain ?
+
+De nouvelles fonctionnalitées sont ajoutées au langage chaque année.
+
+
+## Une grande communauté
+
+C'est un langage ancien qui dispose d'une très grande communauté. 
+
+::: columns
+::: {.column width="49%"}
+JavaScript est à ce jour un des langages les plus utilisé par les developpeurs informatiques.<br/><img src="img/popularityjs.png" style="border:none"/></img><br/>
+:::
+
+::: {.column width="49%"}
+Il y a à ce jour plus de 2 millions de packages disponibles sur **npm**<br/><img src="img/npm1.png" style="border:none"/></img> 
+:::
+:::
+
+## Un langage souvent décrié...
+
+JavaScript a souvent mauvaise réputation chez les développeurs.
+
+### Il est faiblement typé
+
+```{ojs}
+{
+let a = "bonjour"
+a = 10
+return a
+}
+```
+
+Et ça peut être source de confusion et de bugs
+
+```{ojs}
+{
+let a = "40"
+let b = 40
+return a == b
+}
+```
+
+```{ojs}
+{
+let a = "40"
+let b = 40
+return a === b
+}
+```
+
+### Il n'a pas été conçu pour l'analyse de données
+
+Par exemple, l'opération de tri par défaut trie les valeurs par ordre alphabétique.
+
+```{ojs}
+{
+let a = [1,2,3,4,5,6,7,8,9,10]
+return a.sort()
+}
+```
+
+## ...mais incontournable et prometeur
+
+**C'est le langage du web :**
+
+- Il tourne partout (compilation just in time)
+- L'implémentation de Javascript dans les navigateurs est de plus en plus rapide
+- Le langage est aujourd'hui standardisé (ECMA)
+- Grande communauté. Beaucoup de ressources et tutos
+- Beaucoup de choses déjà développées : Plus de 2 millions de packages sur npm
+
+**Certes, JavaScript n'a pas été conçu pour faire de l'analyse de données. Mais :**
+
+- le langage peut être étendu pour mieux le prendre en charge.
+- de nombreuses librairies permettent déjà de manipuler et représenter les données.
+- Avec WebGPU, WebAssembly et d'autres normes en cours de développement, l'avenir de JavaScript est prometteur.
+
+![](img/towards.png)
+
+*https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7*
 
 # Observable Javascript
 
@@ -152,9 +292,45 @@ Quarto® est un système de publication scientifique et technique à code source
 
 ![](img/quarto.png){height="50"}
 
+Il permet de créer un contenu dynamique dans différents langages : Python, R, Julia et **Observable JavaScript**.
+
+
+![](img/quartoojs.png)
+
+## JavaScript ≠ ojs
+
+::: columns
+::: {.column width="49%"}
+OJS c'est du JavaScript + plein de bibliothèques pré chargées : <br/>
+
+| Symbol| Name | Version        |
+| ------- | --------- | ------- |
+| _ | Lodash | 4.17.21 |
+| aq | Arquero | ${aq.version} |
+| Arrow | Apache Arrow | 4.0.1 |
+| d3 | D3.js | ${d3.version} |
+| dot | Graphviz | 0.2.1 |
+| htl | Hypertext Literal | ${htl.version} |
+| Inputs | Observable Inputs | ${Inputs.version} |
+| L | Leaflet | ${L.version} |
+| mermaid | Mermaid | 9.1.6 |
+| Plot | Observable Plot | ${Plot.version} |
+| SQLite | SQL.js | 1.7.0 |
+| topojson | TopoJSON Client | 3.1.0 |
+| vl | Vega, Vega-Lite | 5.22.1, 5.2.0 |
+:::
+
+::: {.column width="49%"}
+OJS c'est aussi une évolution du langage javascript pour en faire un langage adapté à l'analyse et la visualisation de données sur le web.
+
+![](img/datascience.png)
+:::
+:::
+
+
 ## Les cellules / chunk {ojs}
 
-Dans Quarto, on peut ecrire/executer du code Observable en utilisant des chuncks **{ojs}**.
+Dans Quarto, on peut écrire/executer du code Observable en utilisant des chuncks **{ojs}**.
 
 Chaque ligne définit une variable et une cellule qui doit être unique.
 
@@ -247,26 +423,38 @@ D3.js est une bibliothèque graphique JavaScript développée par Mike Bostock q
 
 ![](img/d3github.png)
 
-D3 est directement intégrée dans Observable javascript. On peut faire par exemple :
+D3 est directement intégrée dans Observable javascript.
+
+**d3.array** permet de manipuler les données. On peut par exemple remplacer notre exemple de tout à l'heure
 
 ```{ojs}
-{ 
-let values = [0, 10, 30];
-return d3.quantile(values, 0.25);
+{
+let a = [1,2,3,4,5,6,7,8,9,10]
+return a.sort()
 }
 ```
 
-Et 1000 autres choses qu'on ne détaillera pas ici.
+par :
+
+```{ojs}
+{
+let a = [1,2,3,4,5,6,7,8,9,10]
+return d3.sort(a)
+}
+```
+
+Mais d3, c'est surtout un framework de développement pour dessiner des visualisations à partir de données. C'est aujourd'hui un standard dans le domaine que tout le monde utilise. 
+
+![](img/d3gallery.png)
+
 
 ## Dessiner avec D3.js
 
-Avec D3, il est possible de dessiner des images vectorielles au format SVG.
+Avec D3, il est possible de dessiner des images vectorielles au format SVG en manupilant le DOM.
 
-DOM
+*Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d'examiner et de modifier le contenu du navigateur web. Par le DOM, la composition d'une page web est représentée sous forme d'un arbre avec des objets dedans.*
 
-Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d'examiner et de modifier le contenu du navigateur web. Par le DOM, la composition d'une page web est représentée sous forme d'un arbre avec des objets dedans.
-
-Créer un document svg
+Créons un document svg, de 500 pixels de large, 60 pixels de haut et avec du gris en couleur de fond.
 
 ```{ojs}
 {
@@ -279,7 +467,7 @@ Créer un document svg
 }    
 ```
 
-Dessiner un cercle
+On ajoute un cercle rouge avec `svg.append("circle")`
 
 ```{ojs}
 {
@@ -299,7 +487,10 @@ Dessiner un cercle
 }    
 ```
 
-Dessiner un carré
+Attention, les coordonnées [0,0] sont en haut à gauche.
+
+![](img/canvas.png)
+<br/>On dessine un carré rouge avec `svg.append("rect")`
 
 ```{ojs}
 {
@@ -320,7 +511,8 @@ Dessiner un carré
 }    
 ```
 
-Tracer une ligne
+
+On dessine une ligne avec `svg.append("line")`
 
 ```{ojs}
 {
@@ -328,13 +520,20 @@ Tracer une ligne
     .create("svg")
     .attr("viewBox", [0, 0, 500, 60])
     .style("background-color", "#CCC");
-
+    
+  svg
+    .append("line")
+    .attr("x1", 10)
+    .attr("y1", 50)
+    .attr("x2", 490)
+    .attr("y2", 10)
+    .style("stroke", "#5277bf");
     
   return svg.node();
 }    
 ```
 
-Ecrire un texte
+On écrit du texte avec `svg.append("text")`
 
 ```{ojs}
 {
@@ -343,9 +542,53 @@ Ecrire un texte
     .attr("viewBox", [0, 0, 500, 60])
     .style("background-color", "#CCC");
     
+    svg
+    .append("text")
+    .attr("x", 150)
+    .attr("y", 30)
+    .attr("text-anchor", "middle")
+    .attr("alignment-baseline", "middle")
+    .attr("font-size", 20)
+    .text("This is a text")
+    
 
   return svg.node();
 }    
+```
+
+On peut même faire des choses plus compliquées
+
+```{ojs}
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 900, 300])
+    .style("width", 900)
+    .style("height", 300)
+    .style("background-color", "white");
+
+  svg
+    .append("path")
+    .attr("id", "MyPath")
+    .attr(
+      "d",
+      "M 63.076304,216.52334 C 106.76999,160.0853 184.40984,142.61427 252.12247,155.01632 c 99.64554,14.70621 189.6073,65.26698 288.91023,81.72698 85.56711,17.5306 180.8469,21.86234 258.93554,-23.57809 C 832.7795,182.25763 827.06329,125.86632 794.25369,97.048457 749.49459,54.888253 680.9657,40.400439 622.07801,56.259559 578.03603,66.8154 539.24683,112.13225 552.52931,158.88503 c 11.25647,40.10204 58.40308,53.33813 95.48846,51.23085 25.59819,-1.89352 59.88192,-16.69692 56.86407,-47.47388 -3.50716,-31.7693 -26.27339,-57.34863 -59.6113,-41.94273"
+    )
+    .attr("fill", "none")
+    .attr("stroke", "#5277bf");
+
+  svg
+    .append("text")
+    .append("textPath")
+    .attr("href", "#MyPath")
+    .attr("dominant-baseline", "baseline")
+    .attr("font-size", `48px`)
+    .text(
+      "And here, there is a text that follows a path. Pretty cool, isn't it? Yeah!"
+    );
+
+  return svg.node();
+}
 ```
 
 ## Dessiner des données avec D3.js et svg
@@ -736,57 +979,81 @@ JSON.parse(countries)
 
 Observable javascript n'est pas un écosystème fermé. Des millions de librairies javascript existent sur NPM (équivalent du CRAN pour R). Il est possible de les utiliser.
 
-*https://www.npmjs.com/* ![](img/npm.png)
+![](img/npm.png)<br/>
 
 Ici, nous pouvons les importer directement avec l'instruction `require()`
 
+#### La bibliothèque `geocountries`
+
+Avec `@`, on spécifie la version de la bibliothèque.
+
 ```{ojs}
-geo = require("geoverview@1.2.1")
+geocountries = require("geocountries@2")
 ```
 
-Version locale
+Vous pouvez aussi utiliser une bibliothèque localement en spécifiant le chemin sur votre ordinateur.
 
 ```{ojs}
-geo2 = require("lib/geoverview_1.2.1.js")
+geocountries2 = require("./lib/geocountries.js")
 ```
 
-Je peux maintenant utiliser la fonction view du package `geoverview` (qui est reniommé ici, geo).
+On peut maintenant utiliser la fonction getcode du package `geocountries`
 
 ```{ojs}
-geo.view(basemap)
+geocountries.getcode("Bénin")
+```
+
+#### La bibliothèque `statsbreaks`
+
+Une bibliothèque pour faire des discrétisations
+
+```{ojs}
+discr = require("./lib/statsbreaks.js")
+gdppc = data1.map(d => d.PIB/d.POP)
+discr.breaks({ values: gdppc, method: "quantile", nb: 5, precision: 2 })
 ```
 
 ## Imports
 
 On l'a dit tout à l'heure, Observable c'est aussi une plateforme web hebergeant des notebooks.
 
-![](img/trendings.png)
+![](img/trendings.png)<br/>
 
-Si on a une connexion internet, il ets possible d'importer n'importe quelle cellule de n'importe quel notebook avec la fonction `import`.
+Si on a une connexion internet, il ets possible d'importer n'importe quelle cellule de n'importe quel notebook avec la fonction `import`. Dit autrement, toutes les notebooks hébergés sur observablehq.com fonctionnent comme des api.
 
 ```{ojs}
-import { SummaryTable } from "@observablehq/summary-table"
+import {sketch} from "@neocartocnrs/cartographic-doodles"
+import {africa} from "@neocartocnrs/bertin-js-mashroom"
 ```
 
-Puis, on peut utiliser cette fonction sur nos données.
+Puis, on peut utiliser cette fonction.
 
 ```{ojs}
-SummaryTable(data1)
+sketch(africa)
 ```
 
 # La libraririe bertin
 
-Une librairie javascript pour la cartographie thématique
+Une bibliothèque JavaScript pour la cartographie thématique
 
 ## Principes
 
+[bertin](https://github.com/neocarto/bertin) est une librairie (un ensemble de fonctionnalités) écrite en [javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript) qui permet de réaliser des cartes thématiques pour le web. Son développement s'appuie en grande partie sur le librairie javascript [d3.js](https://d3js.org/) développée par Mike Bostock depuis 10 ans. Le développement a débuté en novembre 2021.
+
 ![](img/logobertin.svg)
 
+On charge la bibliothèque avec l'instruction `require``
+
 ```{ojs}
-bertin = require("bertin@latest")
+bertin = require("bertin@1.5.10")
 ```
 
+Le principe de la bibliothèque bertin est de proposer un outil permettant de réaliser rapidement des cartes thématiques variées sans faire appel à la programmation en JavaScript ni directement à la bibliothèque D3.js. 
 ![](img/level.png)
+
+Elle permet de réaliser de nombreux types de cartes thématiques.
+
+![](img/gallery.png)
 
 ## Préparation des données
 
@@ -835,16 +1102,20 @@ world2019 = bertin.merge(world, "id", stats2019, "iso3c")
 Voilà le résultat
 
 ```{ojs}
-geo.view(world2019)
+bertin.quickdraw(world2019)
+Inputs.table(bertin.properties.table(world2019))
 ```
+
 
 ## Syntaxe
 
-Une seule fonction pour tout faire.
+Avec `bertin`, on utilise la fonction `draw()` pour dessiner tous les types de cartes. La fonction prend en entrée un objet JavaScript contenant toutes les informations nécéssaires.
 
 ![](img/bertin_code.png)
 
 ## Types
+
+Chaque couche à afficher est définie par un type particulier qui définira le type de rendu.
 
 ![](img/types.jpeg){width:100%}
 
@@ -852,11 +1123,137 @@ Une seule fonction pour tout faire.
 
 La fonction `draw` permet de dessiner n'importe quel type de carte.
 
+La syntaxe minimale est la suivante : 
+
 ```{ojs}
-bertin.draw({ layers: [ {geojson: world} ] })
+bertin.draw({ layers: [ {geojson: world2019} ] })
 ```
 
 ## Symboles proportionnels
+
+Pour réaliser une carte par symboles proportionnels, on utilise le type `bubble`
+
+```{ojs}
+bertin.draw({ layers: [ 
+  {type: "bubble", geojson: world2019, values: "POP", fill: "red"}, 
+  {geojson: world2019, fill:"#CCC"}
+  ] })
+```
+
+Avec l'argument `dorling: true`, on obtient un cartogramme de Dorling. 
+
+
+```{ojs}
+bertin.draw({ layers: [ 
+  {type: "bubble", geojson: world2019, values: "POP", fill: "red", dorling:true}, 
+  {geojson: world2019, fill:"#CCC"}
+  ] })
+```
+
+
+En remplaçant `bubble` par `square`, on obtient des carrés. 
+
+```{ojs}
+bertin.draw({ layers: [ 
+  {type: "square", geojson: world2019, values: "POP", fill: "red"}, 
+  {geojson: world2019, fill:"#CCC"}
+  ] })
+```
+
+Grace au côté réactif d'Observable Javascript, on va donc pouvoir facilement construire des cartes paramétrables. 
+
+```{ojs}
+viewof k = Inputs.range([10, 100], {step: 1, value:50, label: "Rayon du plus grand cercle"})
+viewof dorling = Inputs.toggle({label: "Dorling", value: false})
+bertin.draw({ layers: [ 
+  {type: "bubble", geojson: world2019, values: "POP", fill: "red", k, dorling}, 
+  {geojson: world2019, fill:"#CCC"}
+  ] })
+```
+
+## Typo & choro
+
+Pour réaliser une typologie, on utilise le type `typo` sur le paramètre `fill`.
+
+```{ojs}
+bertin.draw({ layers: [ 
+  {geojson: world2019, fill: {type: "typo", values: "subregiond"} }
+  ] })
+```
+
+Pour réaliser une carte choroplèthe, on utilise le type `choro` sur le paramètre `fill`.
+
+```{ojs}
+world2019_2 = bertin.properties.add({
+    geojson: world2019, 
+    field: "GDPPC", 
+    expression: "GDP/POP" 
+})
+bertin.draw({ layers: [ 
+  {geojson: world2019_2, fill: {type: "choro", values: "GDPPC"} }
+  ] })
+```
+
+## Combinaisons
+
+On peut faire des combinaisons.
+
+```{ojs}
+bertin.draw({ layers: [ 
+  {type: "bubble", geojson: world2019, values: "POP", fill: {type:"typo", values: "subregiond"}}, 
+  {geojson: world2019, fill:"#CCC"}
+  ] })
+```
+
+La librairie est très flexible. En changeant `fill` par `stroke`, on place les couleurs sur les contours.
+
+
+```{ojs}
+bertin.draw({ layers: [ 
+  {type: "bubble", geojson: world2019, values: "POP", stroke: {type:"typo", values: "subregiond"}, strokeWidth:2, fill:"none"}, 
+  {geojson: world2019, fill:"#CCC"}
+  ] })
+```
+
+## Habillage
+
+De nombreuses couches d'habillage sont disponibles.
+
+
+```{ojs}
+bertin.draw({ layers: [ 
+  {type: "header", text: "Titre de la carte"},
+  {type: "footer", text: "Sources et auteurs"},
+  {geojson: world2019, fill:"white", stroke:"white"},
+  {type: "shadow", geojson: world2019},
+  {type: "geolines"},
+  {type: "graticule"},
+  {type: "outline"}
+  ] })
+```
+
+
+Et on peut changer la projection.
+
+```{ojs}
+
+prj = ["InterruptedSinusoidal", "Armadillo", "Baker", "Gingery", "Berghaus","Loximuthal", "Healpix", "InterruptedMollweideHemispheres", "Miller", "Aitoff"]
+viewof projection = Inputs.select(prj, {value: "InterruptedSinusoidal", label: "Projection"})
+bertin.draw({ 
+params: {projection, clip: true},
+layers: [ 
+  {type: "header", text: "Titre de la carte"},
+  {type: "footer", text: "Sources et auteurs"},
+  {geojson: world2019, fill:"white", stroke:"white"},
+  {type: "shadow", geojson: world2019},
+  {type: "geolines"},
+  {type: "graticule"},
+  {type: "outline"}
+  ] })
+```
+
+
+
 
 ## Documentation
 
@@ -866,4 +1263,70 @@ bertin.draw({ layers: [ {geojson: world} ] })
 
 -   De nombreux exemples sont accessibles sur la plateforme Observable : [https://observablehq.com/collection/\@neocartocnrs/bertin](https://observablehq.com/collection/@neocartocnrs/bertin)
 
-![](img/doc_observable.png){width:100%}
+![](img/doc_observable.png){width:100%}<br/>
+
+# Exercices
+
+Mise en pratique de `bertin` dans Quarto
+
+::: header
+
+##
+
+<br/><br/>
+
+### Exercices
+
+<br/><br/>
+
+::: columns
+::: {.column width="49%"}
+<b>TP1</b><br/><br/>
+Exercice pour apprendre à réaliser des cartes interactives avec Quarto et la bibliothèque JavaScript bertin.<br/><br/> [https://ee-cist.github.io/CART3_cartodyn/TP1/docs/index.html](https://ee-cist.github.io/CART3_cartodyn/TP1/docs/index.html)
+:::
+
+::: {.column width="49%"}
+<b>TP2</b><br/><br/>
+Exercice pour apprendre à realiser une single page application avec bertin et Quarto.<br/><br/>[https://ee-cist.github.io/CART3_cartodyn/TP2/docs/index.html](https://ee-cist.github.io/CART3_cartodyn/TP2/docs/index.html)
+:::
+:::
+
+
+:::
+
+
+::: header
+
+##
+
+<br/><br/>
+
+### Document réalisé avec Quarto.<br/><br/>
+
+<b>Voir en ligne</b><br/>[ee-cist.github.io/CART3_cartodyn/intro/docs](https://ee-cist.github.io/CART3_cartodyn/intro/docs/index.html)
+
+<b>Code source</b><br/>
+[github.com/EE-CIST/CART3_cartodyn/tree/main/intro](https://github.com/EE-CIST/CART3_cartodyn/tree/main/intro)
+
+<br/>
+
+### Contacts
+
+::: columns
+::: {.column width="49%"}
+<b>Nicolas Lambert<br/>(France)</b><br/><br/>
+*nicolas.lambert@cnrs.fr<br/>https://twitter.com/neocartocnrs<br/>https://vis.social/@neocarto <br/>https://github.com/neocarto<br/>https://observablehq.com/@neocartocnrs*
+:::
+
+::: {.column width="49%"}
+<b>Manhamady Puedraogo<br/>(Burkina Faso)</b><br/><br/>
+*nonresse@gmail.com*
+:::
+:::
+
+
+
+
+
+:::
+

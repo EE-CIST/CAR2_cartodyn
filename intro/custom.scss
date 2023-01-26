@@ -24,12 +24,23 @@ $modal-footer-bg: red;
   font-size:20px;
 }
 
-.sourceCode .javascript {
+
+
+
+.sourceCode {
   font-size:20px;
 }
 
 .reveal .footer {
 background-color: white;
+padding:0px;
+opacity: 1;
+}
+
+.reveal .header {
+  text-align: center;
+background-color: white;
+color: black;
 padding:0px;
 opacity: 1;
 }

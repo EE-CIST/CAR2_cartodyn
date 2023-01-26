@@ -1,5 +1,0 @@
----
-title: "tp2"
-format: html
-editor: visual
----
