@@ -197,7 +197,7 @@ bertin.draw({
 
 Le type de carte thématique qu'on va réaliser dépend du type de données à représenter.
 
-## 2.3. Cartographier des données quantitatives aboslues (stock)
+## 2.3. Cartographier des données quantitatives absolues (stock)
 
 En cartographie, on représente des données quantitatives absolues avec la variable visuelle TAILLE. Pour avoir des cercles proportionnels, dans `bertin`, on utilisera le type `bubble` <a href="https://github.com/neocarto/bertin#bubble"><img src="img/logo_doc.png"/></a><a href="https://observablehq.com/@neocartocnrs/bertin-js-prop-symbols?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"/></a>
 

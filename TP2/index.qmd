@@ -62,6 +62,7 @@ Créez un document Quarto avec l'entête suivante :
 Copiez et collez en dessous le code suivant :
 
 ::: copy
+
 ``` {{ojs}}
 //| panel: sidebar
 "Le menu"
