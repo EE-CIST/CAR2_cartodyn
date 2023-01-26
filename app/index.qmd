@@ -1,0 +1,91 @@
+---
+title: "World Explorer"
+format:
+  html:
+    echo: false
+    code-tools: true
+    page-layout: full
+---
+
+```{ojs}
+//| panel: sidebar
+viewof year =  Inputs.range(
+  [1990, 2019], 
+  {value: 2019, step: 1, label: "Année"}
+)
+
+viewof k =  Inputs.range(
+  [20, 100], 
+  {value: 50, step: 1, label: "Rayon max"}
+)
+
+meta = FileAttachment("data/worldbank_meta.csv").csv()
+viewof indicator = Inputs.select(
+  new Map(meta.map((d) => [d.indicator, d.shortcode])),
+  { label: "Indicateur" }
+)
+
+projections = ["Polar", "InterruptedSinusoidal", "Armadillo", "Baker", "Gingery", "Berghaus", "Loximuthal", "Healpix", "InterruptedMollweideHemispheres", "Miller", "Aitoff", "Spilhaus"]
+viewof proj = Inputs.select(projections, {label: "Projection"})
+
+viewof color = Inputs.color({label: "couleur", value: "#4682b4"})
+
+```
+
+::: {.panel-tabset .ojs-track-layout}
+
+## Carte
+```{ojs}
+bertin.draw({
+params: {projection: proj, clip: true }, 
+layers:[
+  {type: "bubble", geojson: data, values: indicator, 
+  fill: color, dorling: true, fixmax: varmax, k, 
+  tooltip: ["$name",d => d.properties[indicator]]},
+  {geojson: world, fill: "#CCC"},
+  {type: "graticule"},  
+  {type: "outline"}
+]})
+```
+
+## Données
+```{ojs}
+Inputs.table(statsyear, {  columns: [
+    "country",
+    "capital_city",
+    "region",
+    indicator
+  ]})
+```
+
+## Top 10
+```{ojs}
+viewof topnb = Inputs.range([5, 30], {label: "Nombre de pays représentés", step: 1})
+top = statsyear.sort((a, b) => d3.descending(+a[indicator], +b[indicator]))
+  .slice(0, topnb)
+Plot.plot({
+	marginLeft: 60,
+  marks: [
+    Plot.barY(top, {
+      x: "iso3c",
+      y: indicator,
+      sort: { x: "y", reverse: true },
+      fill: color
+    }),
+    Plot.ruleY([0])
+  ]
+})
+
+
+
+```
+
+:::
+```{ojs}
+world = FileAttachment("data/world.json").json()
+stats = FileAttachment("data/worldbank_data.csv").csv()
+bertin = require("bertin@1.5.9")
+statsyear = stats.filter(d => d.date == year)
+data = bertin.merge(world, "id", statsyear, "iso3c")
+varmax = d3.max(stats.filter(d => d.date == 2019), d => +d[indicator])
+```
