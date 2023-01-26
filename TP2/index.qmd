@@ -62,9 +62,6 @@ Créez un document Quarto avec l'entête suivante :
 Copiez et collez en dessous le code suivant :
 
 ::: copy
-
-
-
 ``` {{ojs}}
 //| panel: sidebar
 "Le menu"
@@ -84,6 +81,12 @@ Copiez et collez en dessous le code suivant :
 "Les données"
 ```
 
+    ## Top 10
+
+``` {{ojs}}
+"le graphique"
+```
+
     :::
 
 ``` {{ojs}}
@@ -101,15 +104,17 @@ Il s'agit de la structure de votre application finale. Elle est composée de 5 p
 -   Le <ins>menu</ins> (sur la gauche). C'est dans ce *chunk* que nous allons placer des `Inputs` permettant à l'utilisateur d'interagir avec la carte.
 -   La <ins>carte</ins> (sur la droite). C'est dans ce *chunk* que nous allons dessiner une carte avec la bibliothèque `bertin`.
 -   Les <ins>données</ins> (sur la droite). C'est dans ce *chunk* que nous allons afficher le tableau de données derrière la carte.
+-   Un <ins>graphique</ins> (sur la droite). C'est dans ce *chunk* que nous allons afficher un *bar plot*.
 -   Les <ins>annexes techniques</ins> (en bas). Dans ce chunk, on écrira tout ce qui est nécéssaire à l'élaboration de l'appli (import des données, etc, mais qu'on ne souhaite pas afficher). Rappelez-vous qu'avec Observable JavaScript, l'ordre d'écriture n'a pas d'importance. On peut donc écrire du code à la fin du document, comme une annexe technique.
 
 *NB: La carte et les données sont dans 2 onglets grace aux classes {.panel-tabset .ojs-track-layout}*
 
-- Sauvegardez.
+-   Sauvegardez.
 
 # 2. Les données
+Téléchargez les données et mettez-les dans un repertoire *data*.
 
-Téléchargez les données <a href=""><img src="img/download.png" width="30px"/></a> et placez-les dans un repértoire data.
+<a href = "https://github.com/EE-CIST/CART3_cartodyn/raw/main/TP2/data/data.zip"><img src = "img/download.png" height= "50px"><img></a>
 
 Dans le chunck de l'<ins>**annexe technique**</ins>, importez les données géométriques et attributaires qui se trouvent dans le répertoire data.
 
@@ -120,7 +125,7 @@ stats = FileAttachment("data/worldbank_data.csv").csv()
 ```
 :::
 
-Comme dit précédement, les données contiennent des indacteurs à plusieurs dates. 
+Comme dit précédement, les données contiennent des indacteurs à plusieurs dates.
 
 ```{ojs}
 //| echo: false
@@ -132,12 +137,11 @@ Inputs.table(stats)
 
 Ici, on définit quelles interactions ont souhaite proposer à l'utilisateur.
 
-Copiez et collez les lignes de code suivantes dans votre chunck **<ins>menu</ins>**.
+Copiez et collez les lignes de code suivantes dans votre chunck <ins>menu</ins>.
 
-- Un slider pour choisir l'année
+-   Un slider pour choisir l'année
 
 ::: copy
-
 ```{ojs}
 //| echo: true
 //| eval: false
@@ -146,13 +150,11 @@ viewof year =  Inputs.range(
   {value: 2019, step: 1, label: "Année"}
 )
 ```
-
 :::
 
-- Un slider pour configurer la taille des cercles
+-   Un slider pour configurer la taille des cercles
 
 ::: copy
-
 ```{ojs}
 //| echo: true
 //| eval: false
@@ -161,14 +163,11 @@ viewof k =  Inputs.range(
   {value: 50, step: 1, label: "Rayon max"}
 )
 ```
-
 :::
 
-- Une liste déroulante pour choisir l'indicateur
-
+-   Une liste déroulante pour choisir l'indicateur
 
 ::: copy
-
 ```{ojs}
 //| echo: true
 //| eval: false
@@ -178,26 +177,22 @@ viewof indicator = Inputs.select(
   { label: "Indicateur" }
 )
 ```
-
 :::
 
-- Une liste déroulate pour choisir la projection cartographique
+-   Une liste déroulate pour choisir la projection cartographique
 
 ::: copy
-
 ```{ojs}
 //| echo: true
 //| eval: false
 projections = ["Polar", "InterruptedSinusoidal", "Armadillo", "Baker", "Gingery", "Berghaus", "Loximuthal", "Healpix", "InterruptedMollweideHemispheres", "Miller", "Aitoff", "Spilhaus"]
 viewof proj = Inputs.select(projections, {label: "Projection"})
 ```
-
 :::
 
-On obtient le menu suivant où `year` correspond à l'année, `k` correspond à la taille des cercles, `indicator` correspond au nom de la variable et `proj` correspond à la projection cartographique. 
+On obtient le menu suivant où `year` correspond à l'année, `k` correspond à la taille des cercles, `indicator` correspond au nom de la variable et `proj` correspond à la projection cartographique.
 
 ::: copy
-
 ```{ojs}
 //| echo: false
 //| eval: true
@@ -217,13 +212,11 @@ viewof indicator = Inputs.select(
 projections = ["Polar", "InterruptedSinusoidal", "Armadillo", "Baker", "Gingery", "Berghaus", "Loximuthal", "Healpix", "InterruptedMollweideHemispheres", "Miller", "Aitoff", "Spilhaus"]
 viewof proj = Inputs.select(projections, {label: "Projection"})
 ```
-
 :::
-
 
 # 4. Mise en forme des données
 
-Avant de construire la carte, nous avons besoin de manipuler un peu les données en créant un tableau contenant uniquement l'année séléctionnée et en effectuant une jointure entre les données et le fond de carte. On effectue ces opérations dans la partie **<ins>annexe technique</ins>**. On a besoin de charger la bibliothèque `bertin`.
+Avant de construire la carte, nous avons besoin de manipuler un peu les données en créant un tableau contenant uniquement l'année séléctionnée et en effectuant une jointure entre les données et le fond de carte. On effectue ces opérations dans la partie <ins>annexe technique</ins>. On a besoin de charger la bibliothèque `bertin`.
 
 ::: copy
 ```{ojs}
@@ -239,12 +232,11 @@ varmax = d3.max(stats.filter(d => d.date == 2019), d => +d[indicator])
 ```
 :::
 
-
-Après ces opérations, l'objet `data` contient les géométries et les données pour l'année séléctionnée. 
+Après ces opérations, l'objet `data` contient les géométries et les données pour l'année séléctionnée.
 
 # 5. Réalisation de la carte
 
-Ici, on réalise la carte dans la chuck <ins>**carte**</ins> avec la bibliothèque bertin. 
+Ici, on réalise la carte dans la chuck <ins>**carte**</ins> avec la bibliothèque bertin.
 
 ::: copy
 ```{ojs}
@@ -265,7 +257,7 @@ layers:[
 
 # 6. Affichage des données
 
-Ici, on ajoute un tableau de données dans la chuck **<ins>données</ins>**.
+Ici, on ajoute un tableau de données dans la chuck <ins>données</ins>.
 
 ::: copy
 ```{ojs}
@@ -278,12 +270,36 @@ Inputs.table(statsyear, {  columns: [
     indicator
   ]})
 ```
-
 :::
 
+# 7. Réalisation du graphique
 
-# 7. C'est fini ! 
+On souhaite réaliser un diagramme en barres avec les N pays qui ont les plus fortes valeurs sur l'indicateur séléctionné. Nous récupérons donc l'objet `stats` qui contient les données, nous le trions, et ne gardons que les N premières valeurs. N est défini dans un slider. Le graphique est réalisé avec la bibliothèqe Plot. 
+
+Ajoutez le code ci-dessous chuck <ins>graphique</ins>.
+
+::: copy
+```{ojs}
+//| echo: true
+//| eval: false
+viewof nb = Inputs.range([5, 30], {label: "Nombre de pays représentés", step: 1})
+top = data
+  .sort((a, b) => d3.descending(+a[indicator], +b[indicator]))
+  .slice(0, 20)
+Plot.plot({
+  marks: [
+    Plot.barY(x, {
+      x: "iso3c",
+      y: indicator,
+      sort: { x: "y", reverse: true }
+    }),
+    Plot.ruleY([0])
+  ]
+})
+  
+```
+:::
+
+# 7. C'est fini !
 
 Appuyez sur `Render` pour voir le résultat. La solution est disponible [ici](https://ee-cist.github.io/CART3_cartodyn/app/index.html).
-
-
