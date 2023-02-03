@@ -78,7 +78,7 @@ Carte figurative de l'instruction populaire en France (<b>Charles Dupin</b>, 182
 Carte Figurative des pertes successives en hommes de l'armée française dans la campagne de Russie 1812--1813.<br/>Charles Joseph Minard (1869). <b>Minard</b> représente en 1869 les pertes colossales de l'armée française dans la campagne de Russie au début du XIXe siècle. Cette fameuse « carte figurative » raconte l'histoire de cette armée, qui arrive à Moscou avec moins d'un quart de son effectif de départ, avant de se faire à nouveau décimer sur le voyage du retour.
 :::
 
-## Bertin, 1977 (et 1973)
+## Bertin, 1967 (et 1973)
 
 -   Enorme travail de synthèse.
 -   Approche plutôt pragmatique.
@@ -164,30 +164,31 @@ Le langage Javascript a été créé en dix jours en mai 1995 pour la Netscape C
 
 ![](img/ecma.png){height="65"}
 
-Le langage Javascript est normalisé depuis 1997 par l'organisation ECMA International.
+Le langage Javascript est normalisé depuis 1997 par la commission TC39 de l'organisation ECMA International.
 
 ### 2008
 
-Les navigateurs web ont travaillé à de nouveaux moteurs pour améliorer les performances. **V8** est un moteur JavaScript open-source développé par le projet Chromium pour les navigateurs Web Google Chrome et Chromium (dernière version 31 janvier 2022). (**SpiderMonkey** est l'équivalent pour Firefox.
+Les navigateurs web ont travaillé à de nouveaux moteurs pour améliorer les performances. **V8** est un moteur JavaScript open-source développé par le projet Chromium pour les navigateurs Web Google Chrome et Chromium (dernière version 31 janvier 2022). Il y a aussi **SpiderMonkey** pour Firefox, **Chakra** pour Microsoft Edge et **JavaScriptCore** pour Safari.
 
 ### 2009
 
 ![](img/node.png){height="100"}
 
-Création de Node.js par **Ryan Dahl**, qui permet d'utiliser le JavaScript comme langage de programmation côté serveur (back-End). 
+Création de Node.js par **Ryan Dahl**, qui permet d'utiliser le JavaScript comme langage de programmation côté serveur (back-End).
 
 ### 2015
 
-Depuis 2015 (ES6 ou ES2015), le langage JavaScript est mature. Il est implémenté de manière harmonisée dans tous les navigateurs.
+Depuis 2015 (ES6 ou ES2015), le langage JavaScript est mature. Performant. Et est implémenté de manière harmonisée dans tous les navigateurs. On parle de *modern JavaScript*
 
 ### demain ?
 
 De nouvelles fonctionnalitées sont ajoutées au langage chaque année.
 
+Voir : [observablehq.com/@robertbatty/ecmascript-2015-2022](https://observablehq.com/@robertbatty/ecmascript-2015-2022)
 
 ## Une grande communauté
 
-C'est un langage ancien qui dispose d'une très grande communauté. 
+C'est un langage ancien qui dispose d'une très grande communauté.
 
 ::: columns
 ::: {.column width="49%"}
@@ -195,15 +196,33 @@ JavaScript est à ce jour un des langages les plus utilisé par les developpeurs
 :::
 
 ::: {.column width="49%"}
-Il y a à ce jour plus de 2 millions de packages disponibles sur **npm**<br/><img src="img/npm1.png" style="border:none"/></img> 
+Il y a à ce jour plus de 2 millions de packages disponibles sur **npm**<br/><img src="img/npm1.png" style="border:none"/></img>
 :::
 :::
 
-## Un langage souvent décrié...
+## Un langage souvent décrié 👎
 
-JavaScript a souvent mauvaise réputation chez les développeurs.
+JavaScript a souvent mauvaise réputation chez les développeurs. Et pour cause : 
+
+### Des absurdités logiques
+
+Null est un objet 🤔
+
+```{ojs}
+typeof null
+```
+
+Not a Number est un nombre 🙃
+
+```{ojs}
+typeof NaN
+```
+
+Cf [smashingmagazine.com/2011/05/10-oddities-and-secrets-about-javascript](https://www.smashingmagazine.com/2011/05/10-oddities-and-secrets-about-javascript)
 
 ### Il est faiblement typé
+
+On peut donc définir une variable et changer son type. Attention danger.
 
 ```{ojs}
 {
@@ -213,7 +232,7 @@ return a
 }
 ```
 
-Et ça peut être source de confusion et de bugs
+2 variables de 2 types différents peuvent être considérés comme égaux.
 
 ```{ojs}
 {
@@ -223,11 +242,22 @@ return a == b
 }
 ```
 
+Et ça peut être source de confusion et de bugs
+
 ```{ojs}
 {
-let a = "40"
-let b = 40
-return a === b
+let someVar = 0
+return someVar == false
+}
+```
+
+Heureusement, il y a le triple égal
+
+
+```{ojs}
+{
+let someVar = 0
+return someVar === false
 }
 ```
 
@@ -237,26 +267,35 @@ Par exemple, l'opération de tri par défaut trie les valeurs par ordre alphabé
 
 ```{ojs}
 {
-let a = [1,2,3,4,5,6,7,8,9,10]
+let a = [7,1,9,3,10,4,5,6,2,8]
 return a.sort()
 }
 ```
 
-## ...mais incontournable et prometeur
+## ...mais incontournable et prometeur 👍
 
 **C'est le langage du web :**
 
+- Il n'y a rien à installer *en dur*"* sur les ordinateurs. Il faut juste un navigateur web.
 - Il tourne partout (compilation just in time)
-- L'implémentation de Javascript dans les navigateurs est de plus en plus rapide
+- L'implémentation de Javascript dans les navigateurs est de plus en plus rapide 🚀
 - Le langage est aujourd'hui standardisé (ECMA)
 - Grande communauté. Beaucoup de ressources et tutos
 - Beaucoup de choses déjà développées : Plus de 2 millions de packages sur npm
 
 **Certes, JavaScript n'a pas été conçu pour faire de l'analyse de données. Mais :**
 
-- le langage peut être étendu pour mieux le prendre en charge.
-- de nombreuses librairies permettent déjà de manipuler et représenter les données.
-- Avec WebGPU, WebAssembly et d'autres normes en cours de développement, l'avenir de JavaScript est prometteur.
+-   le langage peut être étendu pour mieux le prendre en charge.
+-   de nombreuses librairies permettent déjà de manipuler et représenter les données.
+-   Les performanbces s'émliorent encore avec WebGPU, qui permet de faire des calculs particulièrement efficaces pour l'execution d'algorithmes tres paralleles comme le traitement d'image, le machine learning et le rendu 3D. 
+
+![](img/webgpu.png){height="80"}
+
+- Avec WebAssembly, il est désormais possible d'incorporer des briques développées dans d'autres langages (C, rust, go...) à l'interieur des bibliothèques JavaCcript. 
+
+![](img/jswasm.png){height="70"}
+
+Du coup, certains pensent que le JavaScript est le langage de demain pour traiter et analyser des données. 
 
 ![](img/towards.png)
 
@@ -286,6 +325,7 @@ Reactive, reproducible, collaborative: computational notebooks evolve, par Jeffr
 
 Javascript for data Analysis, par Mike Bostock <https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7>
 
+
 ## Observable dans Quarto
 
 Quarto® est un système de publication scientifique et technique à code source ouvert basé sur Pandoc.
@@ -294,39 +334,7 @@ Quarto® est un système de publication scientifique et technique à code source
 
 Il permet de créer un contenu dynamique dans différents langages : Python, R, Julia et **Observable JavaScript**.
 
-
 ![](img/quartoojs.png)
-
-## JavaScript ≠ ojs
-
-::: columns
-::: {.column width="49%"}
-OJS c'est du JavaScript + plein de bibliothèques pré chargées : <br/>
-
-| Symbol| Name | Version        |
-| ------- | --------- | ------- |
-| _ | Lodash | 4.17.21 |
-| aq | Arquero | ${aq.version} |
-| Arrow | Apache Arrow | 4.0.1 |
-| d3 | D3.js | ${d3.version} |
-| dot | Graphviz | 0.2.1 |
-| htl | Hypertext Literal | ${htl.version} |
-| Inputs | Observable Inputs | ${Inputs.version} |
-| L | Leaflet | ${L.version} |
-| mermaid | Mermaid | 9.1.6 |
-| Plot | Observable Plot | ${Plot.version} |
-| SQLite | SQL.js | 1.7.0 |
-| topojson | TopoJSON Client | 3.1.0 |
-| vl | Vega, Vega-Lite | 5.22.1, 5.2.0 |
-:::
-
-::: {.column width="49%"}
-OJS c'est aussi une évolution du langage javascript pour en faire un langage adapté à l'analyse et la visualisation de données sur le web.
-
-![](img/datascience.png)
-:::
-:::
-
 
 ## Les cellules / chunk {ojs}
 
@@ -417,35 +425,54 @@ Ce parti pris fort, peut être déroutant. Mais il a un gros avantage. Il permet
 
 ## D3.js
 
+L'OJS a été créé par Mike Bostock, qui est aussi le developpeur de la bibliothèue **D3.js** (ou D3). D3 a été dircetement intégrée à l'Observable JavaScript. 
+
 ![](img/logo-D3.png){height="200"}
 
-D3.js est une bibliothèque graphique JavaScript développée par Mike Bostock qui permet l'affichage de données numériques sous une forme graphique et dynamique. **d3.js** est une grosse librairie qui fait beaucoup de choses. Depuis 2015, elle est composée de différents modules spécialisés.
+D3.js est une bibliothèque graphique JavaScript développée par Mike Bostock qui permet l'affichage de données numériques sous une forme graphique et dynamique. 
+
+![](img/d3gallery.png)
+
+- D3 est populaire (200 millions de téléchargements et 100 000 étoiles)
+- D3 est flexible (approche bas niveau qui permetd e tout faire)
+- D3 est réputé pour ses animations et ses interactions. 
+
+**Cette puissance a, bien sûr, un coût. Il y a beaucoup à apprendre : D3 compte plus de trente modules et un millier de méthodes.**
 
 ![](img/d3github.png)
 
-D3 est directement intégrée dans Observable javascript.
+Mais c'est le langage de base pour faire de la visualisation de données pour le web. La librairie `Plot` (que nous venons de voir) et la librairie `bertin` (que nous allons voir) sont tous deux construits avec D3.
+
+```{ojs}
+myarray = [7,1,9,3,10,4,5,6,2,8]
+```
 
 **d3.array** permet de manipuler les données. On peut par exemple remplacer notre exemple de tout à l'heure
 
 ```{ojs}
-{
-let a = [1,2,3,4,5,6,7,8,9,10]
-return a.sort()
-}
+myarray.sort()
 ```
 
 par :
 
 ```{ojs}
-{
-let a = [1,2,3,4,5,6,7,8,9,10]
-return d3.sort(a)
-}
+d3.sort(myarray)
 ```
 
-Mais d3, c'est surtout un framework de développement pour dessiner des visualisations à partir de données. C'est aujourd'hui un standard dans le domaine que tout le monde utilise. 
+Bien d'autres opérations sont possibles
 
-![](img/d3gallery.png)
+```{ojs}
+d3.min(myarray)
+d3.max(myarray)
+d3.mean(myarray)
+d3.median(myarray)
+d3.variance(myarray)
+d3.deviation(myarray)
+d3.cumsum(myarray)
+```
+
+Mais d3, c'est surtout un framework de développement pour dessiner des visualisations à partir de données. C'est aujourd'hui un standard dans le domaine que tout le monde utilise.
+
 
 
 ## Dessiner avec D3.js
@@ -487,10 +514,9 @@ On ajoute un cercle rouge avec `svg.append("circle")`
 }    
 ```
 
-Attention, les coordonnées [0,0] sont en haut à gauche.
+Attention, les coordonnées \[0,0\] sont en haut à gauche.
 
-![](img/canvas.png)
-<br/>On dessine un carré rouge avec `svg.append("rect")`
+![](img/canvas.png) <br/>On dessine un carré rouge avec `svg.append("rect")`
 
 ```{ojs}
 {
@@ -510,7 +536,6 @@ Attention, les coordonnées [0,0] sont en haut à gauche.
   return svg.node();
 }    
 ```
-
 
 On dessine une ligne avec `svg.append("line")`
 
@@ -584,14 +609,14 @@ On peut même faire des choses plus compliquées
     .attr("dominant-baseline", "baseline")
     .attr("font-size", `48px`)
     .text(
-      "And here, there is a text that follows a path. Pretty cool, isn't it? Yeah!"
+      "Et maintenant, voici un texte qui suit une ligne. C'est trop cool, non ?"
     );
 
   return svg.node();
 }
 ```
 
-## Dessiner des données avec D3.js et svg
+## Dessiner des données avec D3.js
 
 On crée des données fictives
 
@@ -631,6 +656,122 @@ Puis, on dessine un SVG.
 }
 ```
 
+Il est aussi possible de beaucoup d'autres choses graces aux méthodes proposées par d3.
+
+La fonction `d3.pie()` transforme les données en un objet contenant des informations pour dessiner des quartiers.
+
+
+```{ojs}
+pie = d3.pie().padAngle(0.1)
+pie(myData)
+```
+
+La fonction `d3.arc()` permet de dessiner ces quartiers.
+
+```{ojs}
+arc = d3.arc().innerRadius(45).outerRadius(220)
+```
+
+Ainsi, on a : 
+
+```{ojs}
+{
+  const height = 500;
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [-width / 2, -height / 2, width, height]);
+
+  svg
+    .append("g")
+    .attr("fill", "#e04a28")
+    .attr("stroke", "#000")
+    .attr("stroke-width", "1.5px")
+    .attr("stroke-linejoin", "round")
+    .selectAll("path")
+    .data(pie(myData))
+    .join("path")
+    .attr("d", arc.cornerRadius(3));
+
+  return svg.node();
+}
+```
+
+## Animer avec D3.js
+
+```{ojs}
+//| echo: false
+viewof anim = Inputs.button("OK", { label: "Lancer l'animation" })
+```
+
+```{ojs}
+//| echo: false
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 500, 60])
+    .style("background-color", "#CCC");
+
+  let moncercle = svg
+    .append("circle")
+    .attr("cx", 50)
+    .attr("cy", 30)
+    .attr("r", 25)
+    .attr("fill", "#e04a28");
+
+  if (anim) {
+    moncercle
+      .transition()
+      .duration(2000)
+      .attr("cx", 450)
+      .transition()
+      .delay(2000)
+      .duration(3000)
+      .attr("cx", 50)
+      .attr("r", 10)
+      .attr("fill", "blue")
+      .transition()
+      .attr("r", 25)
+      .attr("fill", "#e04a28");
+  }
+
+  return svg.node();
+}
+```
+
+```{ojs}
+//| eval: false
+{
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, 500, 60])
+    .style("background-color", "#CCC");
+
+  let moncercle = svg
+    .append("circle")
+    .attr("cx", 50)
+    .attr("cy", 30)
+    .attr("r", 25)
+    .attr("fill", "#e04a28");
+
+  if (anim) {
+    moncercle
+      .transition()
+      .duration(2000)
+      .attr("cx", 450)
+      .transition()
+      .delay(2000)
+      .duration(3000)
+      .attr("cx", 50)
+      .attr("r", 10)
+      .attr("fill", "blue")
+      .transition()
+      .attr("r", 25)
+      .attr("fill", "#e04a28");
+  }
+
+  return svg.node();
+}
+```
 ## Les Inputs
 
 Dans Observable, on a à disposition des *Inputs* directement prêts à l'emploi.
@@ -883,6 +1024,83 @@ Voilà la structure d'un geoJSON
 basemap
 ```
 
+On peut le visualiser avec Leaflet
+
+```{ojs}
+{
+  const container = yield htl.html`<div style="height: 500px;">`;
+  const map = L.map(container).setView([0, 0], 3);
+  L.geoJSON(basemap).addTo(map);
+}
+```
+
+## Faire une carte avec D3.js
+
+La fonction `d3.geoPath()` du module `d3.geo` permet de convertir un fond de carte en dessin svg. Cette fonction prend comme paramètre des fonctions de projections telles que définies dans les modules `d3.geo` `d3.geoprojection`. 
+
+On importe des données
+
+```{ojs}
+monde = FileAttachment("data/world.json").json()
+```
+
+On définit la façon dont on va transformer et afficher le geoJSON.
+
+```{ojs}
+myproj = d3.geoNaturalEarth1()
+path = d3.geoPath(myproj)
+```
+
+Puis, on dessine la carte 
+
+```{ojs}
+{
+  const height = 500
+  const svg = d3
+    .create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .style("width", "100%")
+    .style("height", "auto");
+
+// La sphère
+  svg
+    .append("g")
+    .append("path")
+    .datum({ type: "Sphere" })
+    .attr("fill", "#a9daeb")
+    .attr("d", path); 
+
+  // Les graticules
+  svg
+    .append("g")
+    .append("path")
+    .datum(d3.geoGraticule10())
+    .attr("d", path) 
+    .style("fill", "none")
+    .style("stroke", "white")
+    .style("stroke-width", 0.8)
+    .style("stroke-opacity", 0.5)
+    .style("stroke-dasharray", 2);
+
+  // DATUM
+  svg
+    .append("g")
+    .append("path")
+    .datum(monde)
+    .attr("fill", "#508bab")
+    .attr("fill-opacity", 0.9)
+    .attr("stroke", "white")
+    .attr("stroke-width", 0.2)
+    .attr("d", path); 
+
+  return svg.node();
+}
+```
+
+
+
+
+
 ## Interopérabilité R et OJS
 
 Dans `Quarto`, il est possible de combiner du code en R et du code en OJS.
@@ -972,8 +1190,113 @@ countries.substr(1, 300)
 Nous utilisons l'instruction javascript `JSON.parse` pour refabriquer un geojson valide.
 
 ```{ojs}
-JSON.parse(countries) 
+countries2 = JSON.parse(countries) 
+countries2
 ```
+
+```{ojs}
+{
+  const container = yield htl.html`<div style="height: 500px;">`;
+  const map = L.map(container).setView([0, 0], 2);
+  L.geoJSON(countries2).addTo(map);
+}
+```
+
+## Leaflet (L)
+
+On peut faire une carte avec Leaflet en quelques lignes. 
+
+```{ojs}
+{
+  const container = yield htl.html`<div style="height: 500px;">`;
+  const map = L.map(container).setView([6.34, 2.08], 12);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(
+    map
+  );
+}
+```
+
+
+## Plot
+
+C'est <ins>LA</ins> bibliothèque JavaScript pour faire des graphiques (et même des cartes). 
+
+### Les concepts
+
+Il n'y a pas de type de graphique prédéfini, mais des marques, et des transformations qu'il est possible de combiner pour déssiner n'importe quel type de graphique.
+
+![](img/plot_concepts.png)
+
+### Les marques
+
+![](img/plot_marks.png)
+
+### Les transformations
+
+![](img/plot_transform.png)
+
+### La sytaxe
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.rectY(olympians, Plot.binX({y: "count"}, {x: "weight"})),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+```{ojs}
+Plot.plot({
+  height: 180,
+  marks: [Plot.dot(cars, Plot.dodgeY({ x: "weight (lb)" }))]
+})
+```
+
+```{ojs}
+Plot.plot({
+  facet: {
+    data: penguins,
+    x: "species"
+  },
+  marks: [
+    Plot.frame(),
+    Plot.dot(penguins, { x: "culmen_length_mm", y: "culmen_depth_mm" })
+  ]
+})
+```
+
+
+## JavaScript ≠ ojs
+
+::: columns
+::: {.column width="49%"}
+OJS c'est du JavaScript + plein de bibliothèques pré chargées : <br/>
+
+| Symbol   | Name              | Version            |
+|----------|-------------------|--------------------|
+| \_       | Lodash            | 4.17.21            |
+| aq       | Arquero           | \${aq.version}     |
+| Arrow    | Apache Arrow      | 4.0.1              |
+| d3       | D3.js             | \${d3.version}     |
+| dot      | Graphviz          | 0.2.1              |
+| htl      | Hypertext Literal | \${htl.version}    |
+| Inputs   | Observable Inputs | \${Inputs.version} |
+| L        | Leaflet           | \${L.version}      |
+| mermaid  | Mermaid           | 9.1.6              |
+| Plot     | Observable Plot   | \${Plot.version}   |
+| SQLite   | SQL.js            | 1.7.0              |
+| topojson | TopoJSON Client   | 3.1.0              |
+| vl       | Vega, Vega-Lite   | 5.22.1, 5.2.0      |
+:::
+
+::: {.column width="49%"}
+OJS c'est aussi une évolution du langage javascript pour en faire un langage adapté à l'analyse et la visualisation de données sur le web.
+
+![](img/datascience.png)
+:::
+:::
+
 
 ## Librairies externes
 
@@ -1042,14 +1365,13 @@ Une bibliothèque JavaScript pour la cartographie thématique
 
 ![](img/logobertin.svg)
 
-On charge la bibliothèque avec l'instruction `require``
+On charge la bibliothèque avec l'instruction \`require\`\`
 
 ```{ojs}
-bertin = require("bertin@1.5.10")
+bertin = require("bertin@1.6")
 ```
 
-Le principe de la bibliothèque bertin est de proposer un outil permettant de réaliser rapidement des cartes thématiques variées sans faire appel à la programmation en JavaScript ni directement à la bibliothèque D3.js. 
-![](img/level.png)
+Le principe de la bibliothèque bertin est de proposer un outil permettant de réaliser rapidement des cartes thématiques variées sans faire appel à la programmation en JavaScript ni directement à la bibliothèque D3.js. ![](img/level.png)
 
 Elle permet de réaliser de nombreux types de cartes thématiques.
 
@@ -1106,7 +1428,6 @@ bertin.quickdraw(world2019)
 Inputs.table(bertin.properties.table(world2019))
 ```
 
-
 ## Syntaxe
 
 Avec `bertin`, on utilise la fonction `draw()` pour dessiner tous les types de cartes. La fonction prend en entrée un objet JavaScript contenant toutes les informations nécéssaires.
@@ -1123,7 +1444,7 @@ Chaque couche à afficher est définie par un type particulier qui définira le 
 
 La fonction `draw` permet de dessiner n'importe quel type de carte.
 
-La syntaxe minimale est la suivante : 
+La syntaxe minimale est la suivante :
 
 ```{ojs}
 bertin.draw({ layers: [ {geojson: world2019} ] })
@@ -1140,8 +1461,7 @@ bertin.draw({ layers: [
   ] })
 ```
 
-Avec l'argument `dorling: true`, on obtient un cartogramme de Dorling. 
-
+Avec l'argument `dorling: true`, on obtient un cartogramme de Dorling.
 
 ```{ojs}
 bertin.draw({ layers: [ 
@@ -1150,8 +1470,7 @@ bertin.draw({ layers: [
   ] })
 ```
 
-
-En remplaçant `bubble` par `square`, on obtient des carrés. 
+En remplaçant `bubble` par `square`, on obtient des carrés.
 
 ```{ojs}
 bertin.draw({ layers: [ 
@@ -1160,7 +1479,7 @@ bertin.draw({ layers: [
   ] })
 ```
 
-Grace au côté réactif d'Observable Javascript, on va donc pouvoir facilement construire des cartes paramétrables. 
+Grace au côté réactif d'Observable Javascript, on va donc pouvoir facilement construire des cartes paramétrables.
 
 ```{ojs}
 viewof k = Inputs.range([10, 100], {step: 1, value:50, label: "Rayon du plus grand cercle"})
@@ -1207,7 +1526,6 @@ bertin.draw({ layers: [
 
 La librairie est très flexible. En changeant `fill` par `stroke`, on place les couleurs sur les contours.
 
-
 ```{ojs}
 bertin.draw({ layers: [ 
   {type: "bubble", geojson: world2019, values: "POP", stroke: {type:"typo", values: "subregiond"}, strokeWidth:2, fill:"none"}, 
@@ -1218,7 +1536,6 @@ bertin.draw({ layers: [
 ## Habillage
 
 De nombreuses couches d'habillage sont disponibles.
-
 
 ```{ojs}
 bertin.draw({ layers: [ 
@@ -1231,7 +1548,6 @@ bertin.draw({ layers: [
   {type: "outline"}
   ] })
 ```
-
 
 Et on peut changer la projection.
 
@@ -1252,9 +1568,6 @@ layers: [
   ] })
 ```
 
-
-
-
 ## Documentation
 
 -   Le code source et la documentation complete de la librairie `bertin` est disponible ici : <https://github.com/neocarto/bertin>
@@ -1265,13 +1578,81 @@ layers: [
 
 ![](img/doc_observable.png){width:100%}<br/>
 
+## Bonus : combiner `bertin` et `geotoolbox`
+
+Quand on fait des cartes, on peut aussi avoir besoin de petite sopérations SIG simples (extractions des contours, agrégations, généralisation, centroides, etc.) C'est ce que permet de faire la librairie `geotoolbox`. 
+
+![](img/geotoolbox.png){100%}
+
+On charge la bibliothèque comme ceci : 
+
+```{ojs}
+geo = require("geotoolbox@1.9.3")
+```
+
+On charge le fond de carte de l'Afrique
+
+```{ojs}
+afr = FileAttachment("data/africa.json").json()
+```
+
+### Exemple : Buffer + Clip
+
+On selectionne le Bénin et on construit un buffer autour du pays. La distance est gérée par un slider. On intersecte les pays avec le buffer. Le tout en temps réel.
+
+```{ojs}
+ben = geo.filter(afr, d => d.id == "BEN")
+buff = geo.buffer(ben, { dist: distance })
+clip = geo.clip(afr, { clip: buff })
+```
+
+```{ojs}
+//| echo: false
+viewof distance = Inputs.range([50, 2000], { label: "Buffer", step: 1, value : 100 })
+```
+
+```{ojs}
+//| echo: false
+mapclip1 = bertin.draw({
+  params: {extent: afr},
+  layers: [
+    { type: "header", text: `${distance} km around Benin` },
+    {
+      geojson: ben,
+      strokeWidth: 1.1,
+      fill: "black"
+    },
+    {
+      geojson: buff,
+      strokeWidth: 3,
+      stroke: "#a66ecc",
+      fill: "none"
+    },
+     {
+      geojson: clip,
+      strokeWidth: 1,
+      stroke: "white",
+      fill: "#a66ecc"
+    },
+         {
+      geojson: afr,
+      strokeWidth: 5,
+      stroke: "none",
+      fill: "#CCC"
+    },
+    
+    
+
+  ]
+})
+```
+
 # Exercices
 
 Mise en pratique de `bertin` dans Quarto
 
 ::: header
-
-##
+## 
 
 <br/><br/>
 
@@ -1281,23 +1662,17 @@ Mise en pratique de `bertin` dans Quarto
 
 ::: columns
 ::: {.column width="49%"}
-<b>TP1</b><br/><br/>
-Exercice pour apprendre à réaliser des cartes interactives avec Quarto et la bibliothèque JavaScript bertin.<br/><br/> [https://ee-cist.github.io/CART3_cartodyn/TP1/docs/index.html](https://ee-cist.github.io/CART3_cartodyn/TP1/docs/index.html)
+<b>TP1</b><br/><br/> Exercice pour apprendre à réaliser des cartes interactives avec Quarto et la bibliothèque JavaScript bertin.<br/><br/> <https://ee-cist.github.io/CART3_cartodyn/TP1/docs/index.html>
 :::
 
 ::: {.column width="49%"}
-<b>TP2</b><br/><br/>
-Exercice pour apprendre à realiser une single page application avec bertin et Quarto.<br/><br/>[https://ee-cist.github.io/CART3_cartodyn/TP2/docs/index.html](https://ee-cist.github.io/CART3_cartodyn/TP2/docs/index.html)
+<b>TP2</b><br/><br/> Exercice pour apprendre à realiser une single page application avec bertin et Quarto.<br/><br/><https://ee-cist.github.io/CART3_cartodyn/TP2/docs/index.html>
 :::
 :::
-
-
 :::
-
 
 ::: header
-
-##
+## 
 
 <br/><br/>
 
@@ -1305,8 +1680,7 @@ Exercice pour apprendre à realiser une single page application avec bertin et Q
 
 <b>Voir en ligne</b><br/>[ee-cist.github.io/CART3_cartodyn/intro/docs](https://ee-cist.github.io/CART3_cartodyn/intro/docs/index.html)
 
-<b>Code source</b><br/>
-[github.com/EE-CIST/CART3_cartodyn/tree/main/intro](https://github.com/EE-CIST/CART3_cartodyn/tree/main/intro)
+<b>Code source</b><br/> [github.com/EE-CIST/CART3_cartodyn/tree/main/intro](https://github.com/EE-CIST/CART3_cartodyn/tree/main/intro)
 
 <br/>
 
@@ -1314,19 +1688,11 @@ Exercice pour apprendre à realiser une single page application avec bertin et Q
 
 ::: columns
 ::: {.column width="49%"}
-<b>Nicolas Lambert<br/>(France)</b><br/><br/>
-*nicolas.lambert@cnrs.fr<br/>https://twitter.com/neocartocnrs<br/>https://vis.social/@neocarto <br/>https://github.com/neocarto<br/>https://observablehq.com/@neocartocnrs*
+<b>Nicolas Lambert<br/>(France)</b><br/><br/> *nicolas.lambert\@cnrs.fr*<br/>https://twitter.com/neocartocnrs<br/>https://vis.social/@neocarto <br/>https://github.com/neocarto<br/>https://observablehq.com/@neocartocnrs
 :::
 
 ::: {.column width="49%"}
-<b>Manhamady Puedraogo<br/>(Burkina Faso)</b><br/><br/>
-*nonresse@gmail.com*
+<b>Manhamady Puedraogo<br/>(Burkina Faso)</b><br/><br/> *nonresse\@gmail.com*
 :::
 :::
-
-
-
-
-
 :::
-
