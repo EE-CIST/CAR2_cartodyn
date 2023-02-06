@@ -26,7 +26,9 @@ Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France)
 
 **Objectifs**
 
-Le but de ce TP est de réaliser une application de cartographie sur le monde sur une page web. Pour cela, nous nous basons sur un tableau de données contenant 6 variables issues de la banque mondiale, disponibles de 1990 à 2021. Elles ont été harmonisées par Claude Grasland.
+Le but de ce TP est de réaliser une application de cartographie sur le monde sur une page web. d'un point de vue technique, on parlera de *single page application* (SPA).
+
+Pour cela, nous nous basons sur un tableau de données contenant 6 variables issues de la banque mondiale, disponibles de 1990 à 2021. Elles ont été harmonisées par Claude Grasland.
 
 ```{ojs}
 //| echo: false

@@ -276,7 +276,7 @@ return a.sort()
 
 **C'est le langage du web :**
 
-- Il n'y a rien à installer *en dur*"* sur les ordinateurs. Il faut juste un navigateur web.
+- Il n'y a rien à installer *"en dur*"* sur les ordinateurs. Il faut juste un navigateur web.
 - Il tourne partout (compilation just in time)
 - L'implémentation de Javascript dans les navigateurs est de plus en plus rapide 🚀
 - Le langage est aujourd'hui standardisé (ECMA)
@@ -285,9 +285,9 @@ return a.sort()
 
 **Certes, JavaScript n'a pas été conçu pour faire de l'analyse de données. Mais :**
 
--   le langage peut être étendu pour mieux le prendre en charge.
--   de nombreuses librairies permettent déjà de manipuler et représenter les données.
--   Les performanbces s'émliorent encore avec WebGPU, qui permet de faire des calculs particulièrement efficaces pour l'execution d'algorithmes tres paralleles comme le traitement d'image, le machine learning et le rendu 3D. 
+-   Le langage peut être étendu pour mieux le prendre en charge.
+-   De nombreuses librairies permettent déjà de manipuler et représenter les données.
+-   Les performances s'améliorent encore avec WebGPU, qui permet de faire des calculs particulièrement efficaces pour l'execution d'algorithmes tres paralleles comme le traitement d'image, le machine learning et le rendu 3D. 
 
 ![](img/webgpu.png){height="80"}
 
@@ -315,7 +315,7 @@ L'<b>Observable javascript (ojs)</b> est un ensemble d'améliorations apportées
 
 ![](img/observable.png){height="200"}
 
-C'est aussi une <b>plateforme web qui héberge des *notebooks*</b> sur la visualisation de données. Les notebooks sont comme des billets de blog. Ils contiennent du texte, des images et du contenu multimédia. Ils peuvent être rangés dans des collections. Ils sont disponibles en ligne via une url. Comme on peut s'y attendre, ils contiennent aussi des lignes de code. L'objectif : faire de la Programmation lettrée (<b>literate programming</b>).
+C'est aussi une <b>plateforme web disponilble à l'adresse **https://observablehq.com/**  qui héberge des *notebooks*</b> *computationnels* sur la visualisation de données. Les notebooks sont comme des billets de blog. Ils contiennent du texte, des images et du contenu multimédia. Ils peuvent être rangés dans des collections. Ils sont disponibles en ligne via une url. Comme on peut s'y attendre, ils contiennent aussi des lignes de code. L'objectif : faire de la Programmation lettrée (<b>literate programming</b>).
 
 ![](img/obs.png)
 
@@ -331,8 +331,11 @@ Javascript for data Analysis, par Mike Bostock <https://towardsdatascience.com/j
 Quarto® est un système de publication scientifique et technique à code source ouvert basé sur Pandoc.
 
 ![](img/quarto.png){height="50"}
+Quarto permet de créer des documents markdown, des articles, des rapports, des présentations, des sites web, des blogs et des livres, aux formats HTML, PDF, Word, ePub, etc.
 
 Il permet de créer un contenu dynamique dans différents langages : Python, R, Julia et **Observable JavaScript**.
+
+Cela permet de créer des documents, des rapports et des analyses entièrement reproductibles
 
 ![](img/quartoojs.png)
 
@@ -421,11 +424,11 @@ multi = (a, b) => a * b
 multi(3, 8)
 ```
 
-Ce parti pris fort, peut être déroutant. Mais il a un gros avantage. Il permet d'organiser un document indépendemment de la façon dont on code. Cela petrmet par exemple de mettre une carte en haut de la page et en annexe technique tout en bas le code qui la génère.
+Ce parti pris fort, peut être déroutant. Mais il a un gros avantage. Il permet d'organiser un document indépendemment de la façon dont on code. Cela permet par exemple de mettre une carte en haut de la page et en annexe technique tout en bas le code qui la génère.
 
 ## D3.js
 
-L'OJS a été créé par Mike Bostock, qui est aussi le developpeur de la bibliothèue **D3.js** (ou D3). D3 a été dircetement intégrée à l'Observable JavaScript. 
+L'OJS a été créé par Mike Bostock, qui est aussi le developpeur de la bibliothèque **D3.js** (ou D3). D3 a été dircetement intégrée à l'Observable JavaScript. 
 
 ![](img/logo-D3.png){height="200"}
 
@@ -433,15 +436,15 @@ D3.js est une bibliothèque graphique JavaScript développée par Mike Bostock q
 
 ![](img/d3gallery.png)
 
-- D3 est populaire (200 millions de téléchargements et 100 000 étoiles)
-- D3 est flexible (approche bas niveau qui permetd e tout faire)
+- D3 est populaire (200 millions de téléchargements et 100 000 ⭐ sur Github)
+- D3 est flexible (approche bas niveau qui permet e tout faire)
 - D3 est réputé pour ses animations et ses interactions. 
 
 **Cette puissance a, bien sûr, un coût. Il y a beaucoup à apprendre : D3 compte plus de trente modules et un millier de méthodes.**
 
 ![](img/d3github.png)
 
-Mais c'est le langage de base pour faire de la visualisation de données pour le web. La librairie `Plot` (que nous venons de voir) et la librairie `bertin` (que nous allons voir) sont tous deux construits avec D3.
+Mais c'est le langage de base pour faire de la visualisation de données pour le web. La librairie `Plot` et la librairie `bertin` sont tous deux construits avec D3.
 
 ```{ojs}
 myarray = [7,1,9,3,10,4,5,6,2,8]
@@ -480,6 +483,9 @@ Mais d3, c'est surtout un framework de développement pour dessiner des visualis
 Avec D3, il est possible de dessiner des images vectorielles au format SVG en manupilant le DOM.
 
 *Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d'examiner et de modifier le contenu du navigateur web. Par le DOM, la composition d'une page web est représentée sous forme d'un arbre avec des objets dedans.*
+
+![](img/DOM.png)
+
 
 Créons un document svg, de 500 pixels de large, 60 pixels de haut et avec du gris en couleur de fond.
 
@@ -833,7 +839,7 @@ viewof textarea = Inputs.textarea()
 textarea
 ```
 
-### 👉 data
+### 👉 date
 
 ```{ojs}
 viewof date = Inputs.date()
@@ -886,6 +892,7 @@ Par exemple :
 ```{ojs}
 md`Je m'appelle **${nom}** et j'ai **${age}** ans :-)`
 ```
+
 
 Reprenons notre SVG de tout à l'heure
 
@@ -1036,7 +1043,7 @@ On peut le visualiser avec Leaflet
 
 ## Faire une carte avec D3.js
 
-La fonction `d3.geoPath()` du module `d3.geo` permet de convertir un fond de carte en dessin svg. Cette fonction prend comme paramètre des fonctions de projections telles que définies dans les modules `d3.geo` `d3.geoprojection`. 
+La fonction `d3.geoPath()` du module `d3.geo` permet de convertir un fond de carte en dessin svg. Cette fonction prend comme paramètre des fonctions de projections telles que définies dans les modules `d3.geo` &  `d3.geoprojection`. 
 
 On importe des données
 
@@ -1345,14 +1352,20 @@ On l'a dit tout à l'heure, Observable c'est aussi une plateforme web hebergeant
 Si on a une connexion internet, il ets possible d'importer n'importe quelle cellule de n'importe quel notebook avec la fonction `import`. Dit autrement, toutes les notebooks hébergés sur observablehq.com fonctionnent comme des api.
 
 ```{ojs}
-import {sketch} from "@neocartocnrs/cartographic-doodles"
-import {africa} from "@neocartocnrs/bertin-js-mashroom"
+import {SankeyChart} from "@d3/sankey"
+import {energy} from "@d3/sankey"
 ```
 
 Puis, on peut utiliser cette fonction.
 
 ```{ojs}
-sketch(africa)
+chart = SankeyChart({
+  links: energy
+}, {
+  nodeGroup: d => d.id.split(/\W/)[0], // take first word for color
+  width,
+  height: 600
+})
 ```
 
 # La libraririe bertin
@@ -1398,6 +1411,12 @@ Les données attributaires
 stats = FileAttachment("data/worldbank_data.csv").csv()
 ```
 
+On regarde les données
+
+```{ojs}
+Inputs.table(stats)
+```
+
 On ne garde que l'années 2019
 
 ```{ojs}
@@ -1405,11 +1424,10 @@ stats2019 = stats.filter(d => d.date == 2019)
 ```
 
 ```{ojs}
-//| echo: false
-stats2019
+Inputs.table(stats2019)
 ```
 
-On réalise une jointure grace aux fonctionnalités `match` et `merge` disponibles dans `bertin`.
+On réalise une jointure grâce aux fonctionnalités `match` et `merge` disponibles dans `bertin`.
 
 ```{ojs}
 bertin.match(world, "id", stats2019, "iso3c")
@@ -1572,7 +1590,7 @@ layers: [
 
 -   Le code source et la documentation complete de la librairie `bertin` est disponible ici : <https://github.com/neocarto/bertin>
 
--   Toutes les verions de la librairies sont accesibles sur npm : <https://www.npmjs.com/package/bertin>
+-   Toutes les versions de la librairies sont accesibles sur npm : <https://www.npmjs.com/package/bertin>
 
 -   De nombreux exemples sont accessibles sur la plateforme Observable : [https://observablehq.com/collection/\@neocartocnrs/bertin](https://observablehq.com/collection/@neocartocnrs/bertin)
 
