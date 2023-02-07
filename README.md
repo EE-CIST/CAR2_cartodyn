@@ -1,8 +1,8 @@
 # CART3 - Cartographie dynamique
 
-(WORK IN PROGRESS)
+![](img/banner.png)
 
-Supports de cours réalisés pour l'école thématique 
+Supports de cours réalisés pour l'école thématique du CIST [ee2022](https://cist.cnrs.fr/formations/ee2022-methodes-et-outils-des-sciences-des-territoires-une-perspective-nord-sud/) : Méthodes et outils des sciences des territoires : une perspective Nord-Sud, Sud-Nord et Sud-Sud. 
 
 **Responsables pédagogiques**
 
