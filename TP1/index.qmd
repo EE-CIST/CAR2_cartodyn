@@ -615,8 +615,6 @@ bertin.draw({
 
 # 4. À vous de jouer
 
-<br/>
-
 ::: up2u
 Choisissez une donnée quantitative relative à cartographier dans la liste suivante (sauf l'idh):
 
