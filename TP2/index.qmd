@@ -357,7 +357,7 @@ Inputs.table(statsyear, {  columns: [
 
 On souhaite réaliser un diagramme en barres avec les N pays qui ont les plus fortes valeurs sur l'indicateur séléctionné. Nous récupérons donc l'objet `stats` qui contient les données, nous le trions, et ne gardons que les N premières valeurs. N est défini dans un slider. Le graphique est réalisé avec la bibliothèqe Plot. 
 
-Ajoutez le code ci-dessous chuck <ins>graphique</ins>.
+Ajoutez le code ci-dessous chuck <ins>**graphique**</ins>.
 
 ::: copy
 ```{ojs}
@@ -411,6 +411,6 @@ viewof year = Scrubber(d3.range(1990, 2019), { autoplay: false })
 ```
 :::
 
-Pour encore plus de fun 🥳, vous pouvez aussi vous amuser à utiliser ces *scrubbers* à la place du slider Rotate (x).
+Et pour encore plus de fun 🥳, vous pouvez aussi vous amuser à utiliser un *scrubber* à la place du slider Rotate (x).
 
 
