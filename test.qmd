@@ -1,0 +1,15 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+```{ojs}
+{
+  const container = yield  htl.html`<div style="height: 500px;">`;
+  const map = L.map(container).setView([6.34, 2.08], 12);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(
+    map
+  );
+}
+```

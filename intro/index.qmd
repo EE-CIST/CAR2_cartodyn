@@ -184,7 +184,7 @@ Depuis 2015 (ES6 ou ES2015), le langage JavaScript est mature. Performant. Et es
 
 De nouvelles fonctionnalitées sont ajoutées au langage chaque année.
 
-Voir : [observablehq.com/@robertbatty/ecmascript-2015-2022](https://observablehq.com/@robertbatty/ecmascript-2015-2022)
+Voir : [observablehq.com/\@robertbatty/ecmascript-2015-2022](https://observablehq.com/@robertbatty/ecmascript-2015-2022)
 
 ## Une grande communauté
 
@@ -202,7 +202,7 @@ Il y a à ce jour plus de 2 millions de packages disponibles sur **npm**<br/><im
 
 ## Un langage souvent décrié 👎
 
-JavaScript a souvent mauvaise réputation chez les développeurs. Et pour cause : 
+JavaScript a souvent mauvaise réputation chez les développeurs. Et pour cause :
 
 ### Des absurdités logiques
 
@@ -253,7 +253,6 @@ return someVar == false
 
 Heureusement, il y a le triple égal
 
-
 ```{ojs}
 {
 let someVar = 0
@@ -276,26 +275,26 @@ return a.sort()
 
 **C'est le langage du web :**
 
-- Il n'y a rien à installer *"en dur*"* sur les ordinateurs. Il faut juste un navigateur web.
-- Il tourne partout (compilation just in time)
-- L'implémentation de Javascript dans les navigateurs est de plus en plus rapide 🚀
-- Le langage est aujourd'hui standardisé (ECMA)
-- Grande communauté. Beaucoup de ressources et tutos
-- Beaucoup de choses déjà développées : Plus de 2 millions de packages sur npm
+-   Il n'y a rien à installer *"en dur*"\* sur les ordinateurs. Il faut juste un navigateur web.
+-   Il tourne partout (compilation just in time)
+-   L'implémentation de Javascript dans les navigateurs est de plus en plus rapide 🚀
+-   Le langage est aujourd'hui standardisé (ECMA)
+-   Grande communauté. Beaucoup de ressources et tutos
+-   Beaucoup de choses déjà développées : Plus de 2 millions de packages sur npm
 
 **Certes, JavaScript n'a pas été conçu pour faire de l'analyse de données. Mais :**
 
 -   Le langage peut être étendu pour mieux le prendre en charge.
 -   De nombreuses librairies permettent déjà de manipuler et représenter les données.
--   Les performances s'améliorent encore avec WebGPU, qui permet de faire des calculs particulièrement efficaces pour l'execution d'algorithmes tres paralleles comme le traitement d'image, le machine learning et le rendu 3D. 
+-   Les performances s'améliorent encore avec WebGPU, qui permet de faire des calculs particulièrement efficaces pour l'execution d'algorithmes tres paralleles comme le traitement d'image, le machine learning et le rendu 3D.
 
 ![](img/webgpu.png){height="80"}
 
-- Avec WebAssembly, il est désormais possible d'incorporer des briques développées dans d'autres langages (C, rust, go...) à l'interieur des bibliothèques JavaCcript. 
+-   Avec WebAssembly, il est désormais possible d'incorporer des briques développées dans d'autres langages (C, rust, go...) à l'interieur des bibliothèques JavaCcript.
 
 ![](img/jswasm.png){height="70"}
 
-Du coup, certains pensent que le JavaScript est le langage de demain pour traiter et analyser des données. 
+Du coup, certains pensent que le JavaScript est le langage de demain pour traiter et analyser des données.
 
 ![](img/towards.png)
 
@@ -315,7 +314,7 @@ L'<b>Observable javascript (ojs)</b> est un ensemble d'améliorations apportées
 
 ![](img/observable.png){height="200"}
 
-C'est aussi une <b>plateforme web disponilble à l'adresse **https://observablehq.com/**  qui héberge des *notebooks*</b> *computationnels* sur la visualisation de données. Les notebooks sont comme des billets de blog. Ils contiennent du texte, des images et du contenu multimédia. Ils peuvent être rangés dans des collections. Ils sont disponibles en ligne via une url. Comme on peut s'y attendre, ils contiennent aussi des lignes de code. L'objectif : faire de la Programmation lettrée (<b>literate programming</b>).
+C'est aussi une <b>plateforme web disponilble à l'adresse **https://observablehq.com/** qui héberge des *notebooks*</b> *computationnels* sur la visualisation de données. Les notebooks sont comme des billets de blog. Ils contiennent du texte, des images et du contenu multimédia. Ils peuvent être rangés dans des collections. Ils sont disponibles en ligne via une url. Comme on peut s'y attendre, ils contiennent aussi des lignes de code. L'objectif : faire de la Programmation lettrée (<b>literate programming</b>).
 
 ![](img/obs.png)
 
@@ -325,13 +324,11 @@ Reactive, reproducible, collaborative: computational notebooks evolve, par Jeffr
 
 Javascript for data Analysis, par Mike Bostock <https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7>
 
-
 ## Observable dans Quarto
 
 Quarto® est un système de publication scientifique et technique à code source ouvert basé sur Pandoc.
 
-![](img/quarto.png){height="50"}
-Quarto permet de créer des documents markdown, des articles, des rapports, des présentations, des sites web, des blogs et des livres, aux formats HTML, PDF, Word, ePub, etc.
+![](img/quarto.png){height="50"} Quarto permet de créer des documents markdown, des articles, des rapports, des présentations, des sites web, des blogs et des livres, aux formats HTML, PDF, Word, ePub, etc.
 
 Il permet de créer un contenu dynamique dans différents langages : Python, R, Julia et **Observable JavaScript**.
 
@@ -428,17 +425,17 @@ Ce parti pris fort, peut être déroutant. Mais il a un gros avantage. Il permet
 
 ## D3.js
 
-L'OJS a été créé par Mike Bostock, qui est aussi le developpeur de la bibliothèque **D3.js** (ou D3). D3 a été dircetement intégrée à l'Observable JavaScript. 
+L'OJS a été créé par Mike Bostock, qui est aussi le developpeur de la bibliothèque **D3.js** (ou D3). D3 a été dircetement intégrée à l'Observable JavaScript.
 
 ![](img/logo-D3.png){height="200"}
 
-D3.js est une bibliothèque graphique JavaScript développée par Mike Bostock qui permet l'affichage de données numériques sous une forme graphique et dynamique. 
+D3.js est une bibliothèque graphique JavaScript développée par Mike Bostock qui permet l'affichage de données numériques sous une forme graphique et dynamique.
 
 ![](img/d3gallery.png)
 
-- D3 est populaire (200 millions de téléchargements et 100 000 ⭐ sur Github)
-- D3 est flexible (approche bas niveau qui permet e tout faire)
-- D3 est réputé pour ses animations et ses interactions. 
+-   D3 est populaire (200 millions de téléchargements et 100 000 ⭐ sur Github)
+-   D3 est flexible (approche bas niveau qui permet e tout faire)
+-   D3 est réputé pour ses animations et ses interactions.
 
 **Cette puissance a, bien sûr, un coût. Il y a beaucoup à apprendre : D3 compte plus de trente modules et un millier de méthodes.**
 
@@ -476,8 +473,6 @@ d3.cumsum(myarray)
 
 Mais d3, c'est surtout un framework de développement pour dessiner des visualisations à partir de données. C'est aujourd'hui un standard dans le domaine que tout le monde utilise.
 
-
-
 ## Dessiner avec D3.js
 
 Avec D3, il est possible de dessiner des images vectorielles au format SVG en manupilant le DOM.
@@ -485,7 +480,6 @@ Avec D3, il est possible de dessiner des images vectorielles au format SVG en ma
 *Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d'examiner et de modifier le contenu du navigateur web. Par le DOM, la composition d'une page web est représentée sous forme d'un arbre avec des objets dedans.*
 
 ![](img/DOM.png)
-
 
 Créons un document svg, de 500 pixels de large, 60 pixels de haut et avec du gris en couleur de fond.
 
@@ -666,7 +660,6 @@ Il est aussi possible de beaucoup d'autres choses graces aux méthodes proposée
 
 La fonction `d3.pie()` transforme les données en un objet contenant des informations pour dessiner des quartiers.
 
-
 ```{ojs}
 pie = d3.pie().padAngle(0.1)
 pie(myData)
@@ -678,7 +671,7 @@ La fonction `d3.arc()` permet de dessiner ces quartiers.
 arc = d3.arc().innerRadius(45).outerRadius(220)
 ```
 
-Ainsi, on a : 
+Ainsi, on a :
 
 ```{ojs}
 {
@@ -778,6 +771,7 @@ viewof anim = Inputs.button("OK", { label: "Lancer l'animation" })
   return svg.node();
 }
 ```
+
 ## Les Inputs
 
 Dans Observable, on a à disposition des *Inputs* directement prêts à l'emploi.
@@ -892,7 +886,6 @@ Par exemple :
 ```{ojs}
 md`Je m'appelle **${nom}** et j'ai **${age}** ans :-)`
 ```
-
 
 Reprenons notre SVG de tout à l'heure
 
@@ -1043,7 +1036,7 @@ On peut le visualiser avec Leaflet
 
 ## Faire une carte avec D3.js
 
-La fonction `d3.geoPath()` du module `d3.geo` permet de convertir un fond de carte en dessin svg. Cette fonction prend comme paramètre des fonctions de projections telles que définies dans les modules `d3.geo` &  `d3.geoprojection`. 
+La fonction `d3.geoPath()` du module `d3.geo` permet de convertir un fond de carte en dessin svg. Cette fonction prend comme paramètre des fonctions de projections telles que définies dans les modules `d3.geo` & `d3.geoprojection`.
 
 On importe des données
 
@@ -1058,7 +1051,7 @@ myproj = d3.geoNaturalEarth1()
 path = d3.geoPath(myproj)
 ```
 
-Puis, on dessine la carte 
+Puis, on dessine la carte
 
 ```{ojs}
 {
@@ -1103,10 +1096,6 @@ Puis, on dessine la carte
   return svg.node();
 }
 ```
-
-
-
-
 
 ## Interopérabilité R et OJS
 
@@ -1211,11 +1200,11 @@ countries2
 
 ## Leaflet (L)
 
-On peut faire une carte avec Leaflet en quelques lignes. 
+On peut faire une carte avec Leaflet en quelques lignes.
 
 ```{ojs}
 {
-  const container = yield htl.html`<div style="height: 500px;">`;
+  const container = yield  htl.html`<div style="height: 500px;">`;
   const map = L.map(container).setView([6.34, 2.08], 12);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(
     map
@@ -1223,10 +1212,9 @@ On peut faire une carte avec Leaflet en quelques lignes.
 }
 ```
 
-
 ## Plot
 
-C'est <ins>LA</ins> bibliothèque JavaScript pour faire des graphiques (et même des cartes). 
+C'est <ins>LA</ins> bibliothèque JavaScript pour faire des graphiques (et même des cartes).
 
 ### Les concepts
 
@@ -1273,7 +1261,6 @@ Plot.plot({
 })
 ```
 
-
 ## JavaScript ≠ ojs
 
 ::: columns
@@ -1303,7 +1290,6 @@ OJS c'est aussi une évolution du langage javascript pour en faire un langage ad
 ![](img/datascience.png)
 :::
 :::
-
 
 ## Librairies externes
 
@@ -1598,11 +1584,11 @@ layers: [
 
 ## Bonus : combiner `bertin` et `geotoolbox`
 
-Quand on fait des cartes, on peut aussi avoir besoin de petite sopérations SIG simples (extractions des contours, agrégations, généralisation, centroides, etc.) C'est ce que permet de faire la librairie `geotoolbox`. 
+Quand on fait des cartes, on peut aussi avoir besoin de petite sopérations SIG simples (extractions des contours, agrégations, généralisation, centroides, etc.) C'est ce que permet de faire la librairie `geotoolbox`.
 
 ![](img/geotoolbox.png){100%}
 
-On charge la bibliothèque comme ceci : 
+On charge la bibliothèque comme ceci :
 
 ```{ojs}
 geo = require("geotoolbox@1.9.3")
