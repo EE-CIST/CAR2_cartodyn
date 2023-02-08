@@ -20,7 +20,7 @@ execute:
   echo: true
 ---
 
-# 
+#
 
 **Responsables pédagogiques**
 
@@ -1204,6 +1204,7 @@ On peut faire une carte avec Leaflet en quelques lignes.
 
 ```{ojs}
 {
+  html`<link href="./lib/leaflet.css" rel="stylesheet" />`
   const container = yield  htl.html`<div style="height: 500px;">`;
   const map = L.map(container).setView([6.34, 2.08], 12);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(
@@ -1700,3 +1701,4 @@ Mise en pratique de `bertin` dans Quarto
 :::
 :::
 :::
+
