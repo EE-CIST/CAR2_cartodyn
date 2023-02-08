@@ -34,7 +34,7 @@ Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France)
 
 ## Petite histoire de la cartographie {background-image="img/I.01.histoire.png" background-size="contain"}
 
-Da la préhistoire à nos jours
+De la préhistoire à nos jours
 
 ::: footer
 Lambert, N., Zanin C. (2019). Mad Maps - L'Atlas qui va changer votre vision du monde (p. 144p). Armand Colin.
@@ -276,10 +276,10 @@ return a.sort()
 **C'est le langage du web :**
 
 -   Il n'y a rien à installer *"en dur*"\* sur les ordinateurs. Il faut juste un navigateur web.
--   Il tourne partout (compilation just in time)
+-   Il tourne partout et s'execute dans votre navigateur web (compilation just in time)
 -   L'implémentation de Javascript dans les navigateurs est de plus en plus rapide 🚀
 -   Le langage est aujourd'hui standardisé (ECMA)
--   Grande communauté. Beaucoup de ressources et tutos
+-   Grande communauté. Beaucoup de ressources et tutos, conférences sur youtube.
 -   Beaucoup de choses déjà développées : Plus de 2 millions de packages sur npm
 
 **Certes, JavaScript n'a pas été conçu pour faire de l'analyse de données. Mais :**
@@ -290,7 +290,7 @@ return a.sort()
 
 ![](img/webgpu.png){height="80"}
 
--   Avec WebAssembly, il est désormais possible d'incorporer des briques développées dans d'autres langages (C, rust, go...) à l'interieur des bibliothèques JavaCcript.
+-   Avec WebAssembly, il est désormais possible d'incorporer des briques développées dans d'autres langages (C, rust, go...) à l'interieur des bibliothèques JavaScript.
 
 ![](img/jswasm.png){height="70"}
 
@@ -324,11 +324,46 @@ Reactive, reproducible, collaborative: computational notebooks evolve, par Jeffr
 
 Javascript for data Analysis, par Mike Bostock <https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7>
 
+## Observable dans Observable
+
+Pour utiliser Observable, on peut donc créer un compte avec une adresse email. Ca permet : 
+
+- d'héberger son code et ses textes
+- partager son travail
+- voir ce que font les autres, faire de la veille, Suivre les compte de son choix (comme sur une réseau social)
+- échanger avec la **<ins>communauté</ins>** (commentaires, forum, ...)
+- travailler à plusieurs sur un même document
+- se connecter à des bases de données ou des fichiers dans le cloud (google sheet)
+- travailler sans rien avoir à installer sur son ordinateur
+- concevoir des visualisations et les embarquer facilement dans des sites web.
+
+Il faut bien sur avoir une bonne connexion internet
+
+![](img/observable2.png)
+
+Mais, Observable n'est pas completement gratuit.
+
+Les comptes gratuits permettent de tout faire, mais obligent à travailler de façon publique. Tout ce qu'on écrit est directement visible en ligne. Pour travailler de façon privée, il faut souscrire à un compte pro 😟
+
+![](img/princing.png)
+
+Heureusement, les comptes pro sont gratuits pour l'enseignement supérieur et la recherche. Tout universitaire peut donc créer un compte et l'utiliser pour sa recherche ou l'enseignement 🔬
+
+![](img/observable_teach.png)
+
+⚠️ Attention, Observablehq est une société privée. Ils peuvent donc changer ces conditions ⚠️
+
 ## Observable dans Quarto
+
+Si on ne souhaite pas créer de compte sur observablehq, il est possible de faire du Observable sans Observable, en travaillant avec le logiciel Quarto. En effet, **<ins>le runtime d'Observable est Open Source</ins>** et peut donc être utilisé dans d'autres contextes et dans d'autres logiciels. Cela permet aussi de travailler en local sur son ordinateur sans connexion internet.
+
+**Qu'est ce que Quarto® ?**
 
 Quarto® est un système de publication scientifique et technique à code source ouvert basé sur Pandoc.
 
-![](img/quarto.png){height="50"} Quarto permet de créer des documents markdown, des articles, des rapports, des présentations, des sites web, des blogs et des livres, aux formats HTML, PDF, Word, ePub, etc.
+![](img/quarto.png){height="50"}
+
+Quarto permet de créer des documents markdown, des articles, des rapports, des présentations, des sites web, des blogs et des livres, aux formats HTML, PDF, Word, ePub, etc.
 
 Il permet de créer un contenu dynamique dans différents langages : Python, R, Julia et **Observable JavaScript**.
 
@@ -434,15 +469,14 @@ D3.js est une bibliothèque graphique JavaScript développée par Mike Bostock q
 ![](img/d3gallery.png)
 
 -   D3 est populaire (200 millions de téléchargements et 100 000 ⭐ sur Github)
--   D3 est flexible (approche bas niveau qui permet e tout faire)
+-   D3 est flexible (approche bas niveau qui permet de tout faire)
 -   D3 est réputé pour ses animations et ses interactions.
 
-**Cette puissance a, bien sûr, un coût. Il y a beaucoup à apprendre : D3 compte plus de trente modules et un millier de méthodes.**
+**Cette puissance a bien sûr un coût. Il y a beaucoup à apprendre : D3 compte plus de trente modules et un millier de méthodes.**
 
 ![](img/d3github.png)
 
-Mais c'est le langage de base pour faire de la visualisation de données pour le web. La librairie `Plot` et la librairie `bertin` sont tous deux construits avec D3.
-
+Mais c'est le langage de base pour faire de la visualisation de données pour le web. 
 ```{ojs}
 myarray = [7,1,9,3,10,4,5,6,2,8]
 ```
@@ -472,6 +506,8 @@ d3.cumsum(myarray)
 ```
 
 Mais d3, c'est surtout un framework de développement pour dessiner des visualisations à partir de données. C'est aujourd'hui un standard dans le domaine que tout le monde utilise.
+
+D3 est aussi à la base de nombreuses bibliothèques JavaScript, comme les librairie `Plot` et `bertin` que nous allons voir.
 
 ## Dessiner avec D3.js
 
@@ -1055,7 +1091,7 @@ Puis, on dessine la carte
 
 ```{ojs}
 {
-  const height = 500
+  const height = 1000
   const svg = d3
     .create("svg")
     .attr("viewBox", [0, 0, width, height])
@@ -1198,6 +1234,37 @@ countries2
 }
 ```
 
+
+## JavaScript ≠ ojs
+
+::: columns
+::: {.column width="49%"}
+OJS c'est du JavaScript + plein de bibliothèques pré chargées : <br/>
+
+| Symbol   | Name              | Version            |
+|----------|-------------------|--------------------|
+| \_       | Lodash            | 4.17.21            |
+| aq       | Arquero           | \${aq.version}     |
+| Arrow    | Apache Arrow      | 4.0.1              |
+| d3       | D3.js             | \${d3.version}     |
+| dot      | Graphviz          | 0.2.1              |
+| htl      | Hypertext Literal | \${htl.version}    |
+| Inputs   | Observable Inputs | \${Inputs.version} |
+| L        | Leaflet           | \${L.version}      |
+| mermaid  | Mermaid           | 9.1.6              |
+| Plot     | Observable Plot   | \${Plot.version}   |
+| SQLite   | SQL.js            | 1.7.0              |
+| topojson | TopoJSON Client   | 3.1.0              |
+| vl       | Vega, Vega-Lite   | 5.22.1, 5.2.0      |
+:::
+
+::: {.column width="49%"}
+OJS c'est aussi une évolution du langage javascript pour en faire un langage adapté à l'analyse et la visualisation de données sur le web.
+
+![](img/datascience.png)
+:::
+:::
+
 ## Leaflet (L)
 
 On peut faire une carte avec Leaflet en quelques lignes.
@@ -1261,36 +1328,6 @@ Plot.plot({
   ]
 })
 ```
-
-## JavaScript ≠ ojs
-
-::: columns
-::: {.column width="49%"}
-OJS c'est du JavaScript + plein de bibliothèques pré chargées : <br/>
-
-| Symbol   | Name              | Version            |
-|----------|-------------------|--------------------|
-| \_       | Lodash            | 4.17.21            |
-| aq       | Arquero           | \${aq.version}     |
-| Arrow    | Apache Arrow      | 4.0.1              |
-| d3       | D3.js             | \${d3.version}     |
-| dot      | Graphviz          | 0.2.1              |
-| htl      | Hypertext Literal | \${htl.version}    |
-| Inputs   | Observable Inputs | \${Inputs.version} |
-| L        | Leaflet           | \${L.version}      |
-| mermaid  | Mermaid           | 9.1.6              |
-| Plot     | Observable Plot   | \${Plot.version}   |
-| SQLite   | SQL.js            | 1.7.0              |
-| topojson | TopoJSON Client   | 3.1.0              |
-| vl       | Vega, Vega-Lite   | 5.22.1, 5.2.0      |
-:::
-
-::: {.column width="49%"}
-OJS c'est aussi une évolution du langage javascript pour en faire un langage adapté à l'analyse et la visualisation de données sur le web.
-
-![](img/datascience.png)
-:::
-:::
 
 ## Librairies externes
 
@@ -1365,10 +1402,20 @@ Une bibliothèque JavaScript pour la cartographie thématique
 
 ![](img/logobertin.svg)
 
-On charge la bibliothèque avec l'instruction \`require\`\`
+On charge la bibliothèque avec l'instruction `require` en indiquant le numéro de version.
 
 ```{ojs}
 bertin = require("bertin@1.6")
+```
+
+Si on souhaite travailler sans connexion internet, il est possible de télécharger la bibliotheque dans un dossier, puis d'indiquer le lien vers ce dossier.
+
+Lien : [https://cdn.jsdelivr.net/npm/bertin@1.6.1](https://cdn.jsdelivr.net/npm/bertin@1.6.1)
+
+```{ojs}
+//| echo: true
+//| eval: false
+bertin = require("./lib/bertin.js")
 ```
 
 Le principe de la bibliothèque bertin est de proposer un outil permettant de réaliser rapidement des cartes thématiques variées sans faire appel à la programmation en JavaScript ni directement à la bibliothèque D3.js. ![](img/level.png)
@@ -1439,12 +1486,6 @@ Avec `bertin`, on utilise la fonction `draw()` pour dessiner tous les types de c
 
 ![](img/bertin_code.png)
 
-## Types
-
-Chaque couche à afficher est définie par un type particulier qui définira le type de rendu.
-
-![](img/types.jpeg){width:100%}
-
 ## Carte simple
 
 La fonction `draw` permet de dessiner n'importe quel type de carte.
@@ -1453,6 +1494,156 @@ La syntaxe minimale est la suivante :
 
 ```{ojs}
 bertin.draw({ layers: [ {geojson: world2019} ] })
+```
+
+## Définir les styles
+
+Les styles (couleurs, transparence, épaisseur, etc) reprénnent les nom des attributs SVG. 
+
+```{ojs}
+bertin.draw({ 
+  layers: [
+    { 
+      geojson: world2019,
+      fill: "red",
+      fillOpacity: 0.5, 
+      stroke:"blue",
+      strokeWidth: 2,
+      strokeDasharray: [3,5] 
+    }
+  ]
+})
+```
+
+## La mise en page
+
+Il existe de nombreuses couches de mise en page : `header`, `footer`, `graticule`, `outline`, etc. Elles ont des paramètres par défaut.
+
+```{ojs}
+bertin.draw({ 
+  layers: [
+    { geojson: world2019, fill: "#e971eb" },
+    {type : "graticule"},
+    {type: "outline"},
+    {type: "header", text: "Le Monde est beau"},
+    {type: "footer", text: "Source de la carte"}
+  ]
+})
+```
+
+On peut aussi définir les parametres généraux de la carte, comme la taille de la carte, les marges et la couleur de fond.
+
+```{ojs}
+viewof margin = Inputs.range([0, 500], {value: 0, step: 1})
+// La carte
+bertin.draw({ 
+  params: {width: 1000, margin: margin, background: "#CCC"},
+  layers: [
+    { geojson: world2019, fill: "#e971eb" },
+    {type : "graticule"},
+    {type: "outline"},
+    {type: "header", text: "Le Monde est beau"},
+    {type: "footer", text: "Source de la carte"}
+  ]
+})
+```
+
+## Généralisation
+
+En cartographie thématique, il est souvent utile de généraliser (simplifier) un fond de carte. Cela permet d'améliorer la lecture et d'alleger le fond de carte à afficher. Une façon de faire cela est d'utiliser la bibliothèque `geotoolbox`
+
+```{ojs}
+geo = require("geotoolbox@1.9.3")
+```
+
+Puis, on utilise la fonction `simplify`
+
+```{ojs}
+viewof simpl = Inputs.range([0.0025, 0.1], {value: 0.05})
+world2019_simpl = geo.simplify(world2019, {k: simpl})
+```
+
+Puis, on affiche la carte
+
+```{ojs}
+bertin.draw({ layers: [ { geojson: world2019_simpl, fill: "#e971eb" }]})
+```
+
+Notez que la bibliothèque `geotoolbox` vous permet de faire la plupart des opérations SIG utiles en cartographie thématique (extractions des contours, agrégations, généralisation, centroides, etc.) 
+
+![](img/geotoolbox.png){100%}
+
+Voici un exemple.
+
+On charge le fond de carte de l'Afrique
+
+```{ojs}
+afr = FileAttachment("data/africa.json").json()
+```
+
+On selectionne le Bénin et on construit un buffer autour du pays. La distance est gérée par un slider. On intersecte les pays avec le buffer. Le tout en temps réel.
+
+```{ojs}
+ben = geo.filter(afr, d => d.id == "BEN")
+buff = geo.buffer(ben, { dist: distance })
+clip = geo.clip(afr, { clip: buff })
+```
+
+```{ojs}
+//| echo: false
+viewof distance = Inputs.range([50, 2000], { label: "Buffer", step: 1, value : 100 })
+```
+
+```{ojs}
+//| echo: false
+mapclip1 = bertin.draw({
+  params: {extent: afr, width: 500},
+  layers: [
+    { type: "header", text: `${distance} km autour du Benin` },
+    {
+      geojson: ben,
+      strokeWidth: 1.1,
+      fill: "black"
+    },
+    {
+      geojson: buff,
+      strokeWidth: 3,
+      stroke: "#a66ecc",
+      fill: "none"
+    },
+     {
+      geojson: clip,
+      strokeWidth: 1,
+      stroke: "white",
+      fill: "#a66ecc"
+    },
+         {
+      geojson: afr,
+      strokeWidth: 5,
+      stroke: "none",
+      fill: "#CCC"
+    },
+  ]
+})
+```
+
+
+## Projection
+
+Dans `bertin`, les projections se définissent le l'objet *params*.
+
+```{ojs}
+prj = ["Polar","Spilhaus","InterruptedSinusoidal", "Armadillo", "Baker", "Gingery", "Berghaus","Loximuthal", "Healpix", "InterruptedMollweideHemispheres", "Miller", "Aitoff"]
+viewof projection = Inputs.select(prj)
+bertin.draw({ 
+  params: {projection: projection, width: 700, clip: true},
+  layers: [ 
+    { type: "tissot", stroke: "none", fill:"#CCC", fillOpacity: 0.3},
+    { type: "outline", stroke: "#e971eb", strokeWidth:2, fill: "none" },
+    { geojson: world2019_simpl, fill: "#e971eb" },
+    { type: "geolines", stroke: "#e971eb", strokeWidth:1, fill: "none" },
+  ]
+})
 ```
 
 ## Symboles proportionnels
@@ -1538,40 +1729,34 @@ bertin.draw({ layers: [
   ] })
 ```
 
-## Habillage
+## Les grilles
 
-De nombreuses couches d'habillage sont disponibles.
-
-```{ojs}
-bertin.draw({ layers: [ 
-  {type: "header", text: "Titre de la carte"},
-  {type: "footer", text: "Sources et auteurs"},
-  {geojson: world2019, fill:"white", stroke:"white"},
-  {type: "shadow", geojson: world2019},
-  {type: "geolines"},
-  {type: "graticule"},
-  {type: "outline"}
-  ] })
-```
-
-Et on peut changer la projection.
+## Tiles
 
 ```{ojs}
-
-prj = ["InterruptedSinusoidal", "Armadillo", "Baker", "Gingery", "Berghaus","Loximuthal", "Healpix", "InterruptedMollweideHemispheres", "Miller", "Aitoff"]
-viewof projection = Inputs.select(prj, {value: "InterruptedSinusoidal", label: "Projection"})
-bertin.draw({ 
-params: {projection, clip: true},
-layers: [ 
-  {type: "header", text: "Titre de la carte"},
-  {type: "footer", text: "Sources et auteurs"},
-  {geojson: world2019, fill:"white", stroke:"white"},
-  {type: "shadow", geojson: world2019},
-  {type: "geolines"},
-  {type: "graticule"},
-  {type: "outline"}
-  ] })
+bertin.draw({
+  params: {extent: afr, width: 500},
+  layers: [
+      {
+      type: "tiles",
+      zoomDelta: 2,
+      style: "worldphysical",
+      clip: afr
+    },
+  ]
+})
 ```
+
+
+
+
+## Infobulles
+
+
+## Ce qu'on peut faire aussi...
+
+![](img/types.jpeg){width:100%}
+
 
 ## Documentation
 
@@ -1582,75 +1767,6 @@ layers: [
 -   De nombreux exemples sont accessibles sur la plateforme Observable : [https://observablehq.com/collection/\@neocartocnrs/bertin](https://observablehq.com/collection/@neocartocnrs/bertin)
 
 ![](img/doc_observable.png){width:100%}<br/>
-
-## Bonus : combiner `bertin` et `geotoolbox`
-
-Quand on fait des cartes, on peut aussi avoir besoin de petite sopérations SIG simples (extractions des contours, agrégations, généralisation, centroides, etc.) C'est ce que permet de faire la librairie `geotoolbox`.
-
-![](img/geotoolbox.png){100%}
-
-On charge la bibliothèque comme ceci :
-
-```{ojs}
-geo = require("geotoolbox@1.9.3")
-```
-
-On charge le fond de carte de l'Afrique
-
-```{ojs}
-afr = FileAttachment("data/africa.json").json()
-```
-
-### Exemple : Buffer + Clip
-
-On selectionne le Bénin et on construit un buffer autour du pays. La distance est gérée par un slider. On intersecte les pays avec le buffer. Le tout en temps réel.
-
-```{ojs}
-ben = geo.filter(afr, d => d.id == "BEN")
-buff = geo.buffer(ben, { dist: distance })
-clip = geo.clip(afr, { clip: buff })
-```
-
-```{ojs}
-//| echo: false
-viewof distance = Inputs.range([50, 2000], { label: "Buffer", step: 1, value : 100 })
-```
-
-```{ojs}
-//| echo: false
-mapclip1 = bertin.draw({
-  params: {extent: afr},
-  layers: [
-    { type: "header", text: `${distance} km around Benin` },
-    {
-      geojson: ben,
-      strokeWidth: 1.1,
-      fill: "black"
-    },
-    {
-      geojson: buff,
-      strokeWidth: 3,
-      stroke: "#a66ecc",
-      fill: "none"
-    },
-     {
-      geojson: clip,
-      strokeWidth: 1,
-      stroke: "white",
-      fill: "#a66ecc"
-    },
-         {
-      geojson: afr,
-      strokeWidth: 5,
-      stroke: "none",
-      fill: "#CCC"
-    },
-    
-    
-
-  ]
-})
-```
 
 # Exercices
 
