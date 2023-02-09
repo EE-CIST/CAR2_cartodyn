@@ -149,7 +149,7 @@ https://observablehq.com/@tophtucker/classic-research-in-data-visualization
 <b>Bertin, 2022</b><br/> https://github.com/neocarto/bertin
 :::
 
-# JavaScript
+# JavaScript 🖥️
 
 ## Historique
 
@@ -301,7 +301,7 @@ Du coup, certains pensent que le JavaScript est le langage de demain pour traite
 
 *https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7*
 
-# Observable Javascript
+# Observable Javascript 📊
 
 Un langage dédié à la visualisation de données pour le web
 
@@ -329,9 +329,12 @@ Javascript for data Analysis, par Mike Bostock <https://towardsdatascience.com/j
 
 Pour utiliser Observable, on peut donc créer un compte avec une adresse email. Ca permet :
 
+-   coder dans son navigateur web
 -   d'héberger son code et ses textes
 -   partager son travail
--   voir ce que font les autres, faire de la veille, Suivre les compte de son choix (comme sur une réseau social)
+-   sauvegarder, versionner, archiver
+-   voir ce que font les autres, faire de la veille
+-   suivre les compte de son choix (comme sur une réseau social)
 -   échanger avec la <ins>communauté</ins> (commentaires, forum, ...)
 -   travailler à plusieurs sur un même document
 -   se connecter à des bases de données ou des fichiers dans le cloud (google sheet)
@@ -1264,69 +1267,6 @@ OJS c'est aussi une évolution du langage javascript pour en faire un langage ad
 :::
 :::
 
-## Leaflet (L)
-
-On peut faire une carte avec Leaflet en quelques lignes.
-
-```{ojs}
-{
-  const container = yield  htl.html`<div style="height: 500px;">`;
-  const map = L.map(container).setView([6.34, 2.08], 12);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(
-    map
-  );
-}
-```
-
-## Plot
-
-C'est <ins>LA</ins> bibliothèque JavaScript pour faire des graphiques (et même des cartes).
-
-### Les concepts
-
-Il n'y a pas de type de graphique prédéfini, mais des marques, et des transformations qu'il est possible de combiner pour déssiner n'importe quel type de graphique.
-
-![](img/plot_concepts.png)
-
-### Les marques
-
-![](img/plot_marks.png)
-
-### Les transformations
-
-![](img/plot_transform.png)
-
-### La sytaxe
-
-```{ojs}
-Plot.plot({
-  marks: [
-    Plot.rectY(olympians, Plot.binX({y: "count"}, {x: "weight"})),
-    Plot.ruleY([0])
-  ]
-})
-```
-
-```{ojs}
-Plot.plot({
-  height: 180,
-  marks: [Plot.dot(cars, Plot.dodgeY({ x: "weight (lb)" }))]
-})
-```
-
-```{ojs}
-Plot.plot({
-  facet: {
-    data: penguins,
-    x: "species"
-  },
-  marks: [
-    Plot.frame(),
-    Plot.dot(penguins, { x: "culmen_length_mm", y: "culmen_depth_mm" })
-  ]
-})
-```
-
 ## Librairies externes
 
 Observable javascript n'est pas un écosystème fermé. Des millions de librairies javascript existent sur NPM (équivalent du CRAN pour R). Il est possible de les utiliser.
@@ -1390,7 +1330,7 @@ chart = SankeyChart({
 })
 ```
 
-# La libraririe bertin
+# La libraririe bertin 🗺️
 
 Une bibliothèque JavaScript pour la cartographie thématique
 
@@ -1398,7 +1338,7 @@ Une bibliothèque JavaScript pour la cartographie thématique
 
 ![](img/bannerbertin.png)
 
-[bertin](https://github.com/neocarto/bertin) est une bibliothèque (un ensemble de fonctionnalités) écrite en [JavaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript) qui permet de réaliser des cartes thématiques pour le web. Son développement s'appuie en grande partie sur le librairie javascript [d3.js](https://d3js.org/) développée par Mike Bostock depuis 10 ans. Le développement a débuté en novembre 2021. Il y a 8 contrubuteurs. 240 ⭐ sur Github.
+[bertin](https://github.com/neocarto/bertin) est une bibliothèque (un ensemble de fonctionnalités) écrite en [JavaScript](https://developer.mozilla.org/fr/docs/Web/JavaScript) qui permet de réaliser des cartes thématiques pour le web. Son développement s'appuie en grande partie sur le librairie javascript [d3.js](https://d3js.org/) développée par Mike Bostock depuis 10 ans. Le développement a débuté en novembre 2021. Il y a 8 contributeurs. 240 ⭐ sur Github.
 
 ![](img/logo_bertin.png)
 
@@ -2284,7 +2224,23 @@ bertin.draw({ layers: [
   ] })
 ```
 
-Bien sûr, avant de réaliser une carte choroplèthe, il est toujours nécéssaire de caractériser la distribution statistique. Poutr cela, on peut utiliser la bibliothèque `Plot`. Il y a plein de façons de faire.
+Bien sûr, avant de réaliser une carte choroplèthe, il est toujours nécéssaire de caractériser la distribution statistique. 
+
+Poutr cela, on peut utiliser la bibliothèque `Plot`. Il y a plein de façons de faire.
+
+### Les concepts de `Plot`
+
+Il n'y a pas de type de graphique prédéfini, mais des marques, et des transformations qu'il est possible de combiner pour déssiner n'importe quel type de graphique.
+
+![](img/plot_concepts.png)
+
+### Les marques
+
+![](img/plot_marks.png)
+
+### Les transformations
+
+![](img/plot_transform.png)
 
 ### Récupérer la table attributaire
 
