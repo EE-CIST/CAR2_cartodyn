@@ -282,11 +282,11 @@ world2 = geo.simplify(world, {k: simpl})
 ```
 :::
 
-Puis, avec l'instruction JavaScript `filter`, on crée un tableau contenant uniquement l'année séléctionnée et on effectue une jointure entre les données et le fond de carte grâce à la bibliothèque `bertin` (*on peut aussi télécharger la bibliothèque [ici](https://cdn.jsdelivr.net/npm/bertin@1.6.2)*).
+Puis, avec l'instruction JavaScript `filter`, on crée un tableau contenant uniquement l'année séléctionnée et on effectue une jointure entre les données et le fond de carte grâce à la bibliothèque `bertin` (*on peut aussi télécharger la bibliothèque [ici](https://cdn.jsdelivr.net/npm/bertin@1.6.3)*).
 
 ::: copy
 ```{ojs}
-bertin = require("bertin@1.6.2")
+bertin = require("bertin@1.6.3")
 // ou bertin = require("./lib/bertin.js")
 statsyear = stats.filter(d => d.date == year)
 data = bertin.merge(world2, "id", statsyear, "iso3c")

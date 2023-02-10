@@ -1,5 +1,5 @@
 ---
-title: "Cartographie thématique avec ojs"
+title: "Cartographie thématique avec {ojs}"
 subtitle: "École d'été internationale, Ouidah, 2023"
 author: "Nicolas Lambert, Manhamady Ouedraogo"
 date: 03/08/2023
@@ -325,6 +325,37 @@ Reactive, reproducible, collaborative: computational notebooks evolve, par Jeffr
 
 Javascript for data Analysis, par Mike Bostock <https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7>
 
+
+## JavaScript ≠ ojs
+
+::: columns
+::: {.column width="49%"}
+OJS c'est du JavaScript + plein de bibliothèques pré chargées : <br/>
+
+| Symbol   | Name              | Version            |
+|----------|-------------------|--------------------|
+| \_       | Lodash            | 4.17.21            |
+| aq       | Arquero           | \${aq.version}     |
+| Arrow    | Apache Arrow      | 4.0.1              |
+| d3       | D3.js             | \${d3.version}     |
+| dot      | Graphviz          | 0.2.1              |
+| htl      | Hypertext Literal | \${htl.version}    |
+| Inputs   | Observable Inputs | \${Inputs.version} |
+| L        | Leaflet           | \${L.version}      |
+| mermaid  | Mermaid           | 9.1.6              |
+| Plot     | Observable Plot   | \${Plot.version}   |
+| SQLite   | SQL.js            | 1.7.0              |
+| topojson | TopoJSON Client   | 3.1.0              |
+| vl       | Vega, Vega-Lite   | 5.22.1, 5.2.0      |
+:::
+
+::: {.column width="49%"}
+OJS c'est aussi une évolution du langage javascript pour en faire un langage adapté à l'analyse et la visualisation de données sur le web.
+
+![](img/datascience.png)
+:::
+:::
+
 ## Observable dans Observable
 
 Pour utiliser Observable, on peut donc créer un compte avec une adresse email. Ca permet :
@@ -357,9 +388,10 @@ Heureusement, les comptes pro sont gratuits pour l'enseignement supérieur et la
 
 ⚠️ Attention, Observablehq est une société privée. Ils peuvent donc changer ces conditions ⚠️
 
+
 ## Observable dans Quarto
 
-Si on ne souhaite pas créer de compte sur observablehq, il est possible de faire du Observable sans Observable, en travaillant avec le logiciel Quarto. En effet, <ins>le runtime d'Observable est Open Source</ins> et peut donc être utilisé dans d'autres contextes et dans d'autres logiciels. Cela permet aussi de travailler en local sur son ordinateur sans connexion internet.
+Si on ne souhaite pas créer de compte sur observablehq, il est possible de faire du Observable sans Observable, en travaillant avec le logiciel Quarto. En effet, <ins>**le runtime d'Observable est Open Source**</ins> et peut donc être utilisé dans d'autres contextes et dans d'autres logiciels. Cela permet aussi de travailler en local sur son ordinateur sans connexion internet.
 
 **Qu'est ce que Quarto® ?**
 
@@ -514,13 +546,62 @@ Mais d3, c'est surtout un framework de développement pour dessiner des visualis
 
 D3 est aussi à la base de nombreuses bibliothèques JavaScript, comme les librairie `Plot` et `bertin` que nous allons voir.
 
+## Dessiner pour le web
+
+Il existe deux principaux moyens pour dessiner des éléments dans une page web : **SVG** & **CANVAS**.
+
+### Raster vs Vecteur
+
+Un raster, c’est une image composée de pixels. Un grille organisée en lignes et colonnes. Chaque cellule est un pixel unique. Une image raster a une résolution.
+
+Une image vecteur n'a pas de résolution. Elle est composée de composée de nœuds (des points dans l’espace) et des formules mathématiques pour calculer les arcs (des lignes) qui relient ces nœuds entre eux et qui forment ainsi une géométrie. On distingue trois grands types de géométries : point, ligne et polygone. 
+
+![](img/vecteurraster.png){_}
+
+### Canvas
+
+L'élément **canvas** est un composant du langage Web HTML qui permet d'effectuer des rendus dynamiques d'images bitmap (raster).
+
+Ce code
+
+```html
+<canvas id="myCanvas2" width="100" height ="100" style="border:1px
+solid #000000; background-color: steelblue;"></canvas>
+```
+
+donne ceci : 
+
+<canvas id="myCanvas2" width="100" height ="100" style="border:1px solid #000000; background-color: steelblue;"></canvas>
+
+### SVG
+
+Le format SVG (Scalable Vector Graphics) est un format de données conçu pour décrire des ensembles de graphiques vectoriels. C'est le format qu'on utilise dans le logiciel **Inkscape**.
+
+Ce code
+
+```html
+<svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100px" height="100px" fill="#F2CD3B" stroke="#06000C" />
+</svg>
+```
+
+donne ceci : 
+
+<svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100px" height="100px" fill="#F2CD3B" stroke="#06000C" />
+</svg>
+
 ## Dessiner avec D3.js
 
-Avec D3, il est possible de dessiner des images vectorielles au format SVG en manupilant le DOM.
+Avec D3, il est possible de dessiner e, JavaScript des images vectorielles au format CANVAS et SVG en manipulant le DOM.
 
 *Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d'examiner et de modifier le contenu du navigateur web. Par le DOM, la composition d'une page web est représentée sous forme d'un arbre avec des objets dedans.*
 
 ![](img/DOM.png)
+
+Le but c'est d'écrire par la programmation des instructions qui vont produire le dessin plutôt que d'écrire directement *en dur* le dessin.  
+
+### Dessinons du SVG avec D3.js
 
 Créons un document svg, de 500 pixels de large, 60 pixels de haut et avec du gris en couleur de fond.
 
@@ -1083,21 +1164,86 @@ On importe des données
 monde = FileAttachment("data/world.json").json()
 ```
 
-On définit la façon dont on va transformer et afficher le geoJSON.
+On définit une fonction de projection
 
 ```{ojs}
 myproj = d3.geoNaturalEarth1()
+```
+
+On crée une fonction `path` qui permet de convertir des coordonnées lat/lon en un chemin SVG dans une projection donnée.
+
+```{ojs}
 path = d3.geoPath(myproj)
 ```
 
 Puis, on dessine la carte
 
+On crée un document SVG
+
+```js
+const svg = d3
+  .create("svg")
+  .attr("viewBox", [0, 0, 1000, 500])
+  .style("width", "100%")
+  .style("height", "auto");
+```
+
+On ajoute une première couche (calque g) au SVG : Un polygone qui correspond à l'espace terrestre dans la projection donnée.
+
+```js
+svg
+  .append("g")
+  .append("path")
+  .datum({ type: "Sphere" })
+  .attr("fill", "#a9daeb")
+  .attr("d", path);
+```
+
+Avec la fonction `d3.geoGraticule10()`, on ajoute des lignes de latitude et loingitude. On les affiche en pointillé.
+
+```js
+svg
+  .append("g")
+  .append("path")
+  .datum(d3.geoGraticule10())
+  .attr("d", path) 
+  .style("fill", "none")
+  .style("stroke", "white")
+  .style("stroke-width", 0.8)
+  .style("stroke-opacity", 0.5)
+  .style("stroke-dasharray", 2);
+```
+
+Et enfin, on ajoute les pays de monde. 
+
+```js
+svg
+  .append("g")
+  .append("path")
+  .datum(monde)
+  .attr("fill", "#508bab")
+  .attr("fill-opacity", 0.9)
+  .attr("stroke", "white")
+  .attr("stroke-width", 0.2)
+  .attr("d", path); 
+```
+
+Et tout à la fin, on renvoie le noeud SVG.
+
+```js
+return svg.node();
+```
+
+
+Et voilà le résultat : 
+
 ```{ojs}
+//| eval: true
+//| echo: false
 {
-  const height = 1000
   const svg = d3
     .create("svg")
-    .attr("viewBox", [0, 0, width, height])
+    .attr("viewBox", [0, 0, 1000, 500])
     .style("width", "100%")
     .style("height", "auto");
 
@@ -1237,36 +1383,6 @@ On a bien un beau geoJSON qu'on peut afficher
 bertin.quickdraw(countries2)
 ```
 
-## JavaScript ≠ ojs
-
-::: columns
-::: {.column width="49%"}
-OJS c'est du JavaScript + plein de bibliothèques pré chargées : <br/>
-
-| Symbol   | Name              | Version            |
-|----------|-------------------|--------------------|
-| \_       | Lodash            | 4.17.21            |
-| aq       | Arquero           | \${aq.version}     |
-| Arrow    | Apache Arrow      | 4.0.1              |
-| d3       | D3.js             | \${d3.version}     |
-| dot      | Graphviz          | 0.2.1              |
-| htl      | Hypertext Literal | \${htl.version}    |
-| Inputs   | Observable Inputs | \${Inputs.version} |
-| L        | Leaflet           | \${L.version}      |
-| mermaid  | Mermaid           | 9.1.6              |
-| Plot     | Observable Plot   | \${Plot.version}   |
-| SQLite   | SQL.js            | 1.7.0              |
-| topojson | TopoJSON Client   | 3.1.0              |
-| vl       | Vega, Vega-Lite   | 5.22.1, 5.2.0      |
-:::
-
-::: {.column width="49%"}
-OJS c'est aussi une évolution du langage javascript pour en faire un langage adapté à l'analyse et la visualisation de données sur le web.
-
-![](img/datascience.png)
-:::
-:::
-
 ## Librairies externes
 
 Observable javascript n'est pas un écosystème fermé. Des millions de librairies javascript existent sur NPM (équivalent du CRAN pour R). Il est possible de les utiliser.
@@ -1345,12 +1461,12 @@ Une bibliothèque JavaScript pour la cartographie thématique
 On charge la bibliothèque avec l'instruction `require` en indiquant le numéro de version.
 
 ```{ojs}
-bertin = require("bertin@1.6.2")
+bertin = require("bertin@1.6.3")
 ```
 
 Si on souhaite travailler sans connexion internet, il est possible de télécharger la bibliotheque dans un dossier, puis d'indiquer le lien vers ce dossier.
 
-Lien de téléchargement : [https://cdn.jsdelivr.net/npm/bertin\@1.6.2](https://cdn.jsdelivr.net/npm/bertin@1.6.1)
+Lien de téléchargement : [https://cdn.jsdelivr.net/npm/bertin\@1.6.3](https://cdn.jsdelivr.net/npm/bertin@1.6.3)
 
 Puis
 
@@ -1480,9 +1596,9 @@ bertin.draw({
 
 ## Généralisation
 
-En cartographie thématique, il est souvent utile de généraliser (simplifier) un fond de carte. Cela permet d'**améliorer la lecture** et de **réduire le poids** le fond de carte à afficher, ce qui ets très important en cartographie sur le web. Une façon de faire cela est d'utiliser la bibliothèque `geotoolbox`
+En cartographie thématique, il est souvent utile de généraliser (simplifier) un fond de carte. Cela permet d'**améliorer la lecture** et de **réduire le poids** le fond de carte à afficher, ce qui est très important en cartographie sur le web. Une façon de faire cela est d'utiliser la bibliothèque `geotoolbox`
 
-On charge la bibiothèque avec l'instruction `require`
+On charge la bibliothèque avec l'instruction `require`
 
 ```{ojs}
 geo = require("geotoolbox@1.9.3")
@@ -1516,9 +1632,9 @@ bertin.draw({ layers: [ { geojson: world2019_simpl, fill: "#F25842" }]})
 
 Notez que la bibliothèque `geotoolbox` vous permet de faire la plupart des opérations SIG utiles en cartographie thématique (extractions des contours, agrégations, généralisation, centroides, etc.)
 
-![](img/geotoolbox.png){100%}
+![](img/geotoolbox.png){_}
 
-Voici un exemple.
+### Exemple de traitement avec `geotoolbox`
 
 On charge le fond de carte de l'Afrique
 
@@ -1528,7 +1644,29 @@ afr = FileAttachment("data/africa.json").json()
 
 On selectionne le Bénin et on construit un buffer autour du pays. La distance est gérée par un slider. On intersecte les pays avec le buffer. Le tout en temps réel.
 
+On extrait le Bénin
+
+```js
+ben = geo.filter(afr, d => d.id == "BEN")
+```
+
+On calcule un buffer autour du Bénin
+
+```js
+buff = geo.buffer(ben, { dist: distance })
+```
+
+On intersecte les pays d'Afrique avec ce Buffer
+
+```js
+clip = geo.clip(afr, { clip: buff })
+```
+
+Puis on affiche les différentes couches
+
 ```{ojs}
+//| echo: false
+//| eval: true
 ben = geo.filter(afr, d => d.id == "BEN")
 buff = geo.buffer(ben, { dist: distance })
 clip = geo.clip(afr, { clip: buff })
@@ -1536,7 +1674,7 @@ clip = geo.clip(afr, { clip: buff })
 
 ```{ojs}
 //| echo: false
-viewof distance = Inputs.range([50, 2000], { label: "Buffer", step: 1, value : 100 })
+viewof distance = Inputs.range([50, 2000], { label: "Distance", step: 1, value : 100 })
 ```
 
 ```{ojs}
@@ -1572,6 +1710,23 @@ mapclip1 = bertin.draw({
 })
 ```
 
+Ce n'est pas juste de l'affichage. On a effcté une vraie opération SIG. La couche intersectée est bien créée comme nouvel objet geoJSON.
+
+```{ojs}
+//| echo: false
+bertin.draw({
+  params: {width: 200},
+  layers: [
+  {
+      geojson: clip,
+      strokeWidth: 1.1,
+      fill: "#F25842"
+    }
+  ]
+})
+```
+
+
 ## Projection
 
 Faire une carte, c'est aussi choisir comment on passe de la sphère au plan : d'un monde en 3 dimensions à une carte en 2 dimensions.
@@ -1589,7 +1744,7 @@ bertin.draw({
 })
 ```
 
-De nombreuses projection sont disponibles dans l'écosystème de D3.js grace aux modules `d3.geo` et `d3.geoprojection`: `"Polar"`,`"Spilhaus"`,`"InterruptedSinusoidal"`, `"Armadillo"`, `"Baker"`, `"Gingery"`, `"Berghaus"`,`"Loximuthal"`, `"Healpix"`, `"InterruptedMollweideHemispheres"`, `"Miller"`, `"Aitoff"`, etc.
+De nombreuses projection sont disponibles dans l'écosystème de D3.js grace aux modules `d3.geo` et `d3.geoprojection`
 
 ```{ojs}
 //| echo: false
@@ -1632,7 +1787,7 @@ bertin.draw({
 })
 ```
 
-## Marges et background
+## Marges et couleur de fond
 
 On peut aussi définir les parametres généraux de la carte, comme la taille de la carte, les marges et la couleur de fond.
 
@@ -2060,6 +2215,13 @@ Pour réprésenter des données quantgitatives absolues, on utilise la variable 
 
 **💡 En paramétrant l'attribut `tooltip`, on peut survoler les cercle spour avoir une infobulle 💡**
 
+```js
+tooltip: [
+  "$country",
+  d => Math.round(d.properties.POP/1000000) + " millions de personnes"
+]
+```
+
 <br/>
 
 ```{ojs}
@@ -2248,6 +2410,12 @@ Il n'y a pas de type de graphique prédéfini, mais des marques, et des transfor
 mytable = bertin.properties.table(world)
 ```
 
+On la visualise
+
+```{ojs}
+Inputs.table(mytable)
+```
+
 ```{ojs}
 //| echo: false
 //| eval: true
@@ -2390,7 +2558,7 @@ bertin.draw({ layers: [
 
 Mais on peut aussi faire varier la couleur de n'importe quel objet. Ici, sur le type `bubble`.
 
-``` js
+```js
 layers : [
   {
     type "bubble", 
@@ -2417,7 +2585,7 @@ bertin.draw({ layers: [
 
 Et ca fonctionne aussi pour les contours.
 
-``` js
+```js
 layers : [
   {
     type "bubble", 
@@ -2436,6 +2604,65 @@ layers : [
 //| eval: true
 bertin.draw({ layers: [ 
    {type: "bubble", geojson: world02, values: "POP", stroke: {type: "typo", values: "subregiond"},strokeWidth: 2, fill:"none"},
+    {geojson: world02, fill:"#CCC"}
+  ] })
+
+```
+
+## Combiner 2 données de stock
+
+Pour combiner 2 variables quantitatives absolues, on peut utiliser une représentation par double cercle. Ici, on va comparer population et PIB.
+
+### Rendre les données comparables
+
+Pour rendre les données comparables, on les exprime en % du total. Ca reste des données quantitatives absolues, mais exprimées en pourcentages.
+
+On crée donc 2 nouvelles variables : pop_pct et gdp_pct.
+
+
+```{ojs}
+world02bis = {
+let data = bertin.properties.table(world02)
+let poptot = d3.sum(data.map((d) => d.POP))
+let gdptot = d3.sum(data.map((d) => d.GDP))
+
+let data2 = data.map((d) => ({
+  id: d.id,
+  pop_pct: +((+d.POP / poptot) * 100).toFixed(2),
+  gdp_pct: +((+d.GDP / gdptot) * 100).toFixed(2)
+}))
+return bertin.merge(world02, "id", data2, "id")
+}
+```
+
+### Cartographie
+
+Puis, on réalise la carte avec le type `mushroom`.
+
+```js
+{
+  type: "mushroom",
+  geojson: world02bis,
+  top_values: "gdp_pct",
+  bottom_values: "pop_pct"
+}
+```
+
+<br/>
+
+```{ojs}
+//| echo: false
+//| eval: true
+bertin.draw({ layers: [ 
+   {type: "mushroom", geojson: world02bis,top_values: "gdp_pct",  bottom_values: "pop_pct",  leg_x: 50,
+      leg_y: 160, leg_title: "Population\net richesse\ndans le Monde",       leg_top_fill: "none",
+      leg_bottom_fill: "none",
+      leg_top_txt: "PIB (%)",
+      leg_bottom_txt: "POP (%)",
+      leg_fontSize: 17, top_tooltip: { fields: ["$name", d => Math.round(d.properties.GDP/1000000000) + " milliards de $"], col: "#d64f4f" }, bottom_tooltip: {
+        fields: ["$name", d => Math.round(d.properties.POP/1000000) + " millions d'habitants"],
+        col: "#4fabd6"
+      }},
     {geojson: world02, fill:"#CCC"}
   ] })
 
@@ -2570,7 +2797,7 @@ layers: [
 
 ```
 
-### *RidgeLines*
+### *Ridgelines*
 
 Cette méthode de passage sur grille permet d'autres représentations plus expérimentales.
 
@@ -2583,9 +2810,9 @@ Cette méthode de passage sur grille permet d'autres représentations plus expé
 ```{ojs}
 //| echo: false
 //| eval: true
-viewof stepr = Inputs.range([5, 30], {value: 8, step: 1, label: "Step"})
-viewof blur = Inputs.range([0, 2], { label: "Blur", step: 0.01, value: 0.4 })
-viewof hauteur = Inputs.range([30, 100], { label: "Hauteur", step: 5, value: 100 })
+viewof stepr = Inputs.range([3, 30], {value: 5, step: 1, label: "Step"})
+viewof blur = Inputs.range([0, 2], { label: "Blur", step: 0.01, value: 0 })
+viewof hauteur = Inputs.range([30, 150], { label: "Hauteur", step: 5, value: 100 })
 bertin.draw({ 
 params: {margin: 20},
 layers: [ 
@@ -2593,12 +2820,13 @@ layers: [
     {
       type: "ridge",
       geojson: world02,
+      fill:"#F25842",
       values: "POP",
       step: stepr,
       blur: blur,
       k: hauteur,
       operator: "mean",
-      geoprocessing: "intersection"
+      geoprocessing: "dotinpoly"
     },
     {geojson: world02, fill:"#CCC", stroke: "#CCC"}
   ] })
