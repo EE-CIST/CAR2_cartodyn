@@ -2367,7 +2367,7 @@ viewof method = Inputs.select(
     value: "quantile"
   }
 )
-viewof nbreaks = Inputs.range([3, 9], { label: "nbreaks", step: 1, value: 7 })
+viewof nbreaks = Inputs.range([3, 9], { label: "nbreaks", step: 1, value: 7,  disabled: method == "msd" || method == "q6" ? true : false })
 ```
 
 <br/>
