@@ -2720,7 +2720,7 @@ bertin.draw({ layers: [
 
 La bibliothèque `bertin` permet de passer de mailles irrégulières (maillage administratif) à des mailles régulières (carrés).
 
-![](img/grid.png)
+![](img/grid.png){_}
 
 Cela permet de réaliser de nouveaux types de représentation.
 
