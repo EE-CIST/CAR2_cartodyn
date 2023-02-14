@@ -213,7 +213,7 @@ format:
 </div>
 <p>Cliquez sur <code>Render</code> (ou <em>Ctrl+Shift+K</em>) pour voir apparaitre la structure de votre application. Elle est composée de 6 parties :</p>
 <ul>
-<li>Le <ins>titre</ins> (défini dans l’entête de votre document <code>title: "World Explorer"</code> ). À vous de remplacer le titre par la chaine de caractère de votre choix.</li>
+<li>Le <ins>titre</ins> (défini dans l’entête de votre document <code>title: "World Explorer"</code> ). À vous de remplacer le titre par la chaîne de caractère de votre choix.</li>
 <li>Le <ins>menu</ins> (sur la gauche). C’est dans ce <em>chunk</em> que nous allons placer des <code>Inputs</code> permettant à l’utilisateur d’interagir avec la carte.</li>
 <li>La <ins>carte</ins> (sur la droite). C’est dans ce <em>chunk</em> que nous allons dessiner une carte avec la bibliothèque <code>bertin</code>.</li>
 <li>Les <ins>données</ins> (sur la droite). C’est dans ce <em>chunk</em> que nous allons afficher le tableau de données derrière la carte.</li>
@@ -495,7 +495,7 @@ format:
 </section>
 <section id="mise-en-forme-des-données" class="level1">
 <h1>4. Mise en forme des données</h1>
-<p>Avant de construire la carte, nous avons besoin de manipuler un peu les données. On effectue ces opérations dans la partie <ins><strong>annexe technique</strong></ins>. Plusieurs opérations son nécéssaires:</p>
+<p>Avant de construire la carte, nous avons besoin de manipuler un peu les données. On effectue ces opérations dans la partie <ins><strong>annexe technique</strong></ins>. Plusieurs opérations son nécessaires:</p>
 <p>Tout d’abord, on réalise une généralisation du fond de carte avec la fonction <code>simplify</code> de la bibliothèque <code>geotoolbox</code> qui permet de faire simplement la plupart des opérations SIG utiles en cartographie (<a href="https://github.com/neocarto/geotoolbox">voir</a>). On peut la charger directement ou la télécharger <a href="https://cdn.jsdelivr.net/npm/geotoolbox@1.9.3">ici</a> pour travailler sans connexion internet. Le niveau de simplification sera déterminé par l’utilisateur dans le slider <em>simpl</em>.</p>
 <div class="copy">
 <div class="cell">
@@ -518,7 +518,7 @@ format:
 </div>
 </div>
 </div>
-<p>Puis, avec l’instruction JavaScript <code>filter</code>, on crée un tableau contenant uniquement l’année séléctionnée et on effectue une jointure entre les données et le fond de carte grâce à la bibliothèque <code>bertin</code> (<em>on peut aussi télécharger la bibliothèque <a href="https://cdn.jsdelivr.net/npm/bertin@1.6.3">ici</a></em>).</p>
+<p>Puis, avec l’instruction JavaScript <code>filter</code>, on crée un tableau contenant uniquement l’année sélectionnée et on effectue une jointure entre les données et le fond de carte grâce à la bibliothèque <code>bertin</code> (<em>on peut aussi télécharger la bibliothèque <a href="https://cdn.jsdelivr.net/npm/bertin@1.6.3">ici</a></em>).</p>
 <div class="copy">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23" data-startfrom="289" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 288;"><span id="cb23-289"><a href="#cb23-289" aria-hidden="true" tabindex="-1"></a>bertin <span class="op">=</span> <span class="pp">require</span>(<span class="st">"bertin@1.6.3"</span>)</span>
@@ -548,7 +548,7 @@ format:
 </div>
 </div>
 </div>
-<p>On a aussi besoin de récupérer une valeur de réference pour chaque indicateur pour rendre comparables la taille des symboles d’une année à l’année sur l’autre. On récupère la valeur maximale de l’année 2019.</p>
+<p>On a aussi besoin de récupérer une valeur de référence pour chaque indicateur pour rendre comparables la taille des symboles d’une année à l’année sur l’autre. On récupère la valeur maximale de l’année 2019.</p>
 <div class="copy">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24" data-startfrom="299" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 298;"><span id="cb24-299"><a href="#cb24-299" aria-hidden="true" tabindex="-1"></a>varmax <span class="op">=</span> d3<span class="op">.</span><span class="fu">max</span>(stats<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">date</span> <span class="op">==</span> <span class="dv">2019</span>)<span class="op">,</span> d <span class="kw">=&gt;</span> <span class="op">+</span>d[indicator])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -559,12 +559,12 @@ format:
 </div>
 </div>
 </div>
-<p>Après ces opérations, l’objet <code>data</code> contient les géométries généralisées et les données pour l’année séléctionnée.</p>
+<p>Après ces opérations, l’objet <code>data</code> contient les géométries généralisées et les données pour l’année sélectionnée</p>
 </section>
 <section id="réalisation-de-la-carte" class="level1">
 <h1>5. Réalisation de la carte</h1>
 <p>Ici, on réalise la carte dans la chuck <ins><strong>carte</strong></ins> avec la bibliothèque bertin.</p>
-<p>Tout d’abord, on fabrique le titre en concatenant le nom de la variable et l’année.</p>
+<p>Tout d’abord, on fabrique le titre en concaténant le nom de la variable et l’année.</p>
 <div class="copy">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25" data-startfrom="313" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 312;"><span id="cb25-313"><a href="#cb25-313" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> meta<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">indicator</span><span class="op">,</span> d<span class="op">.</span><span class="at">shortcode</span>])<span class="op">.</span><span class="fu">find</span>((d) <span class="kw">=&gt;</span> d[<span class="dv">1</span>] <span class="op">==</span> indicator)[<span class="dv">0</span>] <span class="op">+</span> <span class="st">" in "</span> <span class="op">+</span> year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -604,7 +604,7 @@ format:
 </section>
 <section id="affichage-des-données" class="level1">
 <h1>6. Affichage des données</h1>
-<p>Ici, on ajoute un tableau de données dans la chuck <ins>données</ins>. On selectionne les colonnes à afficher.</p>
+<p>Ici, on ajoute un tableau de données dans la chuck <ins>données</ins>. On sélectionne les colonnes à afficher.</p>
 <div class="copy">
 <div class="cell" data-eval="false">
 <div class="sourceCode cell-code" id="cb27" data-startfrom="350" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 349;"><span id="cb27-350"><a href="#cb27-350" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(statsyear<span class="op">,</span> {  <span class="dt">columns</span><span class="op">:</span> [</span>
@@ -623,7 +623,7 @@ format:
 </section>
 <section id="réalisation-du-graphique" class="level1">
 <h1>7. Réalisation du graphique</h1>
-<p>On souhaite réaliser un diagramme en barres avec les N pays qui ont les plus fortes valeurs sur l’indicateur séléctionné. Nous récupérons donc l’objet <code>stats</code> qui contient les données, nous le trions, et ne gardons que les N premières valeurs. N est défini dans un slider. Le graphique est réalisé avec la bibliothèqe <a href="https://observablehq.com/@observablehq/plot">Plot</a>.</p>
+<p>On souhaite réaliser un diagramme en barres avec les N pays qui ont les plus fortes valeurs sur l’indicateur séléctionné. Nous récupérons donc l’objet <code>stats</code> qui contient les données, nous le trions, et ne gardons que les N premières valeurs. N est défini dans un slider. Le graphique est réalisé avec la bibliothèque <a href="https://observablehq.com/@observablehq/plot">Plot</a>.</p>
 <p>Ajoutez le code ci-dessous chuck <ins><strong>graphique</strong></ins>.</p>
 <div class="copy">
 <div class="cell" data-eval="false">
@@ -696,7 +696,34 @@ format:
 </div>
 </div>
 </div>
-<p>Et pour encore plus de fun 🥳, vous pouvez aussi vous amuser à utiliser un <em>scrubber</em> à la place du slider Rotate (x).</p>
+<p>Et pour encore plus de fun 🥳, vous pouvez vous amusez à faire varier le centre de projection automatiquement. Pour cela, vous pouvez ajouter la fonction suivante dans la partie <strong>Annexe technique</strong>.</p>
+<div class="copy">
+<div class="cell" data-eval="false">
+<div class="sourceCode cell-code" id="cb31" data-startfrom="423" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 422;"><span id="cb31-423"><a href="#cb31-423" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="op">*</span> <span class="fu">timer</span>({ speed <span class="op">=</span> <span class="dv">1000</span><span class="op">,</span> step <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> interval <span class="op">=</span> [<span class="op">-</span><span class="dv">180</span><span class="op">,</span> <span class="dv">180</span>] } <span class="op">=</span> {}) {</span>
+<span id="cb31-424"><a href="#cb31-424" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> i <span class="op">=</span> interval[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb31-425"><a href="#cb31-425" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (<span class="kw">true</span>) {</span>
+<span id="cb31-426"><a href="#cb31-426" aria-hidden="true" tabindex="-1"></a>    <span class="kw">yield</span> Promises<span class="op">.</span><span class="fu">delay</span>(speed<span class="op">,</span> (i <span class="op">=</span> i <span class="op">+</span> step))<span class="op">;</span></span>
+<span id="cb31-427"><a href="#cb31-427" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">&gt;=</span> interval[<span class="dv">1</span>]) {</span>
+<span id="cb31-428"><a href="#cb31-428" aria-hidden="true" tabindex="-1"></a>      i <span class="op">=</span> interval[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb31-429"><a href="#cb31-429" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb31-430"><a href="#cb31-430" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb31-431"><a href="#cb31-431" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-21" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p>Puis, dans la partie <strong><ins>menu</ins></strong>, remplacer</p>
+<div class="copy">
+<div class="sourceCode" id="cb32"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>viewof y <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="op">-</span><span class="dv">90</span><span class="op">,</span> <span class="dv">90</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rotation (y)"</span>} )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>par</p>
+<div class="copy">
+<div class="sourceCode" id="cb33"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fu">timer</span>({ <span class="dt">speed</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">9</span><span class="op">,</span> <span class="dt">interval</span><span class="op">:</span> [<span class="op">-</span><span class="dv">90</span><span class="op">,</span> <span class="dv">90</span>] })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Vous pouvez faire varier les paramètres <code>speed</code> et <code>step</code> pour changer la vitesse (qui dépend des capacités de votre ordinateur). Vous pouvez aussi appliquer cette fonction à la <em>Rotation (x)</em> en utilisant <code>interval: [-90, 90]</code></p>
 <!-- -->
 
 </section>
@@ -898,425 +925,460 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb31" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "TP2 - Réaliser une *single page application* avec Quarto et `bertin`"</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: custom.scss</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: false</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Show the code"</span></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>**L'objectif de ce TP est d'apprendre à créer des cartes interactives avec Quarto et la bibliothèque JavaScript `bertin`.**</span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/banner.png)</span></span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>**Responsables pédagogiques**</span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>Manhamady OUEDRAOGO (Burkina Faso) &amp; Nicolas LAMBERT (France)</span>
-<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>**Ont participé à l'élaboration de ce module**</span>
-<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France), Sébastien REY-COYREHOURCQ (France), Vakaramoko BAMBA (Côte d'Ivoire), Hugues PECOUT (France), Yentougle MOUTORE (Togo), Bénédicte GARNIER (France), Côomlan Charles HOUNTON (Bénin), Pauline GLUSKI (France)</span>
-<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
-<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>**Objectifs**</span>
-<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>Le but de ce TP est de réaliser une application de cartographie à l'échelle mondiale sur une page web *pleine page*. d'un point de vue technique, on parlera de *single page application* (SPA).</span>
-<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/app.png)</span></span>
-<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>Les bases et prérequis nécessaires à la bonne compréhension de ce TP sont disponibles via ce <span class="co">[</span><span class="ot">cours introductif</span><span class="co">](https://ee-cist.github.io/CART3_cartodyn/intro/docs/index.html#/title-slide)</span> et ce premier <span class="co">[</span><span class="ot">TP</span><span class="co">](https://ee-cist.github.io/CART3_cartodyn/TP1/docs/index.html)</span>. Merci de procéder dans cet ordre.</span>
-<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>**Données**</span>
-<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>Pour cet exercice, nous nous basons sur un tableau de données contenant 6 variables issues de la banque mondiale, disponibles de 1990 à 2021. Elles ont été harmonisées par Claude Grasland. Les voici ci-dessous.</span>
-<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
-<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: true</span></span>
-<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>prez <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/worldbank_meta.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(prez<span class="op">,</span> {  <span class="dt">columns</span><span class="op">:</span> [</span>
-<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"shortcode"</span><span class="op">,</span></span>
-<span id="cb31-49"><a href="#cb31-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"indicator"</span><span class="op">,</span></span>
-<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">"indicator_desc"</span><span class="op">,</span></span>
-<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
-<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">header</span><span class="op">:</span> {</span>
-<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a>    <span class="dt">shortcode</span><span class="op">:</span> <span class="st">"id"</span><span class="op">,</span></span>
-<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>    <span class="dt">indicator</span><span class="op">:</span> <span class="st">"indicateur"</span><span class="op">,</span></span>
-<span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>    <span class="dt">indicator_desc</span><span class="op">:</span> <span class="st">"description"</span><span class="op">,</span></span>
-<span id="cb31-56"><a href="#cb31-56" aria-hidden="true" tabindex="-1"></a>  }})</span>
-<span id="cb31-57"><a href="#cb31-57" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-58"><a href="#cb31-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-59"><a href="#cb31-59" aria-hidden="true" tabindex="-1"></a><span class="vs"># 1. Créer un document Quarto</span></span>
-<span id="cb31-60"><a href="#cb31-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-61"><a href="#cb31-61" aria-hidden="true" tabindex="-1"></a><span class="vs">Dans Rstudio, créez un document Quarto avec l'entête suivante :</span></span>
-<span id="cb31-62"><a href="#cb31-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-63"><a href="#cb31-63" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-64"><a href="#cb31-64" aria-hidden="true" tabindex="-1"></a><span class="vs">    ---</span></span>
-<span id="cb31-65"><a href="#cb31-65" aria-hidden="true" tabindex="-1"></a><span class="vs">    title: "World Explorer"</span></span>
-<span id="cb31-66"><a href="#cb31-66" aria-hidden="true" tabindex="-1"></a><span class="vs">    format:</span></span>
-<span id="cb31-67"><a href="#cb31-67" aria-hidden="true" tabindex="-1"></a><span class="vs">      html:</span></span>
-<span id="cb31-68"><a href="#cb31-68" aria-hidden="true" tabindex="-1"></a><span class="vs">        echo: false</span></span>
-<span id="cb31-69"><a href="#cb31-69" aria-hidden="true" tabindex="-1"></a><span class="vs">        code-tools: true</span></span>
-<span id="cb31-70"><a href="#cb31-70" aria-hidden="true" tabindex="-1"></a><span class="vs">        page-layout: full</span></span>
-<span id="cb31-71"><a href="#cb31-71" aria-hidden="true" tabindex="-1"></a><span class="vs">    ---</span></span>
-<span id="cb31-72"><a href="#cb31-72" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-73"><a href="#cb31-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-74"><a href="#cb31-74" aria-hidden="true" tabindex="-1"></a><span class="vs">Le format de sortie est le format `</span><span class="fu">html</span><span class="vs">`. </span></span>
-<span id="cb31-75"><a href="#cb31-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-76"><a href="#cb31-76" aria-hidden="true" tabindex="-1"></a><span class="vs">- `</span>echo<span class="op">:</span> <span class="fu">false</span><span class="vs">` permet de ne pas afficher le code dans le document final </span></span>
-<span id="cb31-77"><a href="#cb31-77" aria-hidden="true" tabindex="-1"></a><span class="vs">- `</span>code<span class="op">-</span>tools<span class="op">:</span> <span class="fu">true</span><span class="vs">` permet de donner accès au code source en cliquant sur `</span><span class="op">&lt;/&gt;</span> <span class="fu">Code</span><span class="vs">` en haut à droite de la page.</span></span>
-<span id="cb31-78"><a href="#cb31-78" aria-hidden="true" tabindex="-1"></a><span class="vs">- `</span>page<span class="op">-</span>layout<span class="op">:</span> <span class="fu">full</span><span class="vs">` permet de définir une disposition *pleine page*</span></span>
-<span id="cb31-79"><a href="#cb31-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-80"><a href="#cb31-80" aria-hidden="true" tabindex="-1"></a><span class="vs">À présent, copiez et collez en dessous le code suivant :</span></span>
-<span id="cb31-81"><a href="#cb31-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-82"><a href="#cb31-82" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-83"><a href="#cb31-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-84"><a href="#cb31-84" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span> {{ojs}}</span>
-<span id="cb31-85"><a href="#cb31-85" aria-hidden="true" tabindex="-1"></a><span class="co">//| panel: sidebar</span></span>
-<span id="cb31-86"><a href="#cb31-86" aria-hidden="true" tabindex="-1"></a><span class="st">"Le menu"</span></span>
-<span id="cb31-87"><a href="#cb31-87" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-88"><a href="#cb31-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-89"><a href="#cb31-89" aria-hidden="true" tabindex="-1"></a><span class="vs">    ::: {.panel-tabset}</span></span>
-<span id="cb31-90"><a href="#cb31-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-91"><a href="#cb31-91" aria-hidden="true" tabindex="-1"></a><span class="vs">    ## Carte</span></span>
-<span id="cb31-92"><a href="#cb31-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-93"><a href="#cb31-93" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span> {{ojs}}</span>
-<span id="cb31-94"><a href="#cb31-94" aria-hidden="true" tabindex="-1"></a><span class="st">"La carte"</span></span>
-<span id="cb31-95"><a href="#cb31-95" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-96"><a href="#cb31-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-97"><a href="#cb31-97" aria-hidden="true" tabindex="-1"></a><span class="vs">    ## Données</span></span>
-<span id="cb31-98"><a href="#cb31-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-99"><a href="#cb31-99" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span> {{ojs}}</span>
-<span id="cb31-100"><a href="#cb31-100" aria-hidden="true" tabindex="-1"></a><span class="st">"Les données"</span></span>
-<span id="cb31-101"><a href="#cb31-101" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-102"><a href="#cb31-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-103"><a href="#cb31-103" aria-hidden="true" tabindex="-1"></a><span class="vs">    ## Top 10</span></span>
-<span id="cb31-104"><a href="#cb31-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-105"><a href="#cb31-105" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span> {{ojs}}</span>
-<span id="cb31-106"><a href="#cb31-106" aria-hidden="true" tabindex="-1"></a><span class="st">"le graphique"</span></span>
-<span id="cb31-107"><a href="#cb31-107" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-108"><a href="#cb31-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-109"><a href="#cb31-109" aria-hidden="true" tabindex="-1"></a><span class="vs">    :::</span></span>
-<span id="cb31-110"><a href="#cb31-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-111"><a href="#cb31-111" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span> {{ojs}}</span>
-<span id="cb31-112"><a href="#cb31-112" aria-hidden="true" tabindex="-1"></a><span class="st">"Annexe technique"</span></span>
-<span id="cb31-113"><a href="#cb31-113" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-114"><a href="#cb31-114" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-115"><a href="#cb31-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-116"><a href="#cb31-116" aria-hidden="true" tabindex="-1"></a><span class="vs">Cliquez sur `</span><span class="fu">Render</span><span class="vs">` (ou *Ctrl+Shift+K*) pour voir apparaitre la structure de votre application. Elle est composée de 6 parties :</span></span>
-<span id="cb31-117"><a href="#cb31-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-118"><a href="#cb31-118" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Le &lt;ins&gt;titre&lt;/ins&gt; (défini dans l'entête de votre document `</span>title<span class="op">:</span> <span class="st">"World Explorer"</span><span class="vs">` ). À vous de remplacer le titre par la chaine de caractère de votre choix.</span></span>
-<span id="cb31-119"><a href="#cb31-119" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Le &lt;ins&gt;menu&lt;/ins&gt; (sur la gauche). C'est dans ce *chunk* que nous allons placer des `</span><span class="fu">Inputs</span><span class="vs">` permettant à l'utilisateur d'interagir avec la carte.</span></span>
-<span id="cb31-120"><a href="#cb31-120" aria-hidden="true" tabindex="-1"></a><span class="vs">-   La &lt;ins&gt;carte&lt;/ins&gt; (sur la droite). C'est dans ce *chunk* que nous allons dessiner une carte avec la bibliothèque `</span><span class="fu">bertin</span><span class="vs">`.</span></span>
-<span id="cb31-121"><a href="#cb31-121" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Les &lt;ins&gt;données&lt;/ins&gt; (sur la droite). C'est dans ce *chunk* que nous allons afficher le tableau de données derrière la carte.</span></span>
-<span id="cb31-122"><a href="#cb31-122" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Un &lt;ins&gt;graphique&lt;/ins&gt; (sur la droite). C'est dans ce *chunk* que nous allons afficher un *bar plot*.</span></span>
-<span id="cb31-123"><a href="#cb31-123" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Les &lt;ins&gt;annexes techniques&lt;/ins&gt; (en bas). Dans ce chunk, on écrira tout ce qui est nécéssaire à l'élaboration de l'appli (import des données, etc, mais qu'on ne souhaite pas afficher).</span></span>
-<span id="cb31-124"><a href="#cb31-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-125"><a href="#cb31-125" aria-hidden="true" tabindex="-1"></a><span class="vs">Rappelez-vous qu'avec Observable JavaScript, l'ordre d'écriture n'a pas d'importance. On peut donc écrire du code à la fin du document, comme une annexe technique.</span></span>
-<span id="cb31-126"><a href="#cb31-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-127"><a href="#cb31-127" aria-hidden="true" tabindex="-1"></a><span class="vs">La classe `</span>{<span class="op">.</span><span class="at">panel</span><span class="op">-</span>tabset}<span class="vs">` permet de positionner la carte, les données et le graphique dans 3 onglets différents.</span></span>
-<span id="cb31-128"><a href="#cb31-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-129"><a href="#cb31-129" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Sauvegardez.</span></span>
-<span id="cb31-130"><a href="#cb31-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-131"><a href="#cb31-131" aria-hidden="true" tabindex="-1"></a><span class="vs"># 2. Les données</span></span>
-<span id="cb31-132"><a href="#cb31-132" aria-hidden="true" tabindex="-1"></a><span class="vs">Téléchargez les données et mettez-les dans un repertoire *data*.</span></span>
-<span id="cb31-133"><a href="#cb31-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-134"><a href="#cb31-134" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;a href = "https://github.com/EE-CIST/CART3_cartodyn/raw/main/TP2/data/data.zip"&gt;&lt;img src = "img/download.png" height= "50px"&gt;&lt;img&gt;&lt;/a&gt;</span></span>
-<span id="cb31-135"><a href="#cb31-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-136"><a href="#cb31-136" aria-hidden="true" tabindex="-1"></a><span class="vs">Dans le chunck de l'&lt;ins&gt;**annexe technique**&lt;/ins&gt;, importez les données géométriques et attributaires qui se trouvent dans le répertoire data.</span></span>
-<span id="cb31-137"><a href="#cb31-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-138"><a href="#cb31-138" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-141"><a href="#cb31-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-142"><a href="#cb31-142" aria-hidden="true" tabindex="-1"></a>world <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/world.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
-<span id="cb31-143"><a href="#cb31-143" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/worldbank_data.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb31-144"><a href="#cb31-144" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-145"><a href="#cb31-145" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-146"><a href="#cb31-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-147"><a href="#cb31-147" aria-hidden="true" tabindex="-1"></a><span class="vs">Comme dit précédement, les données contiennent des indicateurs à plusieurs dates.</span></span>
-<span id="cb31-148"><a href="#cb31-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-151"><a href="#cb31-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-152"><a href="#cb31-152" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
-<span id="cb31-153"><a href="#cb31-153" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: true</span></span>
-<span id="cb31-154"><a href="#cb31-154" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(stats)</span>
-<span id="cb31-155"><a href="#cb31-155" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-156"><a href="#cb31-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-157"><a href="#cb31-157" aria-hidden="true" tabindex="-1"></a><span class="vs"># 3. Le menu</span></span>
-<span id="cb31-158"><a href="#cb31-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-159"><a href="#cb31-159" aria-hidden="true" tabindex="-1"></a><span class="vs">Ici, on définit quelles interactions ont souhaite proposer à l'utilisateur.</span></span>
-<span id="cb31-160"><a href="#cb31-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-161"><a href="#cb31-161" aria-hidden="true" tabindex="-1"></a><span class="vs">Copiez et collez les lignes de code suivantes dans votre chunck &lt;ins&gt;**menu**&lt;/ins&gt;.</span></span>
-<span id="cb31-162"><a href="#cb31-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-163"><a href="#cb31-163" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Un slider pour choisir l'année</span></span>
-<span id="cb31-164"><a href="#cb31-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-165"><a href="#cb31-165" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-168"><a href="#cb31-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-169"><a href="#cb31-169" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-170"><a href="#cb31-170" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-171"><a href="#cb31-171" aria-hidden="true" tabindex="-1"></a>viewof year <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb31-172"><a href="#cb31-172" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1990</span><span class="op">,</span> <span class="dv">2019</span>]<span class="op">,</span> </span>
-<span id="cb31-173"><a href="#cb31-173" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">2019</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Année"</span>}</span>
-<span id="cb31-174"><a href="#cb31-174" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-175"><a href="#cb31-175" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-176"><a href="#cb31-176" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-177"><a href="#cb31-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-178"><a href="#cb31-178" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Un slider pour configurer la taille des cercles</span></span>
-<span id="cb31-179"><a href="#cb31-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-180"><a href="#cb31-180" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-183"><a href="#cb31-183" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-184"><a href="#cb31-184" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-185"><a href="#cb31-185" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-186"><a href="#cb31-186" aria-hidden="true" tabindex="-1"></a>viewof k <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb31-187"><a href="#cb31-187" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">20</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> </span>
-<span id="cb31-188"><a href="#cb31-188" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rayon max"</span>}</span>
-<span id="cb31-189"><a href="#cb31-189" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-190"><a href="#cb31-190" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-191"><a href="#cb31-191" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-192"><a href="#cb31-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-193"><a href="#cb31-193" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Une liste déroulante pour choisir l'indicateur</span></span>
-<span id="cb31-194"><a href="#cb31-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-195"><a href="#cb31-195" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-198"><a href="#cb31-198" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-199"><a href="#cb31-199" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-200"><a href="#cb31-200" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-201"><a href="#cb31-201" aria-hidden="true" tabindex="-1"></a>meta <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/worldbank_meta.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb31-202"><a href="#cb31-202" aria-hidden="true" tabindex="-1"></a>viewof indicator <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
-<span id="cb31-203"><a href="#cb31-203" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> <span class="bu">Map</span>(meta<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">indicator</span><span class="op">,</span> d<span class="op">.</span><span class="at">shortcode</span>]))<span class="op">,</span></span>
-<span id="cb31-204"><a href="#cb31-204" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">label</span><span class="op">:</span> <span class="st">"Indicateur"</span> }</span>
-<span id="cb31-205"><a href="#cb31-205" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-206"><a href="#cb31-206" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-207"><a href="#cb31-207" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-208"><a href="#cb31-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-209"><a href="#cb31-209" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Une liste déroulante pour choisir la projection cartographique</span></span>
-<span id="cb31-210"><a href="#cb31-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-211"><a href="#cb31-211" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-214"><a href="#cb31-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-215"><a href="#cb31-215" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-216"><a href="#cb31-216" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-217"><a href="#cb31-217" aria-hidden="true" tabindex="-1"></a>projections <span class="op">=</span> [<span class="st">"Patterson"</span><span class="op">,</span> <span class="st">"NaturalEarth1"</span><span class="op">,</span> <span class="st">"Bertin1953"</span><span class="op">,</span> <span class="st">"InterruptedSinusoidal"</span><span class="op">,</span> <span class="st">"Armadillo"</span><span class="op">,</span> <span class="st">"Baker"</span><span class="op">,</span> <span class="st">"Gingery"</span><span class="op">,</span> <span class="st">"Berghaus"</span><span class="op">,</span> <span class="st">"Loximuthal"</span><span class="op">,</span> <span class="st">"Healpix"</span><span class="op">,</span> <span class="st">"InterruptedMollweideHemispheres"</span><span class="op">,</span> <span class="st">"Miller"</span><span class="op">,</span> <span class="st">"Aitoff"</span><span class="op">,</span> <span class="st">"ConicEqualArea"</span><span class="op">,</span> <span class="st">"Eckert3"</span><span class="op">,</span> <span class="st">"Hill"</span>]</span>
-<span id="cb31-218"><a href="#cb31-218" aria-hidden="true" tabindex="-1"></a>viewof proj <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(projections<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Projection"</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">350</span>})</span>
-<span id="cb31-219"><a href="#cb31-219" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-220"><a href="#cb31-220" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-221"><a href="#cb31-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-222"><a href="#cb31-222" aria-hidden="true" tabindex="-1"></a><span class="vs">- Deux sliders pour définir le centre de projection. De -180 à +180 en longitude. De -90 à +90 en latitude. </span></span>
-<span id="cb31-223"><a href="#cb31-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-224"><a href="#cb31-224" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-227"><a href="#cb31-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-228"><a href="#cb31-228" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-229"><a href="#cb31-229" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-230"><a href="#cb31-230" aria-hidden="true" tabindex="-1"></a>viewof x <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="op">-</span><span class="dv">180</span><span class="op">,</span> <span class="dv">180</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rotation (x)"</span>} )</span>
-<span id="cb31-231"><a href="#cb31-231" aria-hidden="true" tabindex="-1"></a>viewof y <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="op">-</span><span class="dv">90</span><span class="op">,</span> <span class="dv">90</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rotation (y)"</span>} )</span>
-<span id="cb31-232"><a href="#cb31-232" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-233"><a href="#cb31-233" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-234"><a href="#cb31-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-235"><a href="#cb31-235" aria-hidden="true" tabindex="-1"></a><span class="vs">- La couleur des symboles</span></span>
-<span id="cb31-236"><a href="#cb31-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-237"><a href="#cb31-237" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-240"><a href="#cb31-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-241"><a href="#cb31-241" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-242"><a href="#cb31-242" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-243"><a href="#cb31-243" aria-hidden="true" tabindex="-1"></a>viewof color <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">color</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">"couleur"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"#4682b4"</span>})</span>
-<span id="cb31-244"><a href="#cb31-244" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-245"><a href="#cb31-245" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-246"><a href="#cb31-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-247"><a href="#cb31-247" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Un slider pour définir le niveau de généralisation du fond de carte</span></span>
-<span id="cb31-248"><a href="#cb31-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-249"><a href="#cb31-249" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-252"><a href="#cb31-252" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-253"><a href="#cb31-253" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-254"><a href="#cb31-254" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-255"><a href="#cb31-255" aria-hidden="true" tabindex="-1"></a>viewof simpl <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb31-256"><a href="#cb31-256" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> </span>
-<span id="cb31-257"><a href="#cb31-257" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Simplification"</span>}</span>
-<span id="cb31-258"><a href="#cb31-258" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-259"><a href="#cb31-259" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-260"><a href="#cb31-260" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-261"><a href="#cb31-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-262"><a href="#cb31-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-263"><a href="#cb31-263" aria-hidden="true" tabindex="-1"></a><span class="vs">On obtient le menu suivant où `</span><span class="fu">year</span><span class="vs">` correspond à l'année, `</span><span class="fu">k</span><span class="vs">` correspond à la taille des cercles, `</span><span class="fu">indicator</span><span class="vs">` correspond au nom de la variable, `</span><span class="fu">proj</span><span class="vs">` correspond à la projection cartographique centrée sur `</span><span class="fu">x</span><span class="vs">` et `</span><span class="fu">y</span><span class="vs">`, `</span><span class="fu">color</span><span class="vs">` correspond à la couleur des symboles et `</span><span class="fu">simpl</span><span class="vs">` correspond au niveau de généralisation du fond de carte. </span></span>
-<span id="cb31-264"><a href="#cb31-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-265"><a href="#cb31-265" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-268"><a href="#cb31-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-269"><a href="#cb31-269" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
-<span id="cb31-270"><a href="#cb31-270" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: true</span></span>
-<span id="cb31-271"><a href="#cb31-271" aria-hidden="true" tabindex="-1"></a>viewof year <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb31-272"><a href="#cb31-272" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1990</span><span class="op">,</span> <span class="dv">2019</span>]<span class="op">,</span> </span>
-<span id="cb31-273"><a href="#cb31-273" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">2019</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Année"</span>}</span>
-<span id="cb31-274"><a href="#cb31-274" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-275"><a href="#cb31-275" aria-hidden="true" tabindex="-1"></a>viewof k <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb31-276"><a href="#cb31-276" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">20</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> </span>
-<span id="cb31-277"><a href="#cb31-277" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rayon max"</span>}</span>
-<span id="cb31-278"><a href="#cb31-278" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-279"><a href="#cb31-279" aria-hidden="true" tabindex="-1"></a>meta <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/worldbank_meta.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb31-280"><a href="#cb31-280" aria-hidden="true" tabindex="-1"></a>viewof indicator <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
-<span id="cb31-281"><a href="#cb31-281" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> <span class="bu">Map</span>(meta<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">indicator</span><span class="op">,</span> d<span class="op">.</span><span class="at">shortcode</span>]))<span class="op">,</span></span>
-<span id="cb31-282"><a href="#cb31-282" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">label</span><span class="op">:</span> <span class="st">"Indicateur"</span> }</span>
-<span id="cb31-283"><a href="#cb31-283" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb31-284"><a href="#cb31-284" aria-hidden="true" tabindex="-1"></a>projections <span class="op">=</span> [<span class="st">"Patterson"</span><span class="op">,</span> <span class="st">"NaturalEarth1"</span><span class="op">,</span> <span class="st">"Bertin1953"</span><span class="op">,</span> <span class="st">"InterruptedSinusoidal"</span><span class="op">,</span> <span class="st">"Armadillo"</span><span class="op">,</span> <span class="st">"Baker"</span><span class="op">,</span> <span class="st">"Gingery"</span><span class="op">,</span> <span class="st">"Berghaus"</span><span class="op">,</span> <span class="st">"Loximuthal"</span><span class="op">,</span> <span class="st">"Healpix"</span><span class="op">,</span> <span class="st">"InterruptedMollweideHemispheres"</span><span class="op">,</span> <span class="st">"Miller"</span><span class="op">,</span> <span class="st">"Aitoff"</span><span class="op">,</span> <span class="st">"ConicEqualArea"</span><span class="op">,</span> <span class="st">"Eckert3"</span><span class="op">,</span> <span class="st">"Hill"</span>]</span>
-<span id="cb31-285"><a href="#cb31-285" aria-hidden="true" tabindex="-1"></a>viewof proj <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(projections<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Projection"</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">350</span>})</span>
-<span id="cb31-286"><a href="#cb31-286" aria-hidden="true" tabindex="-1"></a>viewof x <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="op">-</span><span class="dv">180</span><span class="op">,</span> <span class="dv">180</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rotation (x)"</span>} )</span>
-<span id="cb31-287"><a href="#cb31-287" aria-hidden="true" tabindex="-1"></a>  viewof y <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="op">-</span><span class="dv">90</span><span class="op">,</span> <span class="dv">90</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rotation (y)"</span>} )</span>
-<span id="cb31-288"><a href="#cb31-288" aria-hidden="true" tabindex="-1"></a>viewof color <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">color</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">"couleur"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"#4682b4"</span>})</span>
-<span id="cb31-289"><a href="#cb31-289" aria-hidden="true" tabindex="-1"></a>viewof simpl <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="fl">0.01</span><span class="op">,</span> <span class="fl">0.5</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Simplification"</span>} )</span>
-<span id="cb31-290"><a href="#cb31-290" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-291"><a href="#cb31-291" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-292"><a href="#cb31-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-293"><a href="#cb31-293" aria-hidden="true" tabindex="-1"></a><span class="vs"># 4. Mise en forme des données</span></span>
-<span id="cb31-294"><a href="#cb31-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-295"><a href="#cb31-295" aria-hidden="true" tabindex="-1"></a><span class="vs">Avant de construire la carte, nous avons besoin de manipuler un peu les données. On effectue ces opérations dans la partie &lt;ins&gt;**annexe technique**&lt;/ins&gt;.  Plusieurs opérations son nécéssaires: </span></span>
-<span id="cb31-296"><a href="#cb31-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-297"><a href="#cb31-297" aria-hidden="true" tabindex="-1"></a><span class="vs">Tout d'abord, on réalise une généralisation du fond de carte avec la fonction `</span><span class="fu">simplify</span><span class="vs">` de la bibliothèque `</span><span class="fu">geotoolbox</span><span class="vs">` qui permet de faire simplement la plupart des opérations SIG utiles en cartographie ([voir](https://github.com/neocarto/geotoolbox)). On peut la charger directement ou la télécharger [ici](https://cdn.jsdelivr.net/npm/geotoolbox@1.9.3) pour travailler sans connexion internet. Le niveau de simplification sera déterminé par l'utilisateur dans le slider *simpl*.</span></span>
-<span id="cb31-298"><a href="#cb31-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-299"><a href="#cb31-299" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-302"><a href="#cb31-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-303"><a href="#cb31-303" aria-hidden="true" tabindex="-1"></a>geo <span class="op">=</span> <span class="pp">require</span>(<span class="st">"geotoolbox@1.9.3"</span>)</span>
-<span id="cb31-304"><a href="#cb31-304" aria-hidden="true" tabindex="-1"></a><span class="co">// ou geo = require("./lib/geotoolbox.js")</span></span>
-<span id="cb31-305"><a href="#cb31-305" aria-hidden="true" tabindex="-1"></a>world2 <span class="op">=</span> geo<span class="op">.</span><span class="fu">simplify</span>(world<span class="op">,</span> {<span class="dt">k</span><span class="op">:</span> simpl})</span>
-<span id="cb31-306"><a href="#cb31-306" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-307"><a href="#cb31-307" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-308"><a href="#cb31-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-309"><a href="#cb31-309" aria-hidden="true" tabindex="-1"></a><span class="vs">Puis, avec l'instruction JavaScript `</span><span class="fu">filter</span><span class="vs">`, on crée un tableau contenant uniquement l'année séléctionnée et on effectue une jointure entre les données et le fond de carte grâce à la bibliothèque `</span><span class="fu">bertin</span><span class="vs">` (*on peut aussi télécharger la bibliothèque [ici](https://cdn.jsdelivr.net/npm/bertin@1.6.3)*).</span></span>
-<span id="cb31-310"><a href="#cb31-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-311"><a href="#cb31-311" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-314"><a href="#cb31-314" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-315"><a href="#cb31-315" aria-hidden="true" tabindex="-1"></a>bertin <span class="op">=</span> <span class="pp">require</span>(<span class="st">"bertin@1.6.3"</span>)</span>
-<span id="cb31-316"><a href="#cb31-316" aria-hidden="true" tabindex="-1"></a><span class="co">// ou bertin = require("./lib/bertin.js")</span></span>
-<span id="cb31-317"><a href="#cb31-317" aria-hidden="true" tabindex="-1"></a>statsyear <span class="op">=</span> stats<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">date</span> <span class="op">==</span> year)</span>
-<span id="cb31-318"><a href="#cb31-318" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> bertin<span class="op">.</span><span class="fu">merge</span>(world2<span class="op">,</span> <span class="st">"id"</span><span class="op">,</span> statsyear<span class="op">,</span> <span class="st">"iso3c"</span>)</span>
-<span id="cb31-319"><a href="#cb31-319" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-320"><a href="#cb31-320" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-321"><a href="#cb31-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-322"><a href="#cb31-322" aria-hidden="true" tabindex="-1"></a><span class="vs">On a aussi besoin de récupérer une valeur de réference pour chaque indicateur pour rendre comparables la taille des symboles d'une année à l'année sur l'autre. On récupère la valeur maximale de l'année 2019. </span></span>
-<span id="cb31-323"><a href="#cb31-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-324"><a href="#cb31-324" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-327"><a href="#cb31-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-328"><a href="#cb31-328" aria-hidden="true" tabindex="-1"></a>varmax <span class="op">=</span> d3<span class="op">.</span><span class="fu">max</span>(stats<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">date</span> <span class="op">==</span> <span class="dv">2019</span>)<span class="op">,</span> d <span class="kw">=&gt;</span> <span class="op">+</span>d[indicator])</span>
-<span id="cb31-329"><a href="#cb31-329" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-330"><a href="#cb31-330" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-331"><a href="#cb31-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-332"><a href="#cb31-332" aria-hidden="true" tabindex="-1"></a><span class="vs">Après ces opérations, l'objet `</span><span class="fu">data</span><span class="vs">` contient les géométries généralisées et les données pour l'année séléctionnée.</span></span>
-<span id="cb31-333"><a href="#cb31-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-334"><a href="#cb31-334" aria-hidden="true" tabindex="-1"></a><span class="vs"># 5. Réalisation de la carte</span></span>
-<span id="cb31-335"><a href="#cb31-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-336"><a href="#cb31-336" aria-hidden="true" tabindex="-1"></a><span class="vs">Ici, on réalise la carte dans la chuck &lt;ins&gt;**carte**&lt;/ins&gt; avec la bibliothèque bertin.</span></span>
-<span id="cb31-337"><a href="#cb31-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-338"><a href="#cb31-338" aria-hidden="true" tabindex="-1"></a><span class="vs">Tout d'abord, on fabrique le titre en concatenant le nom de la variable et l'année.</span></span>
-<span id="cb31-339"><a href="#cb31-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-340"><a href="#cb31-340" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-343"><a href="#cb31-343" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-344"><a href="#cb31-344" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> meta<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">indicator</span><span class="op">,</span> d<span class="op">.</span><span class="at">shortcode</span>])<span class="op">.</span><span class="fu">find</span>((d) <span class="kw">=&gt;</span> d[<span class="dv">1</span>] <span class="op">==</span> indicator)[<span class="dv">0</span>] <span class="op">+</span> <span class="st">" in "</span> <span class="op">+</span> year</span>
-<span id="cb31-345"><a href="#cb31-345" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-346"><a href="#cb31-346" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-347"><a href="#cb31-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-348"><a href="#cb31-348" aria-hidden="true" tabindex="-1"></a><span class="vs">Puis, on dessine la carte avec la fonction `</span><span class="fu">draw</span><span class="vs">` de la bibliothèque `</span><span class="fu">bertin</span><span class="vs">`. Libre à vous de personnaliser la mise en page et les couleurs en modifiant/ajoutant quelques paramètres. </span></span>
-<span id="cb31-349"><a href="#cb31-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-350"><a href="#cb31-350" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-353"><a href="#cb31-353" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-354"><a href="#cb31-354" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-355"><a href="#cb31-355" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-356"><a href="#cb31-356" aria-hidden="true" tabindex="-1"></a>bertin<span class="op">.</span><span class="fu">draw</span>({</span>
-<span id="cb31-357"><a href="#cb31-357" aria-hidden="true" tabindex="-1"></a><span class="dt">params</span><span class="op">:</span> {<span class="dt">projection</span><span class="op">:</span> proj <span class="op">+</span> <span class="vs">`.rotate([</span><span class="sc">${</span>x<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>y<span class="sc">}</span><span class="vs">])`</span><span class="op">,</span> <span class="dt">clip</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
-<span id="cb31-358"><a href="#cb31-358" aria-hidden="true" tabindex="-1"></a><span class="dt">layers</span><span class="op">:</span>[</span>
-<span id="cb31-359"><a href="#cb31-359" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">type</span><span class="op">:</span> <span class="st">"header"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> title}<span class="op">,</span></span>
-<span id="cb31-360"><a href="#cb31-360" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">type</span><span class="op">:</span> <span class="st">"bubble"</span><span class="op">,</span> </span>
-<span id="cb31-361"><a href="#cb31-361" aria-hidden="true" tabindex="-1"></a>    <span class="dt">geojson</span><span class="op">:</span> data<span class="op">,</span></span>
-<span id="cb31-362"><a href="#cb31-362" aria-hidden="true" tabindex="-1"></a>    <span class="dt">values</span><span class="op">:</span> indicator<span class="op">,</span> </span>
-<span id="cb31-363"><a href="#cb31-363" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fill</span><span class="op">:</span> color<span class="op">,</span></span>
-<span id="cb31-364"><a href="#cb31-364" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fixmax</span><span class="op">:</span> varmax<span class="op">,</span></span>
-<span id="cb31-365"><a href="#cb31-365" aria-hidden="true" tabindex="-1"></a>    k<span class="op">,</span> </span>
-<span id="cb31-366"><a href="#cb31-366" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tooltip</span><span class="op">:</span> [<span class="st">"$name"</span><span class="op">,</span>d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">properties</span>[indicator]]</span>
-<span id="cb31-367"><a href="#cb31-367" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb31-368"><a href="#cb31-368" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">geojson</span><span class="op">:</span> world<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#CCC"</span>}<span class="op">,</span></span>
-<span id="cb31-369"><a href="#cb31-369" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">type</span><span class="op">:</span> <span class="st">"graticule"</span>}<span class="op">,</span>  </span>
-<span id="cb31-370"><a href="#cb31-370" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">type</span><span class="op">:</span> <span class="st">"outline"</span>}</span>
-<span id="cb31-371"><a href="#cb31-371" aria-hidden="true" tabindex="-1"></a>]})</span>
-<span id="cb31-372"><a href="#cb31-372" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-373"><a href="#cb31-373" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-374"><a href="#cb31-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-375"><a href="#cb31-375" aria-hidden="true" tabindex="-1"></a><span class="vs"># 6. Affichage des données</span></span>
-<span id="cb31-376"><a href="#cb31-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-377"><a href="#cb31-377" aria-hidden="true" tabindex="-1"></a><span class="vs">Ici, on ajoute un tableau de données dans la chuck &lt;ins&gt;données&lt;/ins&gt;. On selectionne les colonnes à afficher. </span></span>
-<span id="cb31-378"><a href="#cb31-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-379"><a href="#cb31-379" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-382"><a href="#cb31-382" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-383"><a href="#cb31-383" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-384"><a href="#cb31-384" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-385"><a href="#cb31-385" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(statsyear<span class="op">,</span> {  <span class="dt">columns</span><span class="op">:</span> [</span>
-<span id="cb31-386"><a href="#cb31-386" aria-hidden="true" tabindex="-1"></a>    <span class="st">"country"</span><span class="op">,</span></span>
-<span id="cb31-387"><a href="#cb31-387" aria-hidden="true" tabindex="-1"></a>    <span class="st">"capital_city"</span><span class="op">,</span></span>
-<span id="cb31-388"><a href="#cb31-388" aria-hidden="true" tabindex="-1"></a>    <span class="st">"region"</span><span class="op">,</span></span>
-<span id="cb31-389"><a href="#cb31-389" aria-hidden="true" tabindex="-1"></a>    indicator</span>
-<span id="cb31-390"><a href="#cb31-390" aria-hidden="true" tabindex="-1"></a>  ]})</span>
-<span id="cb31-391"><a href="#cb31-391" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-392"><a href="#cb31-392" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-393"><a href="#cb31-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-394"><a href="#cb31-394" aria-hidden="true" tabindex="-1"></a><span class="vs"># 7. Réalisation du graphique</span></span>
-<span id="cb31-395"><a href="#cb31-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-396"><a href="#cb31-396" aria-hidden="true" tabindex="-1"></a><span class="vs">On souhaite réaliser un diagramme en barres avec les N pays qui ont les plus fortes valeurs sur l'indicateur séléctionné. Nous récupérons donc l'objet `</span><span class="fu">stats</span><span class="vs">` qui contient les données, nous le trions, et ne gardons que les N premières valeurs. N est défini dans un slider. Le graphique est réalisé avec la bibliothèqe [Plot](https://observablehq.com/@observablehq/plot). </span></span>
-<span id="cb31-397"><a href="#cb31-397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-398"><a href="#cb31-398" aria-hidden="true" tabindex="-1"></a><span class="vs">Ajoutez le code ci-dessous chuck &lt;ins&gt;**graphique**&lt;/ins&gt;.</span></span>
-<span id="cb31-399"><a href="#cb31-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-400"><a href="#cb31-400" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-403"><a href="#cb31-403" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-404"><a href="#cb31-404" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-405"><a href="#cb31-405" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-406"><a href="#cb31-406" aria-hidden="true" tabindex="-1"></a>viewof topnb <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">5</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Nombre de pays représentés"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span>})</span>
-<span id="cb31-407"><a href="#cb31-407" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> statsyear<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> d3<span class="op">.</span><span class="fu">descending</span>(<span class="op">+</span>a[indicator]<span class="op">,</span> <span class="op">+</span>b[indicator]))</span>
-<span id="cb31-408"><a href="#cb31-408" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> topnb)</span>
-<span id="cb31-409"><a href="#cb31-409" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb31-410"><a href="#cb31-410" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
-<span id="cb31-411"><a href="#cb31-411" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb31-412"><a href="#cb31-412" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barY</span>(top<span class="op">,</span> {</span>
-<span id="cb31-413"><a href="#cb31-413" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"iso3c"</span><span class="op">,</span></span>
-<span id="cb31-414"><a href="#cb31-414" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> indicator<span class="op">,</span></span>
-<span id="cb31-415"><a href="#cb31-415" aria-hidden="true" tabindex="-1"></a>      <span class="dt">sort</span><span class="op">:</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
-<span id="cb31-416"><a href="#cb31-416" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> color</span>
-<span id="cb31-417"><a href="#cb31-417" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
-<span id="cb31-418"><a href="#cb31-418" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
-<span id="cb31-419"><a href="#cb31-419" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb31-420"><a href="#cb31-420" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb31-421"><a href="#cb31-421" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-422"><a href="#cb31-422" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-423"><a href="#cb31-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-424"><a href="#cb31-424" aria-hidden="true" tabindex="-1"></a><span class="vs"># 7. C'est fini !</span></span>
-<span id="cb31-425"><a href="#cb31-425" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-426"><a href="#cb31-426" aria-hidden="true" tabindex="-1"></a><span class="vs">Appuyez sur `</span><span class="fu">Render</span><span class="vs">` pour voir le résultat. La solution est disponible [ici](https://ee-cist.github.io/CART3_cartodyn/app/index.html).</span></span>
-<span id="cb31-427"><a href="#cb31-427" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-428"><a href="#cb31-428" aria-hidden="true" tabindex="-1"></a><span class="vs"># 8. Aller plus loin</span></span>
-<span id="cb31-429"><a href="#cb31-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-430"><a href="#cb31-430" aria-hidden="true" tabindex="-1"></a><span class="vs">Cette application est largement perfectible. Une piste possible d'amélioration serait de remplacer le slider des années par un bouton play pour faire une vraie carte animée. Une solution consiste à utiliser l'input `</span><span class="fu">scrubber</span><span class="vs">` dévelopé par Mike Bostock : [https://observablehq.com/@mbostock/scrubber](https://observablehq.com/@mbostock/scrubber).</span></span>
-<span id="cb31-431"><a href="#cb31-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-432"><a href="#cb31-432" aria-hidden="true" tabindex="-1"></a><span class="vs">Deux options sont possibles. Vous pouvez importer la fonction depuis Observable.</span></span>
-<span id="cb31-433"><a href="#cb31-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-434"><a href="#cb31-434" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-437"><a href="#cb31-437" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-438"><a href="#cb31-438" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-439"><a href="#cb31-439" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-440"><a href="#cb31-440" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {Scrubber} <span class="im">from</span> <span class="st">"@mbostock/scrubber"</span></span>
-<span id="cb31-441"><a href="#cb31-441" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-442"><a href="#cb31-442" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-443"><a href="#cb31-443" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-444"><a href="#cb31-444" aria-hidden="true" tabindex="-1"></a><span class="vs">Ou copier le code de la fonction qui se trouve sur [cette page](https://observablehq.com/@mbostock/scrubber).</span></span>
-<span id="cb31-445"><a href="#cb31-445" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-446"><a href="#cb31-446" aria-hidden="true" tabindex="-1"></a><span class="vs">Puis, remplacez le slider des années par :</span></span>
-<span id="cb31-447"><a href="#cb31-447" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-448"><a href="#cb31-448" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
-<span id="cb31-451"><a href="#cb31-451" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb31-452"><a href="#cb31-452" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
-<span id="cb31-453"><a href="#cb31-453" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
-<span id="cb31-454"><a href="#cb31-454" aria-hidden="true" tabindex="-1"></a>viewof year <span class="op">=</span> <span class="fu">Scrubber</span>(d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">1990</span><span class="op">,</span> <span class="dv">2019</span>)<span class="op">,</span> { <span class="dt">autoplay</span><span class="op">:</span> <span class="kw">false</span> })</span>
-<span id="cb31-455"><a href="#cb31-455" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
-<span id="cb31-456"><a href="#cb31-456" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
-<span id="cb31-457"><a href="#cb31-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-458"><a href="#cb31-458" aria-hidden="true" tabindex="-1"></a><span class="vs">Et pour encore plus de fun 🥳, vous pouvez aussi vous amuser à utiliser un *scrubber* à la place du slider Rotate (x).</span></span>
-<span id="cb31-459"><a href="#cb31-459" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb34" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "TP2 - Réaliser une *single page application* avec Quarto et `bertin`"</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: custom.scss</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: false</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Show the code"</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>**L'objectif de ce TP est d'apprendre à créer des cartes interactives avec Quarto et la bibliothèque JavaScript `bertin`.**</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/banner.png)</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>**Responsables pédagogiques**</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>Manhamady OUEDRAOGO (Burkina Faso) &amp; Nicolas LAMBERT (France)</span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>**Ont participé à l'élaboration de ce module**</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France), Sébastien REY-COYREHOURCQ (France), Vakaramoko BAMBA (Côte d'Ivoire), Hugues PECOUT (France), Yentougle MOUTORE (Togo), Bénédicte GARNIER (France), Côomlan Charles HOUNTON (Bénin), Pauline GLUSKI (France)</span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>**Objectifs**</span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>Le but de ce TP est de réaliser une application de cartographie à l'échelle mondiale sur une page web *pleine page*. d'un point de vue technique, on parlera de *single page application* (SPA).</span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/app.png)</span></span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a>Les bases et prérequis nécessaires à la bonne compréhension de ce TP sont disponibles via ce <span class="co">[</span><span class="ot">cours introductif</span><span class="co">](https://ee-cist.github.io/CART3_cartodyn/intro/docs/index.html#/title-slide)</span> et ce premier <span class="co">[</span><span class="ot">TP</span><span class="co">](https://ee-cist.github.io/CART3_cartodyn/TP1/docs/index.html)</span>. Merci de procéder dans cet ordre.</span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>**Données**</span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a>Pour cet exercice, nous nous basons sur un tableau de données contenant 6 variables issues de la banque mondiale, disponibles de 1990 à 2021. Elles ont été harmonisées par Claude Grasland. Les voici ci-dessous.</span>
+<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-43"><a href="#cb34-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-44"><a href="#cb34-44" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb34-45"><a href="#cb34-45" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: true</span></span>
+<span id="cb34-46"><a href="#cb34-46" aria-hidden="true" tabindex="-1"></a>prez <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/worldbank_meta.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb34-47"><a href="#cb34-47" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(prez<span class="op">,</span> {  <span class="dt">columns</span><span class="op">:</span> [</span>
+<span id="cb34-48"><a href="#cb34-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"shortcode"</span><span class="op">,</span></span>
+<span id="cb34-49"><a href="#cb34-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"indicator"</span><span class="op">,</span></span>
+<span id="cb34-50"><a href="#cb34-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">"indicator_desc"</span><span class="op">,</span></span>
+<span id="cb34-51"><a href="#cb34-51" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb34-52"><a href="#cb34-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">header</span><span class="op">:</span> {</span>
+<span id="cb34-53"><a href="#cb34-53" aria-hidden="true" tabindex="-1"></a>    <span class="dt">shortcode</span><span class="op">:</span> <span class="st">"id"</span><span class="op">,</span></span>
+<span id="cb34-54"><a href="#cb34-54" aria-hidden="true" tabindex="-1"></a>    <span class="dt">indicator</span><span class="op">:</span> <span class="st">"indicateur"</span><span class="op">,</span></span>
+<span id="cb34-55"><a href="#cb34-55" aria-hidden="true" tabindex="-1"></a>    <span class="dt">indicator_desc</span><span class="op">:</span> <span class="st">"description"</span><span class="op">,</span></span>
+<span id="cb34-56"><a href="#cb34-56" aria-hidden="true" tabindex="-1"></a>  }})</span>
+<span id="cb34-57"><a href="#cb34-57" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-58"><a href="#cb34-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-59"><a href="#cb34-59" aria-hidden="true" tabindex="-1"></a><span class="vs"># 1. Créer un document Quarto</span></span>
+<span id="cb34-60"><a href="#cb34-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-61"><a href="#cb34-61" aria-hidden="true" tabindex="-1"></a><span class="vs">Dans Rstudio, créez un document Quarto avec l'entête suivante :</span></span>
+<span id="cb34-62"><a href="#cb34-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-63"><a href="#cb34-63" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-64"><a href="#cb34-64" aria-hidden="true" tabindex="-1"></a><span class="vs">    ---</span></span>
+<span id="cb34-65"><a href="#cb34-65" aria-hidden="true" tabindex="-1"></a><span class="vs">    title: "World Explorer"</span></span>
+<span id="cb34-66"><a href="#cb34-66" aria-hidden="true" tabindex="-1"></a><span class="vs">    format:</span></span>
+<span id="cb34-67"><a href="#cb34-67" aria-hidden="true" tabindex="-1"></a><span class="vs">      html:</span></span>
+<span id="cb34-68"><a href="#cb34-68" aria-hidden="true" tabindex="-1"></a><span class="vs">        echo: false</span></span>
+<span id="cb34-69"><a href="#cb34-69" aria-hidden="true" tabindex="-1"></a><span class="vs">        code-tools: true</span></span>
+<span id="cb34-70"><a href="#cb34-70" aria-hidden="true" tabindex="-1"></a><span class="vs">        page-layout: full</span></span>
+<span id="cb34-71"><a href="#cb34-71" aria-hidden="true" tabindex="-1"></a><span class="vs">    ---</span></span>
+<span id="cb34-72"><a href="#cb34-72" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-73"><a href="#cb34-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-74"><a href="#cb34-74" aria-hidden="true" tabindex="-1"></a><span class="vs">Le format de sortie est le format `</span><span class="fu">html</span><span class="vs">`. </span></span>
+<span id="cb34-75"><a href="#cb34-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-76"><a href="#cb34-76" aria-hidden="true" tabindex="-1"></a><span class="vs">- `</span>echo<span class="op">:</span> <span class="fu">false</span><span class="vs">` permet de ne pas afficher le code dans le document final </span></span>
+<span id="cb34-77"><a href="#cb34-77" aria-hidden="true" tabindex="-1"></a><span class="vs">- `</span>code<span class="op">-</span>tools<span class="op">:</span> <span class="fu">true</span><span class="vs">` permet de donner accès au code source en cliquant sur `</span><span class="op">&lt;/&gt;</span> <span class="fu">Code</span><span class="vs">` en haut à droite de la page.</span></span>
+<span id="cb34-78"><a href="#cb34-78" aria-hidden="true" tabindex="-1"></a><span class="vs">- `</span>page<span class="op">-</span>layout<span class="op">:</span> <span class="fu">full</span><span class="vs">` permet de définir une disposition *pleine page*</span></span>
+<span id="cb34-79"><a href="#cb34-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-80"><a href="#cb34-80" aria-hidden="true" tabindex="-1"></a><span class="vs">À présent, copiez et collez en dessous le code suivant :</span></span>
+<span id="cb34-81"><a href="#cb34-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-82"><a href="#cb34-82" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-83"><a href="#cb34-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-84"><a href="#cb34-84" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span> {{ojs}}</span>
+<span id="cb34-85"><a href="#cb34-85" aria-hidden="true" tabindex="-1"></a><span class="co">//| panel: sidebar</span></span>
+<span id="cb34-86"><a href="#cb34-86" aria-hidden="true" tabindex="-1"></a><span class="st">"Le menu"</span></span>
+<span id="cb34-87"><a href="#cb34-87" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-88"><a href="#cb34-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-89"><a href="#cb34-89" aria-hidden="true" tabindex="-1"></a><span class="vs">    ::: {.panel-tabset}</span></span>
+<span id="cb34-90"><a href="#cb34-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-91"><a href="#cb34-91" aria-hidden="true" tabindex="-1"></a><span class="vs">    ## Carte</span></span>
+<span id="cb34-92"><a href="#cb34-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-93"><a href="#cb34-93" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span> {{ojs}}</span>
+<span id="cb34-94"><a href="#cb34-94" aria-hidden="true" tabindex="-1"></a><span class="st">"La carte"</span></span>
+<span id="cb34-95"><a href="#cb34-95" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-96"><a href="#cb34-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-97"><a href="#cb34-97" aria-hidden="true" tabindex="-1"></a><span class="vs">    ## Données</span></span>
+<span id="cb34-98"><a href="#cb34-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-99"><a href="#cb34-99" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span> {{ojs}}</span>
+<span id="cb34-100"><a href="#cb34-100" aria-hidden="true" tabindex="-1"></a><span class="st">"Les données"</span></span>
+<span id="cb34-101"><a href="#cb34-101" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-102"><a href="#cb34-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-103"><a href="#cb34-103" aria-hidden="true" tabindex="-1"></a><span class="vs">    ## Top 10</span></span>
+<span id="cb34-104"><a href="#cb34-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-105"><a href="#cb34-105" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span> {{ojs}}</span>
+<span id="cb34-106"><a href="#cb34-106" aria-hidden="true" tabindex="-1"></a><span class="st">"le graphique"</span></span>
+<span id="cb34-107"><a href="#cb34-107" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-108"><a href="#cb34-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-109"><a href="#cb34-109" aria-hidden="true" tabindex="-1"></a><span class="vs">    :::</span></span>
+<span id="cb34-110"><a href="#cb34-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-111"><a href="#cb34-111" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span> {{ojs}}</span>
+<span id="cb34-112"><a href="#cb34-112" aria-hidden="true" tabindex="-1"></a><span class="st">"Annexe technique"</span></span>
+<span id="cb34-113"><a href="#cb34-113" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-114"><a href="#cb34-114" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-115"><a href="#cb34-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-116"><a href="#cb34-116" aria-hidden="true" tabindex="-1"></a><span class="vs">Cliquez sur `</span><span class="fu">Render</span><span class="vs">` (ou *Ctrl+Shift+K*) pour voir apparaitre la structure de votre application. Elle est composée de 6 parties :</span></span>
+<span id="cb34-117"><a href="#cb34-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-118"><a href="#cb34-118" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Le &lt;ins&gt;titre&lt;/ins&gt; (défini dans l'entête de votre document `</span>title<span class="op">:</span> <span class="st">"World Explorer"</span><span class="vs">` ). À vous de remplacer le titre par la chaîne de caractère de votre choix.</span></span>
+<span id="cb34-119"><a href="#cb34-119" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Le &lt;ins&gt;menu&lt;/ins&gt; (sur la gauche). C'est dans ce *chunk* que nous allons placer des `</span><span class="fu">Inputs</span><span class="vs">` permettant à l'utilisateur d'interagir avec la carte.</span></span>
+<span id="cb34-120"><a href="#cb34-120" aria-hidden="true" tabindex="-1"></a><span class="vs">-   La &lt;ins&gt;carte&lt;/ins&gt; (sur la droite). C'est dans ce *chunk* que nous allons dessiner une carte avec la bibliothèque `</span><span class="fu">bertin</span><span class="vs">`.</span></span>
+<span id="cb34-121"><a href="#cb34-121" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Les &lt;ins&gt;données&lt;/ins&gt; (sur la droite). C'est dans ce *chunk* que nous allons afficher le tableau de données derrière la carte.</span></span>
+<span id="cb34-122"><a href="#cb34-122" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Un &lt;ins&gt;graphique&lt;/ins&gt; (sur la droite). C'est dans ce *chunk* que nous allons afficher un *bar plot*.</span></span>
+<span id="cb34-123"><a href="#cb34-123" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Les &lt;ins&gt;annexes techniques&lt;/ins&gt; (en bas). Dans ce chunk, on écrira tout ce qui est nécéssaire à l'élaboration de l'appli (import des données, etc, mais qu'on ne souhaite pas afficher).</span></span>
+<span id="cb34-124"><a href="#cb34-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-125"><a href="#cb34-125" aria-hidden="true" tabindex="-1"></a><span class="vs">Rappelez-vous qu'avec Observable JavaScript, l'ordre d'écriture n'a pas d'importance. On peut donc écrire du code à la fin du document, comme une annexe technique.</span></span>
+<span id="cb34-126"><a href="#cb34-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-127"><a href="#cb34-127" aria-hidden="true" tabindex="-1"></a><span class="vs">La classe `</span>{<span class="op">.</span><span class="at">panel</span><span class="op">-</span>tabset}<span class="vs">` permet de positionner la carte, les données et le graphique dans 3 onglets différents.</span></span>
+<span id="cb34-128"><a href="#cb34-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-129"><a href="#cb34-129" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Sauvegardez.</span></span>
+<span id="cb34-130"><a href="#cb34-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-131"><a href="#cb34-131" aria-hidden="true" tabindex="-1"></a><span class="vs"># 2. Les données</span></span>
+<span id="cb34-132"><a href="#cb34-132" aria-hidden="true" tabindex="-1"></a><span class="vs">Téléchargez les données et mettez-les dans un repertoire *data*.</span></span>
+<span id="cb34-133"><a href="#cb34-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-134"><a href="#cb34-134" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;a href = "https://github.com/EE-CIST/CART3_cartodyn/raw/main/TP2/data/data.zip"&gt;&lt;img src = "img/download.png" height= "50px"&gt;&lt;img&gt;&lt;/a&gt;</span></span>
+<span id="cb34-135"><a href="#cb34-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-136"><a href="#cb34-136" aria-hidden="true" tabindex="-1"></a><span class="vs">Dans le chunck de l'&lt;ins&gt;**annexe technique**&lt;/ins&gt;, importez les données géométriques et attributaires qui se trouvent dans le répertoire data.</span></span>
+<span id="cb34-137"><a href="#cb34-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-138"><a href="#cb34-138" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-141"><a href="#cb34-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-142"><a href="#cb34-142" aria-hidden="true" tabindex="-1"></a>world <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/world.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb34-143"><a href="#cb34-143" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/worldbank_data.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb34-144"><a href="#cb34-144" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-145"><a href="#cb34-145" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-146"><a href="#cb34-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-147"><a href="#cb34-147" aria-hidden="true" tabindex="-1"></a><span class="vs">Comme dit précédement, les données contiennent des indicateurs à plusieurs dates.</span></span>
+<span id="cb34-148"><a href="#cb34-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-151"><a href="#cb34-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-152"><a href="#cb34-152" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb34-153"><a href="#cb34-153" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: true</span></span>
+<span id="cb34-154"><a href="#cb34-154" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(stats)</span>
+<span id="cb34-155"><a href="#cb34-155" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-156"><a href="#cb34-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-157"><a href="#cb34-157" aria-hidden="true" tabindex="-1"></a><span class="vs"># 3. Le menu</span></span>
+<span id="cb34-158"><a href="#cb34-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-159"><a href="#cb34-159" aria-hidden="true" tabindex="-1"></a><span class="vs">Ici, on définit quelles interactions ont souhaite proposer à l'utilisateur.</span></span>
+<span id="cb34-160"><a href="#cb34-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-161"><a href="#cb34-161" aria-hidden="true" tabindex="-1"></a><span class="vs">Copiez et collez les lignes de code suivantes dans votre chunck &lt;ins&gt;**menu**&lt;/ins&gt;.</span></span>
+<span id="cb34-162"><a href="#cb34-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-163"><a href="#cb34-163" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Un slider pour choisir l'année</span></span>
+<span id="cb34-164"><a href="#cb34-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-165"><a href="#cb34-165" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-168"><a href="#cb34-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-169"><a href="#cb34-169" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-170"><a href="#cb34-170" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-171"><a href="#cb34-171" aria-hidden="true" tabindex="-1"></a>viewof year <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb34-172"><a href="#cb34-172" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1990</span><span class="op">,</span> <span class="dv">2019</span>]<span class="op">,</span> </span>
+<span id="cb34-173"><a href="#cb34-173" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">2019</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Année"</span>}</span>
+<span id="cb34-174"><a href="#cb34-174" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-175"><a href="#cb34-175" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-176"><a href="#cb34-176" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-177"><a href="#cb34-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-178"><a href="#cb34-178" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Un slider pour configurer la taille des cercles</span></span>
+<span id="cb34-179"><a href="#cb34-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-180"><a href="#cb34-180" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-183"><a href="#cb34-183" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-184"><a href="#cb34-184" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-185"><a href="#cb34-185" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-186"><a href="#cb34-186" aria-hidden="true" tabindex="-1"></a>viewof k <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb34-187"><a href="#cb34-187" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">20</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> </span>
+<span id="cb34-188"><a href="#cb34-188" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rayon max"</span>}</span>
+<span id="cb34-189"><a href="#cb34-189" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-190"><a href="#cb34-190" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-191"><a href="#cb34-191" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-192"><a href="#cb34-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-193"><a href="#cb34-193" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Une liste déroulante pour choisir l'indicateur</span></span>
+<span id="cb34-194"><a href="#cb34-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-195"><a href="#cb34-195" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-198"><a href="#cb34-198" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-199"><a href="#cb34-199" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-200"><a href="#cb34-200" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-201"><a href="#cb34-201" aria-hidden="true" tabindex="-1"></a>meta <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/worldbank_meta.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb34-202"><a href="#cb34-202" aria-hidden="true" tabindex="-1"></a>viewof indicator <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb34-203"><a href="#cb34-203" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> <span class="bu">Map</span>(meta<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">indicator</span><span class="op">,</span> d<span class="op">.</span><span class="at">shortcode</span>]))<span class="op">,</span></span>
+<span id="cb34-204"><a href="#cb34-204" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">label</span><span class="op">:</span> <span class="st">"Indicateur"</span> }</span>
+<span id="cb34-205"><a href="#cb34-205" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-206"><a href="#cb34-206" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-207"><a href="#cb34-207" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-208"><a href="#cb34-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-209"><a href="#cb34-209" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Une liste déroulante pour choisir la projection cartographique</span></span>
+<span id="cb34-210"><a href="#cb34-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-211"><a href="#cb34-211" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-214"><a href="#cb34-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-215"><a href="#cb34-215" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-216"><a href="#cb34-216" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-217"><a href="#cb34-217" aria-hidden="true" tabindex="-1"></a>projections <span class="op">=</span> [<span class="st">"Patterson"</span><span class="op">,</span> <span class="st">"NaturalEarth1"</span><span class="op">,</span> <span class="st">"Bertin1953"</span><span class="op">,</span> <span class="st">"InterruptedSinusoidal"</span><span class="op">,</span> <span class="st">"Armadillo"</span><span class="op">,</span> <span class="st">"Baker"</span><span class="op">,</span> <span class="st">"Gingery"</span><span class="op">,</span> <span class="st">"Berghaus"</span><span class="op">,</span> <span class="st">"Loximuthal"</span><span class="op">,</span> <span class="st">"Healpix"</span><span class="op">,</span> <span class="st">"InterruptedMollweideHemispheres"</span><span class="op">,</span> <span class="st">"Miller"</span><span class="op">,</span> <span class="st">"Aitoff"</span><span class="op">,</span> <span class="st">"ConicEqualArea"</span><span class="op">,</span> <span class="st">"Eckert3"</span><span class="op">,</span> <span class="st">"Hill"</span>]</span>
+<span id="cb34-218"><a href="#cb34-218" aria-hidden="true" tabindex="-1"></a>viewof proj <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(projections<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Projection"</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">350</span>})</span>
+<span id="cb34-219"><a href="#cb34-219" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-220"><a href="#cb34-220" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-221"><a href="#cb34-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-222"><a href="#cb34-222" aria-hidden="true" tabindex="-1"></a><span class="vs">- Deux sliders pour définir le centre de projection. De -180 à +180 en longitude. De -90 à +90 en latitude. </span></span>
+<span id="cb34-223"><a href="#cb34-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-224"><a href="#cb34-224" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-227"><a href="#cb34-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-228"><a href="#cb34-228" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-229"><a href="#cb34-229" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-230"><a href="#cb34-230" aria-hidden="true" tabindex="-1"></a>viewof x <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="op">-</span><span class="dv">180</span><span class="op">,</span> <span class="dv">180</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rotation (x)"</span>} )</span>
+<span id="cb34-231"><a href="#cb34-231" aria-hidden="true" tabindex="-1"></a>viewof y <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="op">-</span><span class="dv">90</span><span class="op">,</span> <span class="dv">90</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rotation (y)"</span>} )</span>
+<span id="cb34-232"><a href="#cb34-232" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-233"><a href="#cb34-233" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-234"><a href="#cb34-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-235"><a href="#cb34-235" aria-hidden="true" tabindex="-1"></a><span class="vs">- La couleur des symboles</span></span>
+<span id="cb34-236"><a href="#cb34-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-237"><a href="#cb34-237" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-240"><a href="#cb34-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-241"><a href="#cb34-241" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-242"><a href="#cb34-242" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-243"><a href="#cb34-243" aria-hidden="true" tabindex="-1"></a>viewof color <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">color</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">"couleur"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"#4682b4"</span>})</span>
+<span id="cb34-244"><a href="#cb34-244" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-245"><a href="#cb34-245" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-246"><a href="#cb34-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-247"><a href="#cb34-247" aria-hidden="true" tabindex="-1"></a><span class="vs">-   Un slider pour définir le niveau de généralisation du fond de carte</span></span>
+<span id="cb34-248"><a href="#cb34-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-249"><a href="#cb34-249" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-252"><a href="#cb34-252" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-253"><a href="#cb34-253" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-254"><a href="#cb34-254" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-255"><a href="#cb34-255" aria-hidden="true" tabindex="-1"></a>viewof simpl <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb34-256"><a href="#cb34-256" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> </span>
+<span id="cb34-257"><a href="#cb34-257" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Simplification"</span>}</span>
+<span id="cb34-258"><a href="#cb34-258" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-259"><a href="#cb34-259" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-260"><a href="#cb34-260" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-261"><a href="#cb34-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-262"><a href="#cb34-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-263"><a href="#cb34-263" aria-hidden="true" tabindex="-1"></a><span class="vs">On obtient le menu suivant où `</span><span class="fu">year</span><span class="vs">` correspond à l'année, `</span><span class="fu">k</span><span class="vs">` correspond à la taille des cercles, `</span><span class="fu">indicator</span><span class="vs">` correspond au nom de la variable, `</span><span class="fu">proj</span><span class="vs">` correspond à la projection cartographique centrée sur `</span><span class="fu">x</span><span class="vs">` et `</span><span class="fu">y</span><span class="vs">`, `</span><span class="fu">color</span><span class="vs">` correspond à la couleur des symboles et `</span><span class="fu">simpl</span><span class="vs">` correspond au niveau de généralisation du fond de carte. </span></span>
+<span id="cb34-264"><a href="#cb34-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-265"><a href="#cb34-265" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-268"><a href="#cb34-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-269"><a href="#cb34-269" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb34-270"><a href="#cb34-270" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: true</span></span>
+<span id="cb34-271"><a href="#cb34-271" aria-hidden="true" tabindex="-1"></a>viewof year <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb34-272"><a href="#cb34-272" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1990</span><span class="op">,</span> <span class="dv">2019</span>]<span class="op">,</span> </span>
+<span id="cb34-273"><a href="#cb34-273" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">2019</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Année"</span>}</span>
+<span id="cb34-274"><a href="#cb34-274" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-275"><a href="#cb34-275" aria-hidden="true" tabindex="-1"></a>viewof k <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb34-276"><a href="#cb34-276" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">20</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> </span>
+<span id="cb34-277"><a href="#cb34-277" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rayon max"</span>}</span>
+<span id="cb34-278"><a href="#cb34-278" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-279"><a href="#cb34-279" aria-hidden="true" tabindex="-1"></a>meta <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/worldbank_meta.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb34-280"><a href="#cb34-280" aria-hidden="true" tabindex="-1"></a>viewof indicator <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb34-281"><a href="#cb34-281" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> <span class="bu">Map</span>(meta<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">indicator</span><span class="op">,</span> d<span class="op">.</span><span class="at">shortcode</span>]))<span class="op">,</span></span>
+<span id="cb34-282"><a href="#cb34-282" aria-hidden="true" tabindex="-1"></a>  { <span class="dt">label</span><span class="op">:</span> <span class="st">"Indicateur"</span> }</span>
+<span id="cb34-283"><a href="#cb34-283" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-284"><a href="#cb34-284" aria-hidden="true" tabindex="-1"></a>projections <span class="op">=</span> [<span class="st">"Patterson"</span><span class="op">,</span> <span class="st">"NaturalEarth1"</span><span class="op">,</span> <span class="st">"Bertin1953"</span><span class="op">,</span> <span class="st">"InterruptedSinusoidal"</span><span class="op">,</span> <span class="st">"Armadillo"</span><span class="op">,</span> <span class="st">"Baker"</span><span class="op">,</span> <span class="st">"Gingery"</span><span class="op">,</span> <span class="st">"Berghaus"</span><span class="op">,</span> <span class="st">"Loximuthal"</span><span class="op">,</span> <span class="st">"Healpix"</span><span class="op">,</span> <span class="st">"InterruptedMollweideHemispheres"</span><span class="op">,</span> <span class="st">"Miller"</span><span class="op">,</span> <span class="st">"Aitoff"</span><span class="op">,</span> <span class="st">"ConicEqualArea"</span><span class="op">,</span> <span class="st">"Eckert3"</span><span class="op">,</span> <span class="st">"Hill"</span>]</span>
+<span id="cb34-285"><a href="#cb34-285" aria-hidden="true" tabindex="-1"></a>viewof proj <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(projections<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Projection"</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">350</span>})</span>
+<span id="cb34-286"><a href="#cb34-286" aria-hidden="true" tabindex="-1"></a>viewof x <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="op">-</span><span class="dv">180</span><span class="op">,</span> <span class="dv">180</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rotation (x)"</span>} )</span>
+<span id="cb34-287"><a href="#cb34-287" aria-hidden="true" tabindex="-1"></a>  viewof y <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="op">-</span><span class="dv">90</span><span class="op">,</span> <span class="dv">90</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rotation (y)"</span>} )</span>
+<span id="cb34-288"><a href="#cb34-288" aria-hidden="true" tabindex="-1"></a>viewof color <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">color</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">"couleur"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"#4682b4"</span>})</span>
+<span id="cb34-289"><a href="#cb34-289" aria-hidden="true" tabindex="-1"></a>viewof simpl <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="fl">0.01</span><span class="op">,</span> <span class="fl">0.5</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Simplification"</span>} )</span>
+<span id="cb34-290"><a href="#cb34-290" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-291"><a href="#cb34-291" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-292"><a href="#cb34-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-293"><a href="#cb34-293" aria-hidden="true" tabindex="-1"></a><span class="vs"># 4. Mise en forme des données</span></span>
+<span id="cb34-294"><a href="#cb34-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-295"><a href="#cb34-295" aria-hidden="true" tabindex="-1"></a><span class="vs">Avant de construire la carte, nous avons besoin de manipuler un peu les données. On effectue ces opérations dans la partie &lt;ins&gt;**annexe technique**&lt;/ins&gt;.  Plusieurs opérations son nécessaires: </span></span>
+<span id="cb34-296"><a href="#cb34-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-297"><a href="#cb34-297" aria-hidden="true" tabindex="-1"></a><span class="vs">Tout d'abord, on réalise une généralisation du fond de carte avec la fonction `</span><span class="fu">simplify</span><span class="vs">` de la bibliothèque `</span><span class="fu">geotoolbox</span><span class="vs">` qui permet de faire simplement la plupart des opérations SIG utiles en cartographie ([voir](https://github.com/neocarto/geotoolbox)). On peut la charger directement ou la télécharger [ici](https://cdn.jsdelivr.net/npm/geotoolbox@1.9.3) pour travailler sans connexion internet. Le niveau de simplification sera déterminé par l'utilisateur dans le slider *simpl*.</span></span>
+<span id="cb34-298"><a href="#cb34-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-299"><a href="#cb34-299" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-302"><a href="#cb34-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-303"><a href="#cb34-303" aria-hidden="true" tabindex="-1"></a>geo <span class="op">=</span> <span class="pp">require</span>(<span class="st">"geotoolbox@1.9.3"</span>)</span>
+<span id="cb34-304"><a href="#cb34-304" aria-hidden="true" tabindex="-1"></a><span class="co">// ou geo = require("./lib/geotoolbox.js")</span></span>
+<span id="cb34-305"><a href="#cb34-305" aria-hidden="true" tabindex="-1"></a>world2 <span class="op">=</span> geo<span class="op">.</span><span class="fu">simplify</span>(world<span class="op">,</span> {<span class="dt">k</span><span class="op">:</span> simpl})</span>
+<span id="cb34-306"><a href="#cb34-306" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-307"><a href="#cb34-307" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-308"><a href="#cb34-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-309"><a href="#cb34-309" aria-hidden="true" tabindex="-1"></a><span class="vs">Puis, avec l'instruction JavaScript `</span><span class="fu">filter</span><span class="vs">`, on crée un tableau contenant uniquement l'année sélectionnée et on effectue une jointure entre les données et le fond de carte grâce à la bibliothèque `</span><span class="fu">bertin</span><span class="vs">` (*on peut aussi télécharger la bibliothèque [ici](https://cdn.jsdelivr.net/npm/bertin@1.6.3)*).</span></span>
+<span id="cb34-310"><a href="#cb34-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-311"><a href="#cb34-311" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-314"><a href="#cb34-314" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-315"><a href="#cb34-315" aria-hidden="true" tabindex="-1"></a>bertin <span class="op">=</span> <span class="pp">require</span>(<span class="st">"bertin@1.6.3"</span>)</span>
+<span id="cb34-316"><a href="#cb34-316" aria-hidden="true" tabindex="-1"></a><span class="co">// ou bertin = require("./lib/bertin.js")</span></span>
+<span id="cb34-317"><a href="#cb34-317" aria-hidden="true" tabindex="-1"></a>statsyear <span class="op">=</span> stats<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">date</span> <span class="op">==</span> year)</span>
+<span id="cb34-318"><a href="#cb34-318" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> bertin<span class="op">.</span><span class="fu">merge</span>(world2<span class="op">,</span> <span class="st">"id"</span><span class="op">,</span> statsyear<span class="op">,</span> <span class="st">"iso3c"</span>)</span>
+<span id="cb34-319"><a href="#cb34-319" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-320"><a href="#cb34-320" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-321"><a href="#cb34-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-322"><a href="#cb34-322" aria-hidden="true" tabindex="-1"></a><span class="vs">On a aussi besoin de récupérer une valeur de référence pour chaque indicateur pour rendre comparables la taille des symboles d'une année à l'année sur l'autre. On récupère la valeur maximale de l'année 2019. </span></span>
+<span id="cb34-323"><a href="#cb34-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-324"><a href="#cb34-324" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-327"><a href="#cb34-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-328"><a href="#cb34-328" aria-hidden="true" tabindex="-1"></a>varmax <span class="op">=</span> d3<span class="op">.</span><span class="fu">max</span>(stats<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">date</span> <span class="op">==</span> <span class="dv">2019</span>)<span class="op">,</span> d <span class="kw">=&gt;</span> <span class="op">+</span>d[indicator])</span>
+<span id="cb34-329"><a href="#cb34-329" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-330"><a href="#cb34-330" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-331"><a href="#cb34-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-332"><a href="#cb34-332" aria-hidden="true" tabindex="-1"></a><span class="vs">Après ces opérations, l'objet `</span><span class="fu">data</span><span class="vs">` contient les géométries généralisées et les données pour l'année sélectionnée</span></span>
+<span id="cb34-333"><a href="#cb34-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-334"><a href="#cb34-334" aria-hidden="true" tabindex="-1"></a><span class="vs"># 5. Réalisation de la carte</span></span>
+<span id="cb34-335"><a href="#cb34-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-336"><a href="#cb34-336" aria-hidden="true" tabindex="-1"></a><span class="vs">Ici, on réalise la carte dans la chuck &lt;ins&gt;**carte**&lt;/ins&gt; avec la bibliothèque bertin.</span></span>
+<span id="cb34-337"><a href="#cb34-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-338"><a href="#cb34-338" aria-hidden="true" tabindex="-1"></a><span class="vs">Tout d'abord, on fabrique le titre en concaténant le nom de la variable et l'année.</span></span>
+<span id="cb34-339"><a href="#cb34-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-340"><a href="#cb34-340" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-343"><a href="#cb34-343" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-344"><a href="#cb34-344" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> meta<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">indicator</span><span class="op">,</span> d<span class="op">.</span><span class="at">shortcode</span>])<span class="op">.</span><span class="fu">find</span>((d) <span class="kw">=&gt;</span> d[<span class="dv">1</span>] <span class="op">==</span> indicator)[<span class="dv">0</span>] <span class="op">+</span> <span class="st">" in "</span> <span class="op">+</span> year</span>
+<span id="cb34-345"><a href="#cb34-345" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-346"><a href="#cb34-346" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-347"><a href="#cb34-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-348"><a href="#cb34-348" aria-hidden="true" tabindex="-1"></a><span class="vs">Puis, on dessine la carte avec la fonction `</span><span class="fu">draw</span><span class="vs">` de la bibliothèque `</span><span class="fu">bertin</span><span class="vs">`. Libre à vous de personnaliser la mise en page et les couleurs en modifiant/ajoutant quelques paramètres. </span></span>
+<span id="cb34-349"><a href="#cb34-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-350"><a href="#cb34-350" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-353"><a href="#cb34-353" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-354"><a href="#cb34-354" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-355"><a href="#cb34-355" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-356"><a href="#cb34-356" aria-hidden="true" tabindex="-1"></a>bertin<span class="op">.</span><span class="fu">draw</span>({</span>
+<span id="cb34-357"><a href="#cb34-357" aria-hidden="true" tabindex="-1"></a><span class="dt">params</span><span class="op">:</span> {<span class="dt">projection</span><span class="op">:</span> proj <span class="op">+</span> <span class="vs">`.rotate([</span><span class="sc">${</span>x<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>y<span class="sc">}</span><span class="vs">])`</span><span class="op">,</span> <span class="dt">clip</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb34-358"><a href="#cb34-358" aria-hidden="true" tabindex="-1"></a><span class="dt">layers</span><span class="op">:</span>[</span>
+<span id="cb34-359"><a href="#cb34-359" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">type</span><span class="op">:</span> <span class="st">"header"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> title}<span class="op">,</span></span>
+<span id="cb34-360"><a href="#cb34-360" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">type</span><span class="op">:</span> <span class="st">"bubble"</span><span class="op">,</span> </span>
+<span id="cb34-361"><a href="#cb34-361" aria-hidden="true" tabindex="-1"></a>    <span class="dt">geojson</span><span class="op">:</span> data<span class="op">,</span></span>
+<span id="cb34-362"><a href="#cb34-362" aria-hidden="true" tabindex="-1"></a>    <span class="dt">values</span><span class="op">:</span> indicator<span class="op">,</span> </span>
+<span id="cb34-363"><a href="#cb34-363" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fill</span><span class="op">:</span> color<span class="op">,</span></span>
+<span id="cb34-364"><a href="#cb34-364" aria-hidden="true" tabindex="-1"></a>    <span class="dt">fixmax</span><span class="op">:</span> varmax<span class="op">,</span></span>
+<span id="cb34-365"><a href="#cb34-365" aria-hidden="true" tabindex="-1"></a>    k<span class="op">,</span> </span>
+<span id="cb34-366"><a href="#cb34-366" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tooltip</span><span class="op">:</span> [<span class="st">"$name"</span><span class="op">,</span>d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">properties</span>[indicator]]</span>
+<span id="cb34-367"><a href="#cb34-367" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb34-368"><a href="#cb34-368" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">geojson</span><span class="op">:</span> world<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#CCC"</span>}<span class="op">,</span></span>
+<span id="cb34-369"><a href="#cb34-369" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">type</span><span class="op">:</span> <span class="st">"graticule"</span>}<span class="op">,</span>  </span>
+<span id="cb34-370"><a href="#cb34-370" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">type</span><span class="op">:</span> <span class="st">"outline"</span>}</span>
+<span id="cb34-371"><a href="#cb34-371" aria-hidden="true" tabindex="-1"></a>]})</span>
+<span id="cb34-372"><a href="#cb34-372" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-373"><a href="#cb34-373" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-374"><a href="#cb34-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-375"><a href="#cb34-375" aria-hidden="true" tabindex="-1"></a><span class="vs"># 6. Affichage des données</span></span>
+<span id="cb34-376"><a href="#cb34-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-377"><a href="#cb34-377" aria-hidden="true" tabindex="-1"></a><span class="vs">Ici, on ajoute un tableau de données dans la chuck &lt;ins&gt;données&lt;/ins&gt;. On sélectionne les colonnes à afficher. </span></span>
+<span id="cb34-378"><a href="#cb34-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-379"><a href="#cb34-379" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-382"><a href="#cb34-382" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-383"><a href="#cb34-383" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-384"><a href="#cb34-384" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-385"><a href="#cb34-385" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(statsyear<span class="op">,</span> {  <span class="dt">columns</span><span class="op">:</span> [</span>
+<span id="cb34-386"><a href="#cb34-386" aria-hidden="true" tabindex="-1"></a>    <span class="st">"country"</span><span class="op">,</span></span>
+<span id="cb34-387"><a href="#cb34-387" aria-hidden="true" tabindex="-1"></a>    <span class="st">"capital_city"</span><span class="op">,</span></span>
+<span id="cb34-388"><a href="#cb34-388" aria-hidden="true" tabindex="-1"></a>    <span class="st">"region"</span><span class="op">,</span></span>
+<span id="cb34-389"><a href="#cb34-389" aria-hidden="true" tabindex="-1"></a>    indicator</span>
+<span id="cb34-390"><a href="#cb34-390" aria-hidden="true" tabindex="-1"></a>  ]})</span>
+<span id="cb34-391"><a href="#cb34-391" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-392"><a href="#cb34-392" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-393"><a href="#cb34-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-394"><a href="#cb34-394" aria-hidden="true" tabindex="-1"></a><span class="vs"># 7. Réalisation du graphique</span></span>
+<span id="cb34-395"><a href="#cb34-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-396"><a href="#cb34-396" aria-hidden="true" tabindex="-1"></a><span class="vs">On souhaite réaliser un diagramme en barres avec les N pays qui ont les plus fortes valeurs sur l'indicateur séléctionné. Nous récupérons donc l'objet `</span><span class="fu">stats</span><span class="vs">` qui contient les données, nous le trions, et ne gardons que les N premières valeurs. N est défini dans un slider. Le graphique est réalisé avec la bibliothèque [Plot](https://observablehq.com/@observablehq/plot). </span></span>
+<span id="cb34-397"><a href="#cb34-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-398"><a href="#cb34-398" aria-hidden="true" tabindex="-1"></a><span class="vs">Ajoutez le code ci-dessous chuck &lt;ins&gt;**graphique**&lt;/ins&gt;.</span></span>
+<span id="cb34-399"><a href="#cb34-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-400"><a href="#cb34-400" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-403"><a href="#cb34-403" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-404"><a href="#cb34-404" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-405"><a href="#cb34-405" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-406"><a href="#cb34-406" aria-hidden="true" tabindex="-1"></a>viewof topnb <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">5</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Nombre de pays représentés"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span>})</span>
+<span id="cb34-407"><a href="#cb34-407" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> statsyear<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> d3<span class="op">.</span><span class="fu">descending</span>(<span class="op">+</span>a[indicator]<span class="op">,</span> <span class="op">+</span>b[indicator]))</span>
+<span id="cb34-408"><a href="#cb34-408" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> topnb)</span>
+<span id="cb34-409"><a href="#cb34-409" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb34-410"><a href="#cb34-410" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
+<span id="cb34-411"><a href="#cb34-411" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb34-412"><a href="#cb34-412" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barY</span>(top<span class="op">,</span> {</span>
+<span id="cb34-413"><a href="#cb34-413" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"iso3c"</span><span class="op">,</span></span>
+<span id="cb34-414"><a href="#cb34-414" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> indicator<span class="op">,</span></span>
+<span id="cb34-415"><a href="#cb34-415" aria-hidden="true" tabindex="-1"></a>      <span class="dt">sort</span><span class="op">:</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">reverse</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb34-416"><a href="#cb34-416" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> color</span>
+<span id="cb34-417"><a href="#cb34-417" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb34-418"><a href="#cb34-418" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
+<span id="cb34-419"><a href="#cb34-419" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb34-420"><a href="#cb34-420" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb34-421"><a href="#cb34-421" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-422"><a href="#cb34-422" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-423"><a href="#cb34-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-424"><a href="#cb34-424" aria-hidden="true" tabindex="-1"></a><span class="vs"># 7. C'est fini !</span></span>
+<span id="cb34-425"><a href="#cb34-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-426"><a href="#cb34-426" aria-hidden="true" tabindex="-1"></a><span class="vs">Appuyez sur `</span><span class="fu">Render</span><span class="vs">` pour voir le résultat. La solution est disponible [ici](https://ee-cist.github.io/CART3_cartodyn/app/index.html).</span></span>
+<span id="cb34-427"><a href="#cb34-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-428"><a href="#cb34-428" aria-hidden="true" tabindex="-1"></a><span class="vs"># 8. Aller plus loin</span></span>
+<span id="cb34-429"><a href="#cb34-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-430"><a href="#cb34-430" aria-hidden="true" tabindex="-1"></a><span class="vs">Cette application est largement perfectible. Une piste possible d'amélioration serait de remplacer le slider des années par un bouton play pour faire une vraie carte animée. Une solution consiste à utiliser l'input `</span><span class="fu">scrubber</span><span class="vs">` dévelopé par Mike Bostock : [https://observablehq.com/@mbostock/scrubber](https://observablehq.com/@mbostock/scrubber).</span></span>
+<span id="cb34-431"><a href="#cb34-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-432"><a href="#cb34-432" aria-hidden="true" tabindex="-1"></a><span class="vs">Deux options sont possibles. Vous pouvez importer la fonction depuis Observable.</span></span>
+<span id="cb34-433"><a href="#cb34-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-434"><a href="#cb34-434" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-437"><a href="#cb34-437" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-438"><a href="#cb34-438" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-439"><a href="#cb34-439" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-440"><a href="#cb34-440" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {Scrubber} <span class="im">from</span> <span class="st">"@mbostock/scrubber"</span></span>
+<span id="cb34-441"><a href="#cb34-441" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-442"><a href="#cb34-442" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-443"><a href="#cb34-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-444"><a href="#cb34-444" aria-hidden="true" tabindex="-1"></a><span class="vs">Ou copier le code de la fonction qui se trouve sur [cette page](https://observablehq.com/@mbostock/scrubber).</span></span>
+<span id="cb34-445"><a href="#cb34-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-446"><a href="#cb34-446" aria-hidden="true" tabindex="-1"></a><span class="vs">Puis, remplacez le slider des années par :</span></span>
+<span id="cb34-447"><a href="#cb34-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-448"><a href="#cb34-448" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-451"><a href="#cb34-451" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-452"><a href="#cb34-452" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-453"><a href="#cb34-453" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-454"><a href="#cb34-454" aria-hidden="true" tabindex="-1"></a>viewof year <span class="op">=</span> <span class="fu">Scrubber</span>(d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">1990</span><span class="op">,</span> <span class="dv">2019</span>)<span class="op">,</span> { <span class="dt">autoplay</span><span class="op">:</span> <span class="kw">false</span> })</span>
+<span id="cb34-455"><a href="#cb34-455" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-456"><a href="#cb34-456" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-457"><a href="#cb34-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-458"><a href="#cb34-458" aria-hidden="true" tabindex="-1"></a><span class="vs">Et pour encore plus de fun 🥳, vous pouvez vous amusez à faire varier le centre de projection automatiquement. Pour cela, vous pouvez ajouter la fonction suivante dans la partie __&lt;/ins&gt;Annexe technique&lt;/ins&gt;__. </span></span>
+<span id="cb34-459"><a href="#cb34-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-460"><a href="#cb34-460" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-463"><a href="#cb34-463" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb34-464"><a href="#cb34-464" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: true</span></span>
+<span id="cb34-465"><a href="#cb34-465" aria-hidden="true" tabindex="-1"></a><span class="co">//| eval: false</span></span>
+<span id="cb34-466"><a href="#cb34-466" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="op">*</span> <span class="fu">timer</span>({ speed <span class="op">=</span> <span class="dv">1000</span><span class="op">,</span> step <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> interval <span class="op">=</span> [<span class="op">-</span><span class="dv">180</span><span class="op">,</span> <span class="dv">180</span>] } <span class="op">=</span> {}) {</span>
+<span id="cb34-467"><a href="#cb34-467" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> i <span class="op">=</span> interval[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb34-468"><a href="#cb34-468" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (<span class="kw">true</span>) {</span>
+<span id="cb34-469"><a href="#cb34-469" aria-hidden="true" tabindex="-1"></a>    <span class="kw">yield</span> Promises<span class="op">.</span><span class="fu">delay</span>(speed<span class="op">,</span> (i <span class="op">=</span> i <span class="op">+</span> step))<span class="op">;</span></span>
+<span id="cb34-470"><a href="#cb34-470" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">&gt;=</span> interval[<span class="dv">1</span>]) {</span>
+<span id="cb34-471"><a href="#cb34-471" aria-hidden="true" tabindex="-1"></a>      i <span class="op">=</span> interval[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb34-472"><a href="#cb34-472" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb34-473"><a href="#cb34-473" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb34-474"><a href="#cb34-474" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-475"><a href="#cb34-475" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-476"><a href="#cb34-476" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-477"><a href="#cb34-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-478"><a href="#cb34-478" aria-hidden="true" tabindex="-1"></a><span class="vs">Puis, dans la partie __&lt;ins&gt;menu&lt;/ins&gt;__, remplacer</span></span>
+<span id="cb34-479"><a href="#cb34-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-480"><a href="#cb34-480" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-481"><a href="#cb34-481" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>js</span>
+<span id="cb34-482"><a href="#cb34-482" aria-hidden="true" tabindex="-1"></a>viewof y <span class="op">=</span>  Inputs<span class="op">.</span><span class="fu">range</span>( [<span class="op">-</span><span class="dv">90</span><span class="op">,</span> <span class="dv">90</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rotation (y)"</span>} )</span>
+<span id="cb34-483"><a href="#cb34-483" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-484"><a href="#cb34-484" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-485"><a href="#cb34-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-486"><a href="#cb34-486" aria-hidden="true" tabindex="-1"></a><span class="vs">par </span></span>
+<span id="cb34-487"><a href="#cb34-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-488"><a href="#cb34-488" aria-hidden="true" tabindex="-1"></a><span class="vs">::: copy</span></span>
+<span id="cb34-489"><a href="#cb34-489" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span>js</span>
+<span id="cb34-490"><a href="#cb34-490" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fu">timer</span>({ <span class="dt">speed</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">9</span><span class="op">,</span> <span class="dt">interval</span><span class="op">:</span> [<span class="op">-</span><span class="dv">90</span><span class="op">,</span> <span class="dv">90</span>] })</span>
+<span id="cb34-491"><a href="#cb34-491" aria-hidden="true" tabindex="-1"></a><span class="vs">```</span></span>
+<span id="cb34-492"><a href="#cb34-492" aria-hidden="true" tabindex="-1"></a><span class="vs">:::</span></span>
+<span id="cb34-493"><a href="#cb34-493" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-494"><a href="#cb34-494" aria-hidden="true" tabindex="-1"></a><span class="vs">Vous pouvez faire varier les paramètres `</span><span class="fu">speed</span><span class="vs">` et `</span><span class="fu">step</span><span class="vs">` pour changer la vitesse (qui dépend des capacités de votre ordinateur). Vous pouvez aussi appliquer cette fonction à la *Rotation (x)* en utilisant `</span>interval<span class="op">:</span> [<span class="op">-</span><span class="dv">90</span><span class="op">,</span> <span class="dv">90</span>]<span class="vs">`</span></span>
+<span id="cb34-495"><a href="#cb34-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-496"><a href="#cb34-496" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

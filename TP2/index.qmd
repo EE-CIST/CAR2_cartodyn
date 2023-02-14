@@ -113,7 +113,7 @@ Le format de sortie est le format `html`.
 
 Cliquez sur `Render` (ou *Ctrl+Shift+K*) pour voir apparaitre la structure de votre application. Elle est composée de 6 parties :
 
--   Le <ins>titre</ins> (défini dans l'entête de votre document `title: "World Explorer"` ). À vous de remplacer le titre par la chaine de caractère de votre choix.
+-   Le <ins>titre</ins> (défini dans l'entête de votre document `title: "World Explorer"` ). À vous de remplacer le titre par la chaîne de caractère de votre choix.
 -   Le <ins>menu</ins> (sur la gauche). C'est dans ce *chunk* que nous allons placer des `Inputs` permettant à l'utilisateur d'interagir avec la carte.
 -   La <ins>carte</ins> (sur la droite). C'est dans ce *chunk* que nous allons dessiner une carte avec la bibliothèque `bertin`.
 -   Les <ins>données</ins> (sur la droite). C'est dans ce *chunk* que nous allons afficher le tableau de données derrière la carte.
@@ -270,7 +270,7 @@ viewof simpl =  Inputs.range( [0.01, 0.5], {value: 0.2, label: "Simplification"}
 
 # 4. Mise en forme des données
 
-Avant de construire la carte, nous avons besoin de manipuler un peu les données. On effectue ces opérations dans la partie <ins>**annexe technique**</ins>.  Plusieurs opérations son nécéssaires: 
+Avant de construire la carte, nous avons besoin de manipuler un peu les données. On effectue ces opérations dans la partie <ins>**annexe technique**</ins>.  Plusieurs opérations son nécessaires: 
 
 Tout d'abord, on réalise une généralisation du fond de carte avec la fonction `simplify` de la bibliothèque `geotoolbox` qui permet de faire simplement la plupart des opérations SIG utiles en cartographie ([voir](https://github.com/neocarto/geotoolbox)). On peut la charger directement ou la télécharger [ici](https://cdn.jsdelivr.net/npm/geotoolbox@1.9.3) pour travailler sans connexion internet. Le niveau de simplification sera déterminé par l'utilisateur dans le slider *simpl*.
 
@@ -282,7 +282,7 @@ world2 = geo.simplify(world, {k: simpl})
 ```
 :::
 
-Puis, avec l'instruction JavaScript `filter`, on crée un tableau contenant uniquement l'année séléctionnée et on effectue une jointure entre les données et le fond de carte grâce à la bibliothèque `bertin` (*on peut aussi télécharger la bibliothèque [ici](https://cdn.jsdelivr.net/npm/bertin@1.6.3)*).
+Puis, avec l'instruction JavaScript `filter`, on crée un tableau contenant uniquement l'année sélectionnée et on effectue une jointure entre les données et le fond de carte grâce à la bibliothèque `bertin` (*on peut aussi télécharger la bibliothèque [ici](https://cdn.jsdelivr.net/npm/bertin@1.6.3)*).
 
 ::: copy
 ```{ojs}
@@ -293,7 +293,7 @@ data = bertin.merge(world2, "id", statsyear, "iso3c")
 ```
 :::
 
-On a aussi besoin de récupérer une valeur de réference pour chaque indicateur pour rendre comparables la taille des symboles d'une année à l'année sur l'autre. On récupère la valeur maximale de l'année 2019. 
+On a aussi besoin de récupérer une valeur de référence pour chaque indicateur pour rendre comparables la taille des symboles d'une année à l'année sur l'autre. On récupère la valeur maximale de l'année 2019. 
 
 ::: copy
 ```{ojs}
@@ -301,13 +301,13 @@ varmax = d3.max(stats.filter(d => d.date == 2019), d => +d[indicator])
 ```
 :::
 
-Après ces opérations, l'objet `data` contient les géométries généralisées et les données pour l'année séléctionnée.
+Après ces opérations, l'objet `data` contient les géométries généralisées et les données pour l'année sélectionnée
 
 # 5. Réalisation de la carte
 
 Ici, on réalise la carte dans la chuck <ins>**carte**</ins> avec la bibliothèque bertin.
 
-Tout d'abord, on fabrique le titre en concatenant le nom de la variable et l'année.
+Tout d'abord, on fabrique le titre en concaténant le nom de la variable et l'année.
 
 ::: copy
 ```{ojs}
@@ -342,7 +342,7 @@ layers:[
 
 # 6. Affichage des données
 
-Ici, on ajoute un tableau de données dans la chuck <ins>données</ins>. On selectionne les colonnes à afficher. 
+Ici, on ajoute un tableau de données dans la chuck <ins>données</ins>. On sélectionne les colonnes à afficher. 
 
 ::: copy
 ```{ojs}
@@ -359,7 +359,7 @@ Inputs.table(statsyear, {  columns: [
 
 # 7. Réalisation du graphique
 
-On souhaite réaliser un diagramme en barres avec les N pays qui ont les plus fortes valeurs sur l'indicateur séléctionné. Nous récupérons donc l'objet `stats` qui contient les données, nous le trions, et ne gardons que les N premières valeurs. N est défini dans un slider. Le graphique est réalisé avec la bibliothèqe [Plot](https://observablehq.com/@observablehq/plot). 
+On souhaite réaliser un diagramme en barres avec les N pays qui ont les plus fortes valeurs sur l'indicateur séléctionné. Nous récupérons donc l'objet `stats` qui contient les données, nous le trions, et ne gardons que les N premières valeurs. N est défini dans un slider. Le graphique est réalisé avec la bibliothèque [Plot](https://observablehq.com/@observablehq/plot). 
 
 Ajoutez le code ci-dessous chuck <ins>**graphique**</ins>.
 
@@ -415,6 +415,41 @@ viewof year = Scrubber(d3.range(1990, 2019), { autoplay: false })
 ```
 :::
 
-Et pour encore plus de fun 🥳, vous pouvez aussi vous amuser à utiliser un *scrubber* à la place du slider Rotate (x).
+Et pour encore plus de fun 🥳, vous pouvez vous amusez à faire varier le centre de projection automatiquement. Pour cela, vous pouvez ajouter la fonction suivante dans la partie __</ins>Annexe technique</ins>__. 
+
+::: copy
+```{ojs}
+//| echo: true
+//| eval: false
+function* timer({ speed = 1000, step = 1, interval = [-180, 180] } = {}) {
+  let i = interval[0];
+  while (true) {
+    yield Promises.delay(speed, (i = i + step));
+    if (i >= interval[1]) {
+      i = interval[0];
+    }
+  }
+}
+```
+:::
+
+Puis, dans la partie __<ins>menu</ins>__, remplacer
+
+::: copy
+```js
+viewof y =  Inputs.range( [-90, 90], {value: 0, step: 1, label: "Rotation (y)"} )
+```
+:::
+
+par 
+
+::: copy
+```js
+y = timer({ speed: 10, step: 9, interval: [-90, 90] })
+```
+:::
+
+Vous pouvez faire varier les paramètres `speed` et `step` pour changer la vitesse (qui dépend des capacités de votre ordinateur). Vous pouvez aussi appliquer cette fonction à la *Rotation (x)* en utilisant `interval: [-90, 90]`
+
 
 
