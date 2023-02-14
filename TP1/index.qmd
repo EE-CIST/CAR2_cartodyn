@@ -28,7 +28,7 @@ Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France)
 
 ## 1.1 Environnement logiciel.
 
-Ce TP s'effectue avec le logiciel **Quarto**. Pour l'installer, vous poyvez utliser les liens suivants :
+Ce TP s'effectue avec le logiciel **Quarto**. Pour l'installer, vous pouvez utiliser les liens suivants :
 
 - Windows : [	quarto-1.2.335-win.msi](https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.335/quarto-1.2.335-win.msi)
 - Mac OS : [quarto-1.2.335-macos.pkg](https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.335/quarto-1.2.335-macos.pkg)
@@ -39,7 +39,7 @@ Puis, vous avez besoin d'une interface de développement pour écrire le code et
 
 ![](img/ide.png)
 
-Dans ce TP, nous privilégions l'utilisation du logiciel **Rstudio**. Pour le télécharger et l'installer, clickez sur ce [lien](https://posit.co/download/rstudio-desktop/).
+Dans ce TP, nous privilégions l'utilisation du logiciel **Rstudio**. Pour le télécharger et l'installer, cliquez sur ce [lien](https://posit.co/download/rstudio-desktop/).
 
 ## 1.2 Créer un document Quarto
 
@@ -63,7 +63,7 @@ editor: visual
 ```
 
 - Sauvegardez le fichier **index.qmd** dans le dossier TP1.
-- Dans le repertoire **TP1**, créez également un sous répértoire **data** pour mettre les données et eventuellement un repertoire **lib** pour un stocker les bibliothèques JavaScript que nous allons utiliser. 
+- Dans le repertoire **TP1**, créez également un sous répertoire **data** pour mettre les données et éventuellement un repertoire **lib** pour un stocker les bibliothèques JavaScript que nous allons utiliser. 
 
 ![](img/dossiers1.png)
 
@@ -83,7 +83,7 @@ Dans Quarto, toutes les instructions à suivre s'écrivent dans des chunks ojs
 ``` {{ojs}}
 ```
 
-Pour chaque *chunck*, vous pouvez définir avec `echo` si vous souhaitez que le code s'affiche ou non dans votre notebook final. Avec `eval`, vous choisissez si le code doit s'executer ou non.
+Pour chaque *chunck*, vous pouvez définir avec `echo` si vous souhaitez que le code s'affiche ou non dans votre notebook final. Avec `eval`, vous choisissez si le code doit s'exécuter ou non.
 
 ``` {{ojs}}
 //| echo: false
@@ -199,19 +199,19 @@ Inputs.table(bertin.properties.table(countries))
 
 ## 2.1 Jointure
 
-La première chose à faire est de réaliser une jointure entre les données et le fond de carte. Pour cela, on va procéder en 2 étapes. `bertin.match` <a href="https://github.com/neocarto/bertin#match"><img src="img/logo_doc.png"/></a> permet de tester et visaliser le compatibilité entre le fond de carte et le tableau de données. `bertin.merge` <a href="https://github.com/neocarto/bertin#merge"><img src="img/logo_doc.png"/></a> permet d'effectuer réellement cette jointure. <a href="https://observablehq.com/@neocartocnrs/bertin-js-match-and-merge?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"/></a>
+La première chose à faire est de réaliser une jointure entre les données et le fond de carte. Pour cela, on va procéder en 2 étapes. `bertin.match` <a href="https://github.com/neocarto/bertin#match"><img src="img/logo_doc.png"/></a> permet de tester et visualiser le compatibilité entre le fond de carte et le tableau de données. `bertin.merge` <a href="https://github.com/neocarto/bertin#merge"><img src="img/logo_doc.png"/></a> permet d'effectuer réellement cette jointure. <a href="https://observablehq.com/@neocartocnrs/bertin-js-match-and-merge?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"/></a>
 
 ```{ojs}
 test = bertin.match(countries, "id", data, "iso3")
 ```
 
-On constate que le jeu de données et le fond de carte sont compatibles à 98%. Toutes les données disponibles dans le jeu de données peuvent être jointe avec le fond de carte (49/49). Seule une unité géographique dans le fond de carte n'a pas d'&quivalent dans le tableau de données (49/50). Pour savoir de quelle unité il s'agit, on peut taper `test.unmatched_geom`
+On constate que le jeu de données et le fond de carte sont compatibles à 98%. Toutes les données disponibles dans le jeu de données peuvent être jointe avec le fond de carte (49/49). Seule une unité géographique dans le fond de carte n'a pas d'équivalent dans le tableau de données (49/50). Pour savoir de quelle unité il s'agit, on peut taper `test.unmatched_geom`
 
 ```{ojs}
 test.unmatched_geom
 ```
 
-Il s'agit du Sahara Occidental. Il n'y a en effet pas de données pour cette unité géographique. On peut donc décider d'effecter la jointure pour de bon et de créer un nouvel objet `africa`. Cet objet contient à la fois les données et les géométries.
+Il s'agit du Sahara Occidental. Il n'y a en effet pas de données pour cette unité géographique. On peut donc décider d’effectuer la jointure pour de bon et de créer un nouvel objet `africa`. Cet objet contient à la fois les données et les géométries.
 
 ```{ojs}
 africa = bertin.merge(countries, "id", data, "iso3")
@@ -263,10 +263,10 @@ Rappel : le type de carte thématique qu'on va réaliser dépend du type de donn
 
 En cartographie, on représente des données quantitatives absolues avec la variable visuelle TAILLE. Pour avoir des cercles proportionnels, dans `bertin`, on utilisera le type `bubble` <a href="https://github.com/neocarto/bertin#bubble"><img src="img/logo_doc.png"/></a><a href="https://observablehq.com/@neocartocnrs/bertin-js-prop-symbols?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"/></a>
 
-Trois paramètres sont absolement nécéssaires à l'affichage de la couche cercles proportinnels : 
+Trois paramètres sont absolument nécessaires à l'affichage de la couche cercles proportionnels : 
 
 - `type` : le type de représentation (ici `bubble`)
-- `geojson` : l'objet geoJSON contenant les géométries et les données atributaires.
+- `geojson` : l'objet geoJSON contenant les géométries et les données attributaires.
 - `values` : le nom de la variable à cartographier.
 
 Le reste est optionnel. 
@@ -300,9 +300,9 @@ D'autres modes de représentation auraient bien sûr été possibles. On aurait 
 
 ## 2.4 Cartographier des données qualitatives nominales
 
-Il y a plusieurs façons de cartographier des données qualitatives nominales. Sur écran, en cartographie numérique, on choisra la plupart du temps la variable visuelle COULEUR (teinte).
+Il y a plusieurs façons de cartographier des données qualitatives nominales. Sur écran, en cartographie numérique, on choisira la plupart du temps la variable visuelle COULEUR (teinte).
 
-Dans `bertin`, il s'agit donc de faire varier la propriété `fill` et de la faire varier en fonction d'une donnée qualitative. Pour cela, on utilise le type `typo` <a href="https://github.com/neocarto/bertin#typology"><img src="img/logo_doc.png"/></a><a href="https://observablehq.com/@neocartocnrs/bertin-js-typo?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"/></a> à l'interieur de la propriété `fill`.
+Dans `bertin`, il s'agit donc de faire varier la propriété `fill` et de la faire varier en fonction d'une donnée qualitative. Pour cela, on utilise le type `typo` <a href="https://github.com/neocarto/bertin#typology"><img src="img/logo_doc.png"/></a><a href="https://observablehq.com/@neocartocnrs/bertin-js-typo?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"/></a> à l’intérieur de la propriété `fill`.
 
 ```{ojs}
 bertin.draw({
@@ -332,9 +332,9 @@ Il est aussi possible de définir vos propres couleurs en replaçant `pal: "Tabl
 
 ## 2.5 Cartographier des données quantitatives relatives (ratio, indice)
 
-Il y a plusieurs façons de cartographier des données quantitatives relatives. Sur écran, en cartographie numérique, on choisra la plupart du temps de réaliser une carte choroplèthe avec des couleurs ordonnées. Un étape de discrétisation préalable est nécéssaire. Elle nécessite d'étudier la forme de la distribution statistique. Pour celà, on utilisera la librairie `Plot` <a href="https://github.com/observablehq/plot"><img src="img/logo_doc.png"/></a> <a href="https://observablehq.com/collection/@observablehq/plot"><img src="img/logo_exemple.png"/></a> disponible nativement dans les celles `{ojs}`.
+Il y a plusieurs façons de cartographier des données quantitatives relatives. Sur écran, en cartographie numérique, on choisira la plupart du temps de réaliser une carte choroplèthe avec des couleurs ordonnées. Un étape de discrétisation préalable est nécessaire. Elle nécessite d'étudier la forme de la distribution statistique. Pour celà, on utilisera la librairie `Plot` <a href="https://github.com/observablehq/plot"><img src="img/logo_doc.png"/></a> <a href="https://observablehq.com/collection/@observablehq/plot"><img src="img/logo_exemple.png"/></a> disponible nativement dans les celles `{ojs}`.
 
-Il y a plusieurs façons de visualister la forme d'une distribution <a href="https://observablehq.com/@cartographie/les-discretisations?collection=@cartographie/cours"><img src="img/logo_exemple.png"/></a> Ici, on choisira un graphique avec des points et une transformation de type dodge.
+Il y a plusieurs façons de visualiser la forme d'une distribution <a href="https://observablehq.com/@cartographie/les-discretisations?collection=@cartographie/cours"><img src="img/logo_exemple.png"/></a> Ici, on choisira un graphique avec des points et une transformation de type dodge.
 
 ```{ojs}
 Plot.plot({
@@ -386,7 +386,7 @@ Avec Observable JavaScript, nous sommes dans un écosystème pleinement réactif
 
 ## 3.1 Une carte par symbols proportionnels
 
-Reprenons le cas de de la carte par symboles proportionnels de tout à l'heure et redons-là interactive avec des `Inputs` <a href="https://github.com/observablehq/inputs"><img src="img/logo_doc.png"/></a> <a href="https://observablehq.com/@observablehq/inputs"><img src="img/logo_exemple.png"/></a>
+Reprenons le cas de de la carte par symboles proportionnels de tout à l'heure et rendons-là interactive avec des `Inputs` <a href="https://github.com/observablehq/inputs"><img src="img/logo_doc.png"/></a> <a href="https://observablehq.com/@observablehq/inputs"><img src="img/logo_exemple.png"/></a>
 
 ```{ojs}
 viewof k = Inputs.range([10, 75], { label: "Taille", step: 1, value: 40 })
@@ -427,7 +427,7 @@ bertin.draw({
 ```
 
 
-Il est également possible d'ajouter des infobulles grace à la propriété `tooltip` <a href="https://observablehq.com/@neocartocnrs/bertin-js-tooltips?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"/></a>
+Il est également possible d'ajouter des infobulles grâce à la propriété `tooltip` <a href="https://observablehq.com/@neocartocnrs/bertin-js-tooltips?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"/></a>
 
 ```{ojs}
 //| echo: true
@@ -460,7 +460,7 @@ bertin.draw({
 
 ## 3.2 Carte qualitative
 
-Il peut être souvent interessant de demander à l'utilisateur de choisir lui même l'indicateur qu'il souhaite cartographier. Pour cela, on peut le proposer dans une liste déroulante <a href="https://observablehq.com/@observablehq/input-select"><img src="img/logo_exemple.png"/></a>. Par exemple, on peut mettre dans un `array` , les indicateurs qualitatifs du tableau de données issus du CEPII :
+Il peut être souvent intéressant de demander à l'utilisateur de choisir lui même l'indicateur qu'il souhaite cartographier. Pour cela, on peut le proposer dans une liste déroulante <a href="https://observablehq.com/@observablehq/input-select"><img src="img/logo_exemple.png"/></a>. Par exemple, on peut mettre dans un `array` , les indicateurs qualitatifs du tableau de données issus du CEPII :
 
 ```{ojs}
 indicators = ["LOCKED", "COLFRA", "COLGBR", "LANGFR", "LANGEN"]
@@ -571,7 +571,7 @@ world = FileAttachment("data/world.json").json()
 De plus, pour améliorer la carte précédente, on rajoute quelques couches d'habillage comme `shadow`<a href="https://github.com/neocarto/bertin#shadow"><img src="img/logo_doc.png"/></a> et `hatch` <a href="https://github.com/neocarto/bertin#hatch-or-hatching"><img src="img/logo_doc.png"/></a>
 
 
-Puis, pour faire varier la carte précédente, on choisi de représenter les données avec le type `dotcartogram` qui décompose chaque cercle en un nombre de points de même valeurs, placés sur le centroid <a href="https://github.com/neocarto/bertin#dot-cartogram"><img src="img/logo_doc.png"/></a><a href="https://observablehq.com/@neocartocnrs/bertin-js-dots-cartograms?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"/></a>. Le reste s'écrit grosso modo comme la carte précédente.
+Puis, pour faire varier la carte précédente, on choisi de représenter les données avec le type `dotcartogram` qui décompose chaque cercle en un nombre de points de même valeurs, placés sur le centroïde <a href="https://github.com/neocarto/bertin#dot-cartogram"><img src="img/logo_doc.png"/></a><a href="https://observablehq.com/@neocartocnrs/bertin-js-dots-cartograms?collection=@neocartocnrs/bertin"><img src="img/logo_exemple.png"/></a>. Le reste s'écrit grosso modo comme la carte précédente.
 
 
 ```{ojs}
