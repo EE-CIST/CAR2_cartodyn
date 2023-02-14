@@ -75,7 +75,7 @@ Le format de sortie est le format `html`.
 - `code-tools: true` permet de donner accès au code source en cliquant sur `</> Code` en haut à droite de la page.
 - `page-layout: full` permet de définir une disposition *pleine page*
 
-À présent, copiez et collez en dessous le code suivant :
+À présent, copiez et collez en dessous l'ensemble du bloc suivant :
 
 ::: copy
 
@@ -449,7 +449,7 @@ y = timer({ speed: 10, step: 9, interval: [-90, 90] })
 ```
 :::
 
-Vous pouvez faire varier les paramètres `speed` et `step` pour changer la vitesse (qui dépend des capacités de votre ordinateur). Vous pouvez aussi appliquer cette fonction à la *Rotation (x)* en utilisant `interval: [-90, 90]`
+Vous pouvez faire varier les paramètres `speed` et `step` pour changer la vitesse (qui dépend des capacités de votre ordinateur). Vous pouvez aussi remplacer le slider *Rotation (x)* en utilisant `interval: [-180, 180]`
 
 
 

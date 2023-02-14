@@ -50,18 +50,21 @@ Dans ce TP, nous privilégions l'utilisation du logiciel **Rstudio**. Pour le t�
 ![](img/create.png)
 
 - Cliquez sur "Create Empty Document" en bas à gauche.
-- Choisissez un titre
+- Mettez-vous en mode source
+
+![](img/source.png)
 
 Vous obtenez un fichier contenant les lignes suivantes : 
 
 ```
 ---
-title: "Mon premier notebook Quarto"
+title: "Untitled"
 format: html
 editor: visual
 ---
 ```
 
+- Choisissez un titre
 - Sauvegardez le fichier **index.qmd** dans le dossier TP1.
 - Dans le repertoire **TP1**, créez également un sous répertoire **data** pour mettre les données et éventuellement un repertoire **lib** pour un stocker les bibliothèques JavaScript que nous allons utiliser. 
 
