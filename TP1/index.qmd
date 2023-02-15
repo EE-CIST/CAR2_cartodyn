@@ -3,6 +3,7 @@ title: "TP1 - Savoir faire des cartes interactives avec Quarto et `bertin`"
 format: 
   html:
     theme: custom.scss
+    embed-resources: true
     code-tools: true
     toc: false
     code-fold: false
@@ -176,13 +177,13 @@ countries
 Pour la visualiser, on a besoin d'importer une bibliothèque de cartographie. Ici, on choisit la bibliothèque `bertin` <a href="https://github.com/neocarto/bertin"><img src="img/logo_doc.png"/></a> On l'importe grace à l'instruction `require()`.
 
 ```{ojs}
-bertin = require("bertin@1.6.3")
+//| eval: false
+bertin = require("bertin@latest")
 ```
 
-*Nb : pour travailler offline, vous pouvez aussi télécharger la librairie bertin [ici](https://cdn.jsdelivr.net/npm/bertin@1.6.3) et indiquer son emplacement. Par exemple si vous le mettez dans le repertoire __lib__ : *
+*Nb : pour travailler offline, vous pouvez aussi télécharger la librairie bertin [ici](https://cdn.jsdelivr.net/npm/bertin@latest) et indiquer son emplacement. Par exemple si vous le mettez dans le repertoire __lib__ : *
 
 ```{ojs}
-//| eval: false
 bertin = require("./lib/bertin.js")
 ```
 

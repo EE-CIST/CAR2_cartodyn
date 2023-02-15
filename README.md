@@ -14,7 +14,7 @@ Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France)
 
 **1. Cartographie thématique avec Quarto et {ojs}**
 
-Cours général introductif présentant le fonctionnement des cellules Observable JavasCript dans Quarto.
+Cours général introductif présentant le fonctionnement des cellules Observable JavaScript dans Quarto.
 
 👉 [intro/docs/index.html](https://ee-cist.github.io/CART3_cartodyn/intro/docs/index.html)
 
@@ -26,6 +26,6 @@ Exercice pour apprendre à réaliser des cartes interactives avec Quarto et la b
 
 **3. Mise en pratique (2/2)**
 
-Exercice pour apprendre à realiser une *single page application* avec `bertin` et Quarto.
+Exercice pour apprendre à réaliser une *single page application* avec `bertin` et Quarto.
 
 👉 [TP2/docs/index.html](https://ee-cist.github.io/CART3_cartodyn/TP2/docs/index.html)

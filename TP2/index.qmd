@@ -3,6 +3,7 @@ title: "TP2 - Réaliser une *single page application* avec Quarto et `bertin`"
 format: 
   html:
     theme: custom.scss
+    embed-resources: true
     code-tools: true
     toc: false
     code-fold: false
@@ -272,22 +273,50 @@ viewof simpl =  Inputs.range( [0.01, 0.5], {value: 0.2, label: "Simplification"}
 
 Avant de construire la carte, nous avons besoin de manipuler un peu les données. On effectue ces opérations dans la partie <ins>**annexe technique**</ins>.  Plusieurs opérations son nécessaires: 
 
-Tout d'abord, on réalise une généralisation du fond de carte avec la fonction `simplify` de la bibliothèque `geotoolbox` qui permet de faire simplement la plupart des opérations SIG utiles en cartographie ([voir](https://github.com/neocarto/geotoolbox)). On peut la charger directement ou la télécharger [ici](https://cdn.jsdelivr.net/npm/geotoolbox@1.9.3) pour travailler sans connexion internet. Le niveau de simplification sera déterminé par l'utilisateur dans le slider *simpl*.
+Tout d'abord, on réalise une généralisation du fond de carte avec la fonction `simplify` de la bibliothèque `geotoolbox` qui permet de faire simplement la plupart des opérations SIG utiles en cartographie ([voir](https://github.com/neocarto/geotoolbox)). On peut la charger directement ou la télécharger [ici](https://cdn.jsdelivr.net/npm/geotoolbox@latest) pour travailler sans connexion internet. Le niveau de simplification sera déterminé par l'utilisateur dans le slider *simpl*.
 
 ::: copy
 ```{ojs}
+//| eval: false
 geo = require("geotoolbox@1.9.3")
-// ou geo = require("./lib/geotoolbox.js")
+```
+:::
+
+ou (si vous souhaitez travailler sans connexion internet)
+
+::: copy
+```{ojs}
+geo = require("./lib/geotoolbox.js")
+```
+:::
+
+Puis
+
+::: copy
+```{ojs}
 world2 = geo.simplify(world, {k: simpl})
 ```
 :::
 
-Puis, avec l'instruction JavaScript `filter`, on crée un tableau contenant uniquement l'année sélectionnée et on effectue une jointure entre les données et le fond de carte grâce à la bibliothèque `bertin` (*on peut aussi télécharger la bibliothèque [ici](https://cdn.jsdelivr.net/npm/bertin@1.6.3)*).
+Puis, avec l'instruction JavaScript `filter`, on crée un tableau contenant uniquement l'année sélectionnée et on effectue une jointure entre les données et le fond de carte grâce à la bibliothèque `bertin` (*on peut aussi télécharger la bibliothèque [ici](https://cdn.jsdelivr.net/npm/bertin@latest)*).
 
 ::: copy
 ```{ojs}
-bertin = require("bertin@1.6.3")
-// ou bertin = require("./lib/bertin.js")
+//| eval : false
+bertin = require("bertin@latest")
+```
+:::
+
+ou (si vous souhaitez travailler sans connexion internet)
+
+::: copy
+```{ojs}
+bertin = require("./lib/bertin.js")
+```
+:::
+
+::: copy
+```{ojs}
 statsyear = stats.filter(d => d.date == year)
 data = bertin.merge(world2, "id", statsyear, "iso3c")
 ```
