@@ -278,7 +278,7 @@ Tout d'abord, on réalise une généralisation du fond de carte avec la fonction
 ::: copy
 ```{ojs}
 //| eval: false
-geo = require("geotoolbox@1.9.3")
+geo = require("geotoolbox@latest")
 ```
 :::
 
