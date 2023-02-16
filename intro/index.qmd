@@ -12,6 +12,7 @@ title-slide-attributes:
   data-background-opacity: "0.5"
 format:
   revealjs:
+    embed-resources: true
     smaller: true
     scrollable: true
     theme: [simple, custom.scss]
@@ -1396,13 +1397,14 @@ Ici, nous pouvons les importer directement avec l'instruction `require()`
 Avec `@`, on spécifie la version de la bibliothèque.
 
 ```{ojs}
-geocountries = require("geocountries@2")
+//| eval : false
+geocountries = require("geocountries@latest")
 ```
 
 Vous pouvez aussi utiliser une bibliothèque localement en spécifiant le chemin sur votre ordinateur.
 
 ```{ojs}
-geocountries2 = require("./lib/geocountries.js")
+geocountries = require("./lib/geocountries.js")
 ```
 
 On peut maintenant utiliser la fonction getcode du package `geocountries`
@@ -1415,8 +1417,20 @@ geocountries.getcode("Bénin")
 
 Une bibliothèque pour faire des discrétisations
 
+
+```{ojs}
+//| eval : false
+discr = require("statsbreaks@latest")
+```
+
+ou 
+
 ```{ojs}
 discr = require("./lib/statsbreaks.js")
+```
+
+
+```{ojs}
 gdppc = data1.map(d => d.PIB/d.POP)
 discr.breaks({ values: gdppc, method: "quantile", nb: 5, precision: 2 })
 ```
@@ -1458,21 +1472,20 @@ Une bibliothèque JavaScript pour la cartographie thématique
 
 ![](img/logo_bertin.png)
 
-On charge la bibliothèque avec l'instruction `require` en indiquant le numéro de version.
+On charge la bibliothèque avec l'instruction `require` en indiquant le numéro de version ou en prenant la derbiere version.
 
 ```{ojs}
+//| eval : false
 bertin = require("bertin@1.6.3")
 ```
 
 Si on souhaite travailler sans connexion internet, il est possible de télécharger la bibliotheque dans un dossier, puis d'indiquer le lien vers ce dossier.
 
-Lien de téléchargement : [https://cdn.jsdelivr.net/npm/bertin\@1.6.3](https://cdn.jsdelivr.net/npm/bertin@1.6.3)
+Lien de téléchargement : [https://cdn.jsdelivr.net/npm/bertin@latest](https://cdn.jsdelivr.net/npm/bertin@latest)
 
 Puis
 
 ```{ojs}
-//| echo: true
-//| eval: false
 bertin = require("./lib/bertin.js")
 ```
 
@@ -1601,10 +1614,17 @@ En cartographie thématique, il est souvent utile de généraliser (simplifier) 
 On charge la bibliothèque avec l'instruction `require`
 
 ```{ojs}
-geo = require("geotoolbox@1.9.3")
+//| eval : false
+geo = require("geotoolbox@latest")
 ```
 
-*(On peut aussi la télécharger ici : [https://cdn.jsdelivr.net/npm/geotoolbox\@1.9.3](https://cdn.jsdelivr.net/npm/geotoolbox@1.9.3))*
+*(Pour travailler sans connexion, on peut aussi la télécharger ici : [https://cdn.jsdelivr.net/npm/geotoolbox@latest](https://cdn.jsdelivr.net/npm/geotoolbox@latest))*
+
+```{ojs}
+geo = require("./lib/geotoolbox.js")
+```
+
+
 
 Puis, on utilise la fonction `simplify()`
 
