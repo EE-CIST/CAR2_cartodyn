@@ -416,7 +416,7 @@ Plot.plot({
 
 # 7. C'est fini !
 
-Appuyez sur `Render` pour voir le résultat. La solution est disponible [ici](https://ee-cist.github.io/CART3_cartodyn/app/index.html).
+Appuyez sur `Render` pour voir le résultat. La solution est disponible [ici](https://ee-cist.github.io/CART3_cartodyn/app/docs/index.html).
 
 # 8. Aller plus loin
 
