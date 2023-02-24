@@ -326,7 +326,6 @@ Reactive, reproducible, collaborative: computational notebooks evolve, par Jeffr
 
 Javascript for data Analysis, par Mike Bostock <https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7>
 
-
 ## JavaScript ≠ ojs
 
 ::: columns
@@ -388,7 +387,6 @@ Heureusement, les comptes pro sont gratuits pour l'enseignement supérieur et la
 ![](img/observable_teach.png)
 
 ⚠️ Attention, Observablehq est une société privée. Ils peuvent donc changer ces conditions ⚠️
-
 
 ## Observable dans Quarto
 
@@ -553,11 +551,11 @@ Il existe deux principaux moyens pour dessiner des éléments dans une page web 
 
 ### Raster vs Vecteur
 
-Un raster, c’est une image composée de pixels. Un grille organisée en lignes et colonnes. Chaque cellule est un pixel unique. Une image raster a une résolution.
+Un raster, c'est une image composée de pixels. Un grille organisée en lignes et colonnes. Chaque cellule est un pixel unique. Une image raster a une résolution.
 
-Une image vecteur n'a pas de résolution. Elle est composée de composée de nœuds (des points dans l’espace) et des formules mathématiques pour calculer les arcs (des lignes) qui relient ces nœuds entre eux et qui forment ainsi une géométrie. On distingue trois grands types de géométries : point, ligne et polygone. 
+Une image vecteur n'a pas de résolution. Elle est composée de composée de nœuds (des points dans l'espace) et des formules mathématiques pour calculer les arcs (des lignes) qui relient ces nœuds entre eux et qui forment ainsi une géométrie. On distingue trois grands types de géométries : point, ligne et polygone.
 
-![](img/vecteurraster.png){_}
+![](img/vecteurraster.png){\_}
 
 ### Canvas
 
@@ -565,14 +563,16 @@ L'élément **canvas** est un composant du langage Web HTML qui permet d'effectu
 
 Ce code
 
-```html
+``` html
 <canvas id="myCanvas2" width="100" height ="100" style="border:1px
 solid #000000; background-color: steelblue;"></canvas>
 ```
 
-donne ceci : 
+donne ceci :
 
-<canvas id="myCanvas2" width="100" height ="100" style="border:1px solid #000000; background-color: steelblue;"></canvas>
+<canvas id="myCanvas2" width="100" height="100" style="border:1px solid #000000; background-color: steelblue;">
+
+</canvas>
 
 ### SVG
 
@@ -580,16 +580,18 @@ Le format SVG (Scalable Vector Graphics) est un format de données conçu pour d
 
 Ce code
 
-```html
+``` html
 <svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg">
   <rect x="0" y="0" width="100px" height="100px" fill="#F2CD3B" stroke="#06000C" />
 </svg>
 ```
 
-donne ceci : 
+donne ceci :
 
 <svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="100px" height="100px" fill="#F2CD3B" stroke="#06000C" />
+
+<rect x="0" y="0" width="100px" height="100px" fill="#F2CD3B" stroke="#06000C" />
+
 </svg>
 
 ## Dessiner avec D3.js
@@ -600,7 +602,7 @@ Avec D3, il est possible de dessiner e, JavaScript des images vectorielles au fo
 
 ![](img/DOM.png)
 
-Le but c'est d'écrire par la programmation des instructions qui vont produire le dessin plutôt que d'écrire directement *en dur* le dessin.  
+Le but c'est d'écrire par la programmation des instructions qui vont produire le dessin plutôt que d'écrire directement *en dur* le dessin.
 
 ### Dessinons du SVG avec D3.js
 
@@ -1181,7 +1183,7 @@ Puis, on dessine la carte
 
 On crée un document SVG
 
-```js
+``` js
 const svg = d3
   .create("svg")
   .attr("viewBox", [0, 0, 1000, 500])
@@ -1191,7 +1193,7 @@ const svg = d3
 
 On ajoute une première couche (calque g) au SVG : Un polygone qui correspond à l'espace terrestre dans la projection donnée.
 
-```js
+``` js
 svg
   .append("g")
   .append("path")
@@ -1202,7 +1204,7 @@ svg
 
 Avec la fonction `d3.geoGraticule10()`, on ajoute des lignes de latitude et loingitude. On les affiche en pointillé.
 
-```js
+``` js
 svg
   .append("g")
   .append("path")
@@ -1215,9 +1217,9 @@ svg
   .style("stroke-dasharray", 2);
 ```
 
-Et enfin, on ajoute les pays de monde. 
+Et enfin, on ajoute les pays de monde.
 
-```js
+``` js
 svg
   .append("g")
   .append("path")
@@ -1231,12 +1233,11 @@ svg
 
 Et tout à la fin, on renvoie le noeud SVG.
 
-```js
+``` js
 return svg.node();
 ```
 
-
-Et voilà le résultat : 
+Et voilà le résultat :
 
 ```{ojs}
 //| eval: true
@@ -1417,18 +1418,16 @@ geocountries.getcode("Bénin")
 
 Une bibliothèque pour faire des discrétisations
 
-
 ```{ojs}
 //| eval : false
 discr = require("statsbreaks@latest")
 ```
 
-ou 
+ou
 
 ```{ojs}
 discr = require("./lib/statsbreaks.js")
 ```
-
 
 ```{ojs}
 gdppc = data1.map(d => d.PIB/d.POP)
@@ -1472,16 +1471,16 @@ Une bibliothèque JavaScript pour la cartographie thématique
 
 ![](img/logo_bertin.png)
 
-On charge la bibliothèque avec l'instruction `require` en indiquant le numéro de version ou en prenant la derbiere version.
+On charge la bibliothèque avec l'instruction `require` en indiquant le numéro de version ou en prenant la dernière version.
 
 ```{ojs}
 //| eval : false
-bertin = require("bertin@1.6.3")
+bertin = require("bertin@1.6.5")
 ```
 
 Si on souhaite travailler sans connexion internet, il est possible de télécharger la bibliotheque dans un dossier, puis d'indiquer le lien vers ce dossier.
 
-Lien de téléchargement : [https://cdn.jsdelivr.net/npm/bertin@latest](https://cdn.jsdelivr.net/npm/bertin@latest)
+Lien de téléchargement : [https://cdn.jsdelivr.net/npm/bertin\@latest](https://cdn.jsdelivr.net/npm/bertin@latest)
 
 Puis
 
@@ -1618,13 +1617,11 @@ On charge la bibliothèque avec l'instruction `require`
 geo = require("geotoolbox@latest")
 ```
 
-*(Pour travailler sans connexion, on peut aussi la télécharger ici : [https://cdn.jsdelivr.net/npm/geotoolbox@latest](https://cdn.jsdelivr.net/npm/geotoolbox@latest))*
+*(Pour travailler sans connexion, on peut aussi la télécharger ici : [https://cdn.jsdelivr.net/npm/geotoolbox\@latest](https://cdn.jsdelivr.net/npm/geotoolbox@latest))*
 
 ```{ojs}
 geo = require("./lib/geotoolbox.js")
 ```
-
-
 
 Puis, on utilise la fonction `simplify()`
 
@@ -1652,7 +1649,7 @@ bertin.draw({ layers: [ { geojson: world2019_simpl, fill: "#F25842" }]})
 
 Notez que la bibliothèque `geotoolbox` vous permet de faire la plupart des opérations SIG utiles en cartographie thématique (extractions des contours, agrégations, généralisation, centroides, etc.)
 
-![](img/geotoolbox.png){_}
+![](img/geotoolbox.png){\_}
 
 ### Exemple de traitement avec `geotoolbox`
 
@@ -1666,19 +1663,19 @@ On selectionne le Bénin et on construit un buffer autour du pays. La distance e
 
 On extrait le Bénin
 
-```js
+``` js
 ben = geo.filter(afr, d => d.id == "BEN")
 ```
 
 On calcule un buffer autour du Bénin
 
-```js
+``` js
 buff = geo.buffer(ben, { dist: distance })
 ```
 
 On intersecte les pays d'Afrique avec ce Buffer
 
-```js
+``` js
 clip = geo.clip(afr, { clip: buff })
 ```
 
@@ -1745,7 +1742,6 @@ bertin.draw({
   ]
 })
 ```
-
 
 ## Projection
 
@@ -2235,7 +2231,7 @@ Pour réprésenter des données quantgitatives absolues, on utilise la variable 
 
 **💡 En paramétrant l'attribut `tooltip`, on peut survoler les cercle spour avoir une infobulle 💡**
 
-```js
+``` js
 tooltip: [
   "$country",
   d => Math.round(d.properties.POP/1000000) + " millions de personnes"
@@ -2406,7 +2402,7 @@ bertin.draw({ layers: [
   ] })
 ```
 
-Bien sûr, avant de réaliser une carte choroplèthe, il est toujours nécéssaire de caractériser la distribution statistique. 
+Bien sûr, avant de réaliser une carte choroplèthe, il est toujours nécéssaire de caractériser la distribution statistique.
 
 Poutr cela, on peut utiliser la bibliothèque `Plot`. Il y a plein de façons de faire.
 
@@ -2426,7 +2422,7 @@ Il n'y a pas de type de graphique prédéfini, mais des marques, et des transfor
 
 ### Récupérer la table attributaire
 
-```js
+``` js
 mytable = bertin.properties.table(world)
 ```
 
@@ -2444,7 +2440,7 @@ mytable = bertin.properties.table(world03)
 
 ### TickX
 
-```js
+``` js
 Plot.plot({
   marginTop: 10,
   marks: [
@@ -2468,7 +2464,7 @@ Plot.plot({
 
 ### Boxplot
 
-```js
+``` js
 Plot.plot({
   marks: [Plot.boxX(mytable, { x: "gdppc", fill: "red" })]
 })
@@ -2486,7 +2482,7 @@ Plot.plot({
 
 ### rectY
 
-```js
+``` js
 Plot.plot({
   marks: [
     Plot.rectY(
@@ -2515,10 +2511,9 @@ Plot.plot({
 })
 ```
 
-
 ### Dodge
 
-```js
+``` js
 Plot.plot({
   height: 340,
   marks: [
@@ -2545,7 +2540,6 @@ Plot.plot({
   ]
 })
 ```
-
 
 ## Combinaisons
 
@@ -2578,7 +2572,7 @@ bertin.draw({ layers: [
 
 Mais on peut aussi faire varier la couleur de n'importe quel objet. Ici, sur le type `bubble`.
 
-```js
+``` js
 layers : [
   {
     type "bubble", 
@@ -2605,7 +2599,7 @@ bertin.draw({ layers: [
 
 Et ca fonctionne aussi pour les contours.
 
-```js
+``` js
 layers : [
   {
     type "bubble", 
@@ -2639,7 +2633,6 @@ Pour rendre les données comparables, on les exprime en % du total. Ca reste des
 
 On crée donc 2 nouvelles variables : pop_pct et gdp_pct.
 
-
 ```{ojs}
 world02bis = {
 let data = bertin.properties.table(world02)
@@ -2659,7 +2652,7 @@ return bertin.merge(world02, "id", data2, "id")
 
 Puis, on réalise la carte avec le type `mushroom`.
 
-```js
+``` js
 {
   type: "mushroom",
   geojson: world02bis,
@@ -2740,13 +2733,13 @@ bertin.draw({ layers: [
 
 La bibliothèque `bertin` permet de passer de mailles irrégulières (maillage administratif) à des mailles régulières (carrés).
 
-![](img/grid.png){_}
+![](img/grid.png){\_}
 
 Cela permet de réaliser de nouveaux types de représentation.
 
 ### Carroyage
 
-Astuce : On peut prendre 2 variables de stock pour calculer directeme,nt le ratio. Ici, PIB par habitant.
+Astuce : On peut prendre 2 variables de stock pour calculer directement le ratio. Ici, PIB par habitant.
 
 ``` js
 {type : "regulargrid", geojson: world, values: ["gdp","pop"] }
@@ -2969,7 +2962,7 @@ Réaliser une *single page application* (dashboard) avec `bertin` et Quarto.
 ![](img/app.png)
 :::
 
-##
+## 
 
 ::: columns
 ::: {.column width="10%"}

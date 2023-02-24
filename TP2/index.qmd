@@ -33,7 +33,7 @@ Le but de ce TP est de réaliser une application de cartographie à l'échelle m
 
 ![](img/app.png)
 
-Les bases et prérequis nécessaires à la bonne compréhension de ce TP sont disponibles via ce [cours introductif](https://ee-cist.github.io/CART3_cartodyn/intro/docs/index.html#/title-slide) et ce premier [TP](https://ee-cist.github.io/CART3_cartodyn/TP1/docs/index.html). Merci de procéder dans cet ordre.
+Les bases et prérequis nécessaires à la bonne compréhension de ce TP sont disponibles via ce [cours introductif](https://ee-cist.github.io/CAR2_cartodyn/intro/docs/index.html#/title-slide) et ce premier [TP](https://ee-cist.github.io/CAR2_cartodyn/TP1/docs/index.html). Merci de procéder dans cet ordre.
 
 **Données**
 
@@ -130,7 +130,7 @@ La classe `{.panel-tabset}` permet de positionner la carte, les données et le g
 # 2. Les données
 Téléchargez les données et mettez-les dans un repertoire *data*.
 
-<a href = "https://github.com/EE-CIST/CART3_cartodyn/raw/main/TP2/data/data.zip"><img src = "img/download.png" height= "50px"><img></a>
+<a href = "https://github.com/EE-CIST/CAR2_cartodyn/raw/main/TP2/data/data.zip"><img src = "img/download.png" height= "50px"><img></a>
 
 Dans le chunck de l'<ins>**annexe technique**</ins>, importez les données géométriques et attributaires qui se trouvent dans le répertoire data.
 
@@ -416,7 +416,7 @@ Plot.plot({
 
 # 7. C'est fini !
 
-Appuyez sur `Render` pour voir le résultat. La solution est disponible [ici](https://ee-cist.github.io/CART3_cartodyn/app/docs/index.html).
+Appuyez sur `Render` pour voir le résultat. La solution est disponible [ici](https://ee-cist.github.io/CAR2_cartodyn/app/docs/index.html).
 
 # 8. Aller plus loin
 

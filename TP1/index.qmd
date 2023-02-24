@@ -122,7 +122,7 @@ Le jeu de données utilisé concerne les pays africains. Nous avons un fond de c
 
 Téléchargez les données et mettez-les dans votre repertoire **data**.
 
-<a href = "https://github.com/EE-CIST/CART3_cartodyn/raw/main/TP1/data/data.zip"><img src = "img/download.png" height= "50px"><img></a>
+<a href = "https://github.com/EE-CIST/CAR2_cartodyn/raw/main/TP1/data/data.zip"><img src = "img/download.png" height= "50px"><img></a>
 
 ## 2.1 Import des données attributaires
 
