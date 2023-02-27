@@ -547,9 +547,28 @@ D3 est aussi à la base de nombreuses bibliothèques JavaScript, comme les libra
 
 ## Dessiner pour le web
 
-Il existe deux principaux moyens pour dessiner des éléments dans une page web : **SVG** & **CANVAS**.
+### La structure d'une page html
+
+Une page html s'organise sous la forme de contenus placés à l'intérieur de balises. 
+
+``` html
+<html>
+  <head>
+    <!-- En tête de la page -->
+    <title>Titre de la carte</title>
+  </head>
+  <body>
+    <!-- Contenu de la page -->
+    <h1>Hello World!</h1>
+  </body>
+</html>
+```
+
+A l'intérieur de la balise body, on peut dessiner directement des images raster et vecteur.
 
 ### Raster vs Vecteur
+
+Il existe deux principaux moyens pour dessiner des éléments dans une page web : **SVG** & **CANVAS**.
 
 Un raster, c'est une image composée de pixels. Un grille organisée en lignes et colonnes. Chaque cellule est un pixel unique. Une image raster a une résolution.
 
@@ -589,14 +608,12 @@ Ce code
 donne ceci :
 
 <svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg">
-
 <rect x="0" y="0" width="100px" height="100px" fill="#F2CD3B" stroke="#06000C" />
-
 </svg>
 
-## Dessiner avec D3.js
+## Dessiner avec D3.js (le DOM)
 
-Avec D3, il est possible de dessiner e, JavaScript des images vectorielles au format CANVAS et SVG en manipulant le DOM.
+Avec D3, il est possible de dessiner en JavaScript des images vectorielles au format CANVAS et SVG en manipulant le DOM.
 
 *Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d'examiner et de modifier le contenu du navigateur web. Par le DOM, la composition d'une page web est représentée sous forme d'un arbre avec des objets dedans.*
 
