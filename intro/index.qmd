@@ -287,7 +287,7 @@ return a.sort()
 **Certes, JavaScript n'a pas été conçu pour faire de l'analyse de données. Mais :**
 
 -   Le langage peut être étendu pour mieux le prendre en charge.
--   De nombreuses librairies permettent déjà de manipuler et représenter les données.
+-   De nombreuses librairies permettent déjà de manipuler et représenter les données (`tidy.js`, `Arquero`...).
 -   Les performances s'améliorent encore avec WebGPU, qui permet de faire des calculs particulièrement efficaces pour l'execution d'algorithmes tres paralleles comme le traitement d'image, le machine learning et le rendu 3D.
 
 ![](img/webgpu.png){height="80"}
@@ -549,7 +549,7 @@ D3 est aussi à la base de nombreuses bibliothèques JavaScript, comme les libra
 
 ### La structure d'une page html
 
-Une page html s'organise sous la forme de contenus placés à l'intérieur de balises. 
+Une page html s'organise sous la forme de contenus placés à l'intérieur de balises.
 
 ``` html
 <html>
@@ -608,7 +608,9 @@ Ce code
 donne ceci :
 
 <svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg">
+
 <rect x="0" y="0" width="100px" height="100px" fill="#F2CD3B" stroke="#06000C" />
+
 </svg>
 
 ## Dessiner avec D3.js (le DOM)
