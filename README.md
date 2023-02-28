@@ -7,6 +7,10 @@
 
 Supports de cours réalisés pour l'école thématique du CIST [ee2022](https://cist.cnrs.fr/formations/ee2022-methodes-et-outils-des-sciences-des-territoires-une-perspective-nord-sud/) : Méthodes et outils des sciences des territoires : une perspective Nord-Sud, Sud-Nord et Sud-Sud. 
 
+**Description**
+
+🌐 [preambule/docs/index.html](https://ee-cist.github.io/CAR2_cartodyn/preambule/docs/index.html)
+
 **Responsables pédagogiques**
 
 Manhamady OUEDRAOGO (Burkina Faso) & Nicolas LAMBERT (France)
