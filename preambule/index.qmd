@@ -1,0 +1,112 @@
+---
+title: "Module CAR2_cartodyn"
+subtitle: "École d'été internationale, Ouidah, 2023"
+date: 03/08/2023
+lang: fr
+date-format: "DD MMM YYYY"
+title-slide-attributes:
+  color: red
+  data-background-color: white
+  data-background-image: img/background.jpg
+  data-background-size: cover
+  data-background-opacity: "0.6"
+format:
+  revealjs:
+    embed-resources: true
+    smaller: true
+    scrollable: true
+    theme: [simple, custom.scss]
+    code-line-numbers: false
+editor: visual
+execute:
+  echo: true
+---
+
+# 
+
+### Qui ?
+
+- Responsables pédagogiques
+
+Manhamady OUEDRAOGO (Burkina Faso) & Nicolas LAMBERT (France)
+
+- Ont participé à l'élaboration de ce module
+
+Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France), Sébastien REY-COYREHOURCQ (France), Vakaramoko BAMBA (Côte d'Ivoire), Hugues PECOUT (France), Yentougle MOUTORE (Togo), Bénédicte GARNIER (France), Côomlan Charles HOUNTON (Bénin), Pauline GLUSKI (France)
+
+# 
+
+### Quoi ?
+
+L'objectif de ce module est d'apprendre, s'initier, à la réalisation des cartes thématiques <ins>vectorielles</ins> pour le <ins>web</ins>.
+
+-   Construire des interactions avec l'utilisateur (bouton, liste déroulate, checkbox...)
+-   (Construire des animations)
+
+Un contenu plus technique que thématique.
+
+Une approche plus "dataviz" que "webgis"
+
+#
+
+### Pour qui ?
+
+-   Étudiants de géographie niveau Master
+-   Étudiants en géomatique/informatique
+-   Étudiants en école d'ingénieur
+
+# 
+
+### Prérequis
+
+-   Bonne culture informatique
+-   Sémiologie graphique, cartographie thématique.
+
+Les plus
+
+-   Etre déja familler avec l'écosystème de Rstudio/Quarto
+-   Les langages du web (html, svg, JavaScript...)
+
+# 
+
+### Materiel pédagogique
+
+-   Un cours général en diaporama (qmd)
+-   Un TP pas à pas de prise en main avec une application sur les pays africains (qmd)
+-   Un TP moins détaillé permétant de réaliser une vraie application à l'échelle des pays du Monde (qmd)
+
+# 
+
+### Technologies mobilisées/requises
+
+- Materiel : ordinateur
+- Notebooks computationnels
+- Logiciels : Rstudio, Quarto
+- Langages : html, SVG, JavaScript, <ins>Observable JavaScript (ojs)</ins>
+- Bibliothèques JS: `bertin`, `geotoolbox`, `plot`
+
+Et si possible
+
+- Une connexion internet
+
+# 
+
+### Données utilisées
+
+- **Pays africains** : Le jeu de données utilisé concerne les pays africains. Nous avons un fond de carte contenant la géométrie des pays. Et un tableau de données issu du Human Development Report 2020 et du CEPII, contenant différentes données statistiques, qualitatives ou quantitatives.
+
+- **Pays du monde** : tableau de données contenant 6 variables issues de la banque mondiale, disponibles de 1990 à 2021 (terres arables, surface, emissions de CO2, PIB, Population, population urbaine). Elles ont été harmonisées par Claude Grasland. 
+
+#
+
+### Biblio
+
+- Allaire J., Teague C., Scheidegger C., Xie Y., Dervieux C., (2022). Quarto (Version 1.2) [Computer software]. https://doi.org/10.5281/zenodo.5960048
+- Bostock M. (2021). Script for Data Analysis,  https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7
+- Bostock M., Ogievetsky V., Heer J. (2011). D³ Data-Driven Documents, IEEE,  Volume: 17, https://ieeexplore.ieee.org/abstract/document/6064996
+- Grandjean M. (2022). La visualisation de données, entre usages démonstratifs et heuristiques.
+- Lambert N. (2022). La bibliothèque bertin. https://observablehq.com/collection/@neocartocnrs/bertin
+- Perkel J.M. (2021). Reactive, reproducible, collaborative: computational notebooks evolve, https://www.nature.com/articles/d41586-021-01174-w
+- Tucker T. (2022). Classic Research in Data Visualization. https://observablehq.com/@tophtucker/classic-research-in-data-visualization
+
+# C'est parti ?
