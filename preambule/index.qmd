@@ -7,9 +7,9 @@ date-format: "DD MMM YYYY"
 title-slide-attributes:
   color: red
   data-background-color: white
-  data-background-image: img/background.jpg
+  data-background-image: img/background.png
   data-background-size: cover
-  data-background-opacity: "0.6"
+  data-background-opacity: "0.8"
 format:
   revealjs:
     embed-resources: true
@@ -38,9 +38,11 @@ Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France)
 
 ### Quoi ?
 
+Il existe beaucoup de moyens de faire des cartes interactives (SIG en ligne, R-Shinny...). Il a donc fallu faire des choix. 
+
 L'objectif de ce module est d'apprendre, s'initier, à la réalisation des cartes thématiques <ins>vectorielles</ins> pour le <ins>web</ins>.
 
--   Construire des interactions avec l'utilisateur (bouton, liste déroulate, checkbox...)
+-   Construire des interactions avec l'utilisateur (bouton, liste déroulante, checkbox...)
 -   (Construire des animations)
 
 Un contenu plus technique que thématique.
