@@ -37,31 +37,25 @@ Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France)
 
 Les premières cartes
 
-
 ::: columns
 ::: {.column width="49%"}
-<img src="img/Bedolina.jpg" style="border:none"/></img><br/>
-“Cadastre” de <b>Bedolina</b> (découverte en en Italie du nord) 2000 ans av.n.è. J.-C. Quatre périodes au moins de gravure se superposent, et cette mystérieuse topographie apparaît sur la deuxième couche, voisinant avec des représentations de cervidés. S'il s'agit bien d'un premier vocabulaire topographique, nous ne savons pas le lire.<br/>
-
+<img src="img/Bedolina.jpg" style="border:none"/></img><br/> "Cadastre" de <b>Bedolina</b> (découverte en en Italie du nord) 2000 ans av.n.è. J.-C. Quatre périodes au moins de gravure se superposent, et cette mystérieuse topographie apparaît sur la deuxième couche, voisinant avec des représentations de cervidés. S'il s'agit bien d'un premier vocabulaire topographique, nous ne savons pas le lire.<br/>
 :::
 
 ::: {.column width="49%"}
-<img src="img/Mattangs.jpeg" style="border:none"/></img><br/>
-Ces cartes polynésiennes appelées <b>Rebbelibs</b>, <b>Medosou</b> ou <b>Mattangs</b> représentants les courants marins et la direction de la houle qui est perturbée par la présence des îles avec des batons de bois courbés, les coquillages représentants la position des îles. Elle datent de 1000 av.n.è.
-
+<img src="img/Mattangs.jpeg" style="border:none"/></img><br/> Ces cartes polynésiennes appelées <b>Rebbelibs</b>, <b>Medosou</b> ou <b>Mattangs</b> représentants les courants marins et la direction de la houle qui est perturbée par la présence des îles avec des batons de bois courbés, les coquillages représentants la position des îles. Elle datent de 1000 av.n.è.
 :::
 :::
 
 ### Des représentations du Monde qui s'affinent
 
-<img src ="img/I.01.histoire.png"></img>
+<img src="img/I.01.histoire.png"/></img>
 
 *Lambert, N., Zanin C. (2019). Mad Maps - L'Atlas qui va changer votre vision du monde (p. 144p). Armand Colin.*
 
 ## Les débuts de la dataviz
 
 ::: {align="center"}
-
 <b>Nicole Oresme</b> (1370) est un des premiers à concevoir le principe et l'utilité des coordonnées cartésiennes pour la représentation graphique de phénomènes quantitatifs
 
 ::: columns
@@ -74,7 +68,7 @@ Ces cartes polynésiennes appelées <b>Rebbelibs</b>, <b>Medosou</b> ou <b>Matta
 :::
 :::
 
- <b>William Playfair</b> (1786)<br/>Commercial and Political Atlas.<br/>
+<b>William Playfair</b> (1786)<br/>Commercial and Political Atlas.<br/>
 
 ::: columns
 ::: {.column width="49%"}
@@ -89,7 +83,6 @@ Ces cartes polynésiennes appelées <b>Rebbelibs</b>, <b>Medosou</b> ou <b>Matta
 <b>Florence Nightingale</b> (1857)<br/>Notes on Matters Affecting the Health, Efficiency and Hospital Administration of the British Army.<br/>
 
 <img src="img/Nightingale.png" style="border:none"/></img>
-
 :::
 
 ## La rencontre de 2 mondes
@@ -1955,8 +1948,8 @@ bertin.draw({
 
 Le type `waterlines` permet d'afficher des lignes autour des terres, comme sur les cartes anciennes
 
-``` js
-{type: "waterlines", nb: 5}
+```js
+{type: "waterlines", geojson: world, nb: 5}
 ```
 
 <br/>
@@ -2995,14 +2988,13 @@ layers: [
 
 ## Bibliographie
 
-- Allaire J., Teague C., Scheidegger C., Xie Y., Dervieux C., (2022). Quarto (Version 1.2) [Computer software]. https://doi.org/10.5281/zenodo.5960048
-- Bostock M. (2021). Script for Data Analysis,  https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7
-- Bostock M., Ogievetsky V., Heer J. (2011). D³ Data-Driven Documents, IEEE,  Volume: 17, https://ieeexplore.ieee.org/abstract/document/6064996
-- Grandjean M. (2022). La visualisation de données, entre usages démonstratifs et heuristiques.
-- Lambert N. (2022). La bibliothèque bertin. https://observablehq.com/collection/@neocartocnrs/bertin
-- Perkel J.M. (2021). Reactive, reproducible, collaborative: computational notebooks evolve, https://www.nature.com/articles/d41586-021-01174-w
-- Tucker T. (2022). Classic Research in Data Visualization. https://observablehq.com/@tophtucker/classic-research-in-data-visualization
-
+-   Allaire J., Teague C., Scheidegger C., Xie Y., Dervieux C., (2022). Quarto (Version 1.2) \[Computer software\]. https://doi.org/10.5281/zenodo.5960048
+-   Bostock M. (2021). Script for Data Analysis, https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7
+-   Bostock M., Ogievetsky V., Heer J. (2011). D³ Data-Driven Documents, IEEE, Volume: 17, https://ieeexplore.ieee.org/abstract/document/6064996
+-   Grandjean M. (2022). La visualisation de données, entre usages démonstratifs et heuristiques.
+-   Lambert N. (2022). La bibliothèque bertin. https://observablehq.com/collection/@neocartocnrs/bertin
+-   Perkel J.M. (2021). Reactive, reproducible, collaborative: computational notebooks evolve, https://www.nature.com/articles/d41586-021-01174-w
+-   Tucker T. (2022). Classic Research in Data Visualization. https://observablehq.com/@tophtucker/classic-research-in-data-visualization
 
 # Exercices
 
@@ -3032,7 +3024,6 @@ Réaliser une *single page application* (dashboard) avec `bertin` et Quarto.
 
 ::: {.column width="90%"}
 <br/><br/><br/><br/><br/><br/>
-
 
 ## Contacts
 
