@@ -26,11 +26,15 @@ execute:
 
 ### Qui ?
 
+<br/>
+
 - Responsables pédagogiques
 
 Manhamady OUEDRAOGO (Burkina Faso) & Nicolas LAMBERT (France)
 
-- Ont participé à l'élaboration de ce module
+<br/>
+
+- Ont participé à la réflexion sur ce module
 
 Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France), Sébastien REY-COYREHOURCQ (France), Vakaramoko BAMBA (Côte d'Ivoire), Hugues PECOUT (France), Yentougle MOUTORE (Togo), Bénédicte GARNIER (France), Côomlan Charles HOUNTON (Bénin), Pauline GLUSKI (France)
 
@@ -38,20 +42,29 @@ Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France)
 
 ### Quoi ?
 
-Il existe beaucoup de moyens de faire des cartes interactives (SIG en ligne, R-Shinny...). Il a donc fallu faire des choix. 
+<br/>
+
+Il existe beaucoup de moyens de faire des cartes interactives (SIG en ligne, R-Shiny...). Il a donc fallu faire des choix.
 
 L'objectif de ce module est d'apprendre, s'initier, à la réalisation des cartes thématiques <ins>vectorielles</ins> pour le <ins>web</ins>.
 
 -   Construire des interactions avec l'utilisateur (bouton, liste déroulante, checkbox...)
 -   (Construire des animations)
 
+
+<br/>
+
 Un contenu plus technique que thématique.
 
-Une approche plus "dataviz" que "webgis"
+<br/>
+
+Une approche plus "**dataviz**" et "**visual analytics**" que "webgis"
 
 #
 
 ### Pour qui ?
+
+<br/>
 
 -   Étudiants de géographie niveau Master
 -   Étudiants en géomatique/informatique
@@ -61,17 +74,23 @@ Une approche plus "dataviz" que "webgis"
 
 ### Prérequis
 
+<br/>
+
 -   Bonne culture informatique
 -   Sémiologie graphique, cartographie thématique.
 
+<br/>
+
 Les plus
 
--   Etre déja familler avec l'écosystème de Rstudio/Quarto
--   Les langages du web (html, svg, JavaScript...)
+-   Être déja familler avec l'écosystème de Rstudio/Quarto
+-   Connaitre les langages du web (html, svg, JavaScript...) et le Markdown.
 
-# 
+#
 
 ### Materiel pédagogique
+
+<br/>
 
 -   Un cours général en diaporama (qmd)
 -   Un TP pas à pas de prise en main avec une application sur les pays africains (qmd)
@@ -81,27 +100,40 @@ Les plus
 
 ### Technologies mobilisées/requises
 
+<br/>
+
 - Materiel : ordinateur
 - Notebooks computationnels
 - Logiciels : Rstudio, Quarto
 - Langages : html, SVG, JavaScript, <ins>Observable JavaScript (ojs)</ins>
 - Bibliothèques JS: `bertin`, `geotoolbox`, `plot`
 
+<br/>
+
 Et si possible
 
 - Une connexion internet
+
+<br/><br/>
+*<ins>Précision</ins> : dans ce cours, on ne va pas apprendre à programmer en JavaScript, mais apprendre à utiliser des bibiolthèques JavaScript dans Quarto*
 
 # 
 
 ### Données utilisées
 
+<br/>
+
 - **Pays africains** : Le jeu de données utilisé concerne les pays africains. Nous avons un fond de carte contenant la géométrie des pays. Et un tableau de données issu du Human Development Report 2020 et du CEPII, contenant différentes données statistiques, qualitatives ou quantitatives.
+
+<br/>
 
 - **Pays du monde** : tableau de données contenant 6 variables issues de la banque mondiale, disponibles de 1990 à 2021 (terres arables, surface, emissions de CO2, PIB, Population, population urbaine). Elles ont été harmonisées par Claude Grasland. 
 
 #
 
 ### Biblio
+
+<br/>
 
 - Allaire J., Teague C., Scheidegger C., Xie Y., Dervieux C., (2022). Quarto (Version 1.2) [Computer software]. https://doi.org/10.5281/zenodo.5960048
 - Bostock M. (2021). Script for Data Analysis,  https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7
