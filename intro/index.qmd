@@ -1189,6 +1189,8 @@ subdata1 = data1
   .sort((a, b) => d3.descending(b.ESPVIE, a.ESPVIE))
 ```
 
+Ca donne ceci : 
+
 ```{ojs}
 //| echo: false
 Inputs.table(subdata1)
