@@ -1510,7 +1510,7 @@ chart = SankeyChart({
 })
 ```
 
-# La libraririe bertin 🗺️
+# La bibliothèque bertin 🗺️
 
 Une bibliothèque JavaScript pour la cartographie thématique
 
