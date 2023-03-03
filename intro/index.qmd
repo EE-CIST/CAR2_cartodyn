@@ -1128,7 +1128,7 @@ viewof r = Inputs.range([5, 30], {value: 25, step: 0.1, label: "rayon"})
 }
 ```
 
-## Ajouter des données
+## Les données
 
 L'ajout de données s'effectue avec l'instruction `FileAttachment()`
 
@@ -1177,6 +1177,42 @@ data2 = classeur.sheet("data", {
 //| echo: false
 data2
 ```
+
+### 👉 Mise en forme des données
+
+Pour mettre en forme les données, on peut le faire en pure JavaScript. 
+
+```{ojs}
+subdata1 = data1
+  .filter((d) => +d.ESPVIE > 65)
+  .map((d) => ({ code: d.iso3, nom: d.nom, POP: d.POP, PIB: d.PIB, ESPVIE: d.ESPVIE }))
+  .sort((a, b) => d3.descending(b.ESPVIE, a.ESPVIE))
+```
+
+```{ojs}
+//| echo: false
+Inputs.table(subdata1)
+```
+
+On peut aussi utiliser `arquero`. Voir : [https://observablehq.com/@observablehq/data-wrangler](@observablehq/data-wrangler).
+
+```{ojs}
+subdata2 = aq
+  .from(data1)
+  .filter((d) => d["ESPVIE"] > 65)
+  .rename({ iso3: "code" })
+  .select("code", "nom", "POP", "PIB", "ESPVIE")
+  .orderby("ESPVIE")
+  .objects()
+```
+
+Et visualiser la table.
+
+```{ojs}
+//| echo: false
+Inputs.table(subdata2)
+```
+
 
 ### 👉 fichier geoJSON
 
