@@ -1208,7 +1208,7 @@ subdata2 = aq
   .objects()
 ```
 
-Et visualiser la table.
+Le résultat est le même.
 
 ```{ojs}
 //| echo: false
