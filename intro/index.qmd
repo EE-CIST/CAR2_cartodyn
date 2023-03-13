@@ -156,7 +156,7 @@ https://observablehq.com/@tophtucker/classic-research-in-data-visualization
 ##  {background-image="img/bostock2011.png" background-size="contain"}
 
 ::: footer
-<b>D3.js - Mike Bostock, 2012</b><br/> https://archive.nytimes.com/www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html
+<b>Shan Carter, 2012 (D3.js - Mike Bostock)</b><br/> https://archive.nytimes.com/www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html
 :::
 
 ##  {background-image="img/vegalite.png" background-size="contain"}
