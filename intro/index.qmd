@@ -33,6 +33,10 @@ Claude GRASLAND (France), Souleymane Sidi TRAORE (Mali), Malika MADELIN (France)
 
 # Introduction
 
+::: {.notes}
+Cette introduction pose des éléments de contexte sur l'histoire de la dataviz et les évolutions technologiques récentes. Pour en savoir plus : https://observablehq.com/@tophtucker/classic-research-in-data-visualization
+:::
+
 ## Petite histoire de la cartographie
 
 Les premières cartes
@@ -52,6 +56,10 @@ Les premières cartes
 <img src="img/I.01.histoire.png"/></img>
 
 *Lambert, N., Zanin C. (2019). Mad Maps - L'Atlas qui va changer votre vision du monde (p. 144p). Armand Colin.*
+
+::: {.notes}
+L'humanité produit des cartes depuis plus de 4000 ans pour se repérer et/ou se déplacer. Petit à petit les représentations du monde se sont affinées. On dispose aujourd'hui de bases de données très précises permetant de représenter le monde. Est-ce "la fin de l'histoire" cartographique ?
+:::
 
 ## Les débuts de la dataviz
 
@@ -85,6 +93,10 @@ Les premières cartes
 <img src="img/Nightingale.png" style="border:none"/></img>
 :::
 
+::: {.notes}
+On va s'interesser maintenant à une autre histoire, celle de la visualisation de données. Cette histoire est plus courte. Elle commence vraiment au 18e siecle avec William Playfair et Florence Nightingale. 
+:::
+
 ## La rencontre de 2 mondes
 
 Quand la cartographie rencontre la visualisation de données statistiques
@@ -107,6 +119,10 @@ Carte figurative de l'instruction populaire en France (<b>Charles Dupin</b>, 182
 Carte Figurative des pertes successives en hommes de l'armée française dans la campagne de Russie 1812--1813.<br/>Charles Joseph Minard (1869). <b>Minard</b> représente en 1869 les pertes colossales de l'armée française dans la campagne de Russie au début du XIXe siècle. Cette fameuse « carte figurative » raconte l'histoire de cette armée, qui arrive à Moscou avec moins d'un quart de son effectif de départ, avant de se faire à nouveau décimer sur le voyage du retour.
 :::
 
+::: {.notes}
+Ces deux histoires s'intersectent pour la première fois en 1826 avec la carte figurative de Charles Dupin. Pour la première fois, on représentatait des données statistiques sur un repère géographique. C'est aussi la première carte choroplèthe. S'en suivent de nombreuses autres représentations cartographiques. Les réalisations de C.J. Minard sont particulièrement remarquables. 
+:::
+
 ## Bertin, 1967 (et 1973)
 
 -   Enorme travail de synthèse.
@@ -116,6 +132,10 @@ Carte Figurative des pertes successives en hommes de l'armée française dans la
 -   Mais un travail qui reste central pour toutes celles et ceux qui travaillent sur la visualisation de données aujourd'hui.
 
 <img src="img/semio.png" style="border:none"/></img>
+
+::: {.notes}
+Cette façon de représenter des données via des signes graphiques et systhétisée de façon remarquable en 1967 par Jacques Bertin.
+:::
 
 ## Révolutions technologiques
 
@@ -133,6 +153,10 @@ Internet <img src="img/internet.png" style="border:none"/></img>
 
 ::: footer
 https://observablehq.com/@tophtucker/classic-research-in-data-visualization
+:::
+
+::: {.notes}
+Puis, intervient la révolution numérique. De nouvelles technologies mais qui ne remettent pas fondamentalement en causes la théorie de la sémiologie graphique. 
 :::
 
 ##  {background-image="img/leaflet.jpg" background-size="contain"}
@@ -179,6 +203,11 @@ https://observablehq.com/@tophtucker/classic-research-in-data-visualization
 
 # JavaScript 🖥️
 
+::: {.notes}
+Nous allons parler à présent du langage JavaScript.
+Points clés : c'ets un vieux langage qui n'a pas été concu pour l'analyse de données. Mais c'ets le langage du web. Il fonctionne sur tous les navigateurs web sans avoir besoin d'installer quoi que ce soit. Ce langage peut être étendu pour devenir un langage dédié à la dataviz. 
+:::
+
 ## Historique
 
 Le JavaScript est un langage de programmation qui a presque 30 ans.
@@ -214,6 +243,7 @@ Depuis 2015 (ES6 ou ES2015), le langage JavaScript est mature. Performant. Et es
 De nouvelles fonctionnalitées sont ajoutées au langage chaque année.
 
 Voir : [observablehq.com/\@robertbatty/ecmascript-2015-2022](https://observablehq.com/@robertbatty/ecmascript-2015-2022)
+
 
 ## Une grande communauté
 
@@ -330,6 +360,10 @@ Du coup, certains pensent que le JavaScript est le langage de demain pour traite
 *https://towardsdatascience.com/javascript-for-data-analysis-2e8e7dbf63a7*
 
 # Observable Javascript 📊
+
+::: {.notes}
+Observable Javascript est une évolution du langage JavaScript pour en faire un langage déduié à l'analyse et la visualisation de données. 
+:::
 
 Un langage dédié à la visualisation de données pour le web
 
@@ -635,7 +669,9 @@ Ce code
 donne ceci :
 
 <svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg">
+
 <rect x="0" y="0" width="100px" height="100px" fill="#F2CD3B" stroke="#06000C" />
+
 </svg>
 
 ## Dessiner avec D3.js (le DOM)
@@ -1180,7 +1216,7 @@ data2
 
 ### 👉 Mise en forme des données
 
-Pour mettre en forme les données, on peut le faire en pure JavaScript. 
+Pour mettre en forme les données, on peut le faire en pure JavaScript.
 
 ```{ojs}
 subdata1 = data1
@@ -1189,14 +1225,14 @@ subdata1 = data1
   .sort((a, b) => d3.descending(b.ESPVIE, a.ESPVIE))
 ```
 
-Ca donne ceci : 
+Ca donne ceci :
 
 ```{ojs}
 //| echo: false
 Inputs.table(subdata1)
 ```
 
-On peut aussi utiliser `arquero`. Voir : [https://observablehq.com/@observablehq/data-wrangler](@observablehq/data-wrangler).
+On peut aussi utiliser `arquero`. Voir : [https://observablehq.com/\@observablehq/data-wrangler](@observablehq/data-wrangler).
 
 ```{ojs}
 subdata2 = aq
@@ -1214,7 +1250,6 @@ Le résultat est le même.
 //| echo: false
 Inputs.table(subdata2)
 ```
-
 
 ### 👉 fichier geoJSON
 
@@ -1544,6 +1579,11 @@ chart = SankeyChart({
 # La bibliothèque bertin 🗺️
 
 Une bibliothèque JavaScript pour la cartographie thématique
+
+
+::: {.notes}
+La bibliothèque bertin est une bibliotheque de cartographie pour le web. Voir : https://github.com/neocarto/bertin
+:::
 
 ## Principes
 
@@ -1986,7 +2026,7 @@ bertin.draw({
 
 Le type `waterlines` permet d'afficher des lignes autour des terres, comme sur les cartes anciennes
 
-```js
+``` js
 {type: "waterlines", geojson: world, nb: 5}
 ```
 
